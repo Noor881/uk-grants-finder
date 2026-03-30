@@ -8,6 +8,7 @@ import BenefitsPage from './pages/BenefitsPage.jsx'
 import LoansPage from './pages/LoansPage.jsx'
 import HousingPage from './pages/HousingPage.jsx'
 import TrainingPage from './pages/TrainingPage.jsx'
+import EligibilityChecker from './pages/EligibilityChecker.jsx'
 import TermsPage from './pages/TermsPage.jsx'
 import PrivacyPage from './pages/PrivacyPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/loans"     element={<LoansPage />} />
         <Route path="/housing"   element={<HousingPage />} />
         <Route path="/training"  element={<TrainingPage />} />
+        <Route path="/tools/eligibility" element={<EligibilityChecker />} />
         <Route path="/terms"     element={<TermsPage />} />
         <Route path="/privacy"   element={<PrivacyPage />} />
         <Route path="/about"     element={<AboutPage />} />

@@ -63,28 +63,42 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 40px;
-  background: rgba(4, 5, 10, 0.85);
-  backdrop-filter: blur(20px);
+  padding: 14px 40px;
+  background: #ffffff;
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 20px;
+    position: relative;
+  }
+  .nav-links-desktop {
+    display: none !important;
+  }
+  .nav-burger {
+    display: flex !important;
+  }
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: 'Outfit', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.navbar-logo span {
+  color: var(--accent-primary);
 }
 
 .navbar-logo svg {
   flex-shrink: 0;
-  -webkit-text-fill-color: initial;
   color: var(--accent-primary);
 }
 
