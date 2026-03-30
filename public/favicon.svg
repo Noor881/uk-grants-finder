@@ -1,27 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <!-- Background with rounded corners -->
-  <rect width="512" height="512" rx="100" fill="#0a0e1a"/>
-
-  <!-- Subtle inner glow -->
-  <circle cx="256" cy="256" r="200" fill="none" stroke="#0066ff" stroke-width="1" opacity="0.15"/>
-
-  <!-- Pound £ sign - clean geometric construction -->
-  <!-- Horizontal bar top of £ -->
-  <rect x="175" y="172" width="155" height="28" rx="14" fill="#0066ff"/>
-
-  <!-- Vertical stroke of £ -->
-  <rect x="188" y="172" width="36" height="130" rx="0" fill="#0066ff"/>
-
-  <!-- Curved top of £ (arc) -->
-  <path d="M224 172 Q320 172 320 230 Q320 280 260 290 L224 290 L224 262 L258 262 Q290 255 290 230 Q290 200 224 200 Z" fill="#0a0e1a"/>
-
-  <!-- Middle bar of £ -->
-  <rect x="162" y="262" width="130" height="26" rx="13" fill="#ffffff"/>
-
-  <!-- Bottom bar of £ -->
-  <rect x="145" y="342" width="210" height="26" rx="13" fill="#ffffff"/>
-
-  <!-- Small upward arrow accent (top right corner) -->
-  <circle cx="370" cy="142" r="40" fill="#0066ff" opacity="0.15"/>
-  <path d="M370 122 L385 147 L375 147 L375 162 L365 162 L365 147 L355 147 Z" fill="#0066ff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="18" fill="#0a0e1a"/>
+  <text x="50" y="68" font-family="Georgia, 'Times New Roman', serif"
+        font-size="62" font-weight="700" fill="#0066ff"
+        text-anchor="middle">£</text>
 </svg>
