@@ -393,7 +393,7 @@ export default function HomePage() {
 
       <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
         <div>
-          Powered by <strong>Supabase</strong> · Sourced from GOV.UK and UK funding bodies · Auto-updated every 6 hours
+          © 2025 UK Grants Finder · Helping thousands find funding across the United Kingdom
         </div>
         <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
           <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>

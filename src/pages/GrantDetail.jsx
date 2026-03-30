@@ -318,8 +318,7 @@ export default function GrantDetail() {
 
       <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
         <div>
-          <Link to="/" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>← Back to All Grants</Link>
-          &nbsp;· Powered by <strong>Supabase</strong> · Data from GOV.UK and UK funding bodies
+          © 2025 UK Grants Finder · Free funding search for everyone in the United Kingdom
         </div>
         <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
           <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>
