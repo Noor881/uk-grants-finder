@@ -343,6 +343,54 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SEO FAQ Section — keyword rich for Google indexing */}
+      <section style={{ maxWidth: '860px', margin: '0 auto 60px', padding: '0 20px' }}>
+        <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', textAlign: 'center', marginBottom: '10px' }}>
+          Frequently Asked Questions About UK Grants & Funding
+        </h2>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '36px', fontSize: '0.95rem' }}>
+          Everything you need to know about finding and applying for UK government grants, startup funding, and council schemes.
+        </p>
+        {[
+          {
+            q: 'What UK grants are available for startups in 2025?',
+            a: 'UK startups can access a wide range of government funding. Key schemes include Innovate UK Smart Grants (up to £500,000 for R&D), the Start Up Loans programme (government-backed loans of £500–£25,000), Seed Enterprise Investment Scheme (SEIS) tax-relief funding, and regional Growth Hubs offering local startup support grants. Many Local Enterprise Partnerships (LEPs) also offer specific startup grants. Use our search to filter by the "Business" category to find all currently active startup funding opportunities.'
+          },
+          {
+            q: 'What are the best UK government grants for small businesses?',
+            a: 'Small businesses in the UK can apply for grants through multiple channels. The Innovate UK grants fund innovation and R&D projects. The UK Shared Prosperity Fund (UKSPF) provides local business support grants. The Growth Hub network offers sector-specific funding. The Advanced Research & Invention Agency (ARIA) funds cutting-edge tech projects. Energy efficiency grants like the Green Business Fund can also reduce costs. All live business grants are searchable on UK Grants Finder in the Business & Energy categories.'
+          },
+          {
+            q: 'How do I apply for UK energy grants like ECO4?',
+            a: 'The ECO4 (Energy Company Obligation) scheme is one of the UK\'s largest energy grant programmes, offering free or heavily subsidised insulation, heat pumps, and heating upgrades to low-income households. To apply, you must be a homeowner or private tenant receiving qualifying benefits (Universal Credit, Pension Credit, etc.). Applications are made through energy suppliers or government-approved installers — not directly through GOV.UK. Our site lists all active ECO4 and related energy grant schemes with direct application links.'
+          },
+          {
+            q: 'Are there UK grants available for individuals and families?',
+            a: 'Yes. UK individuals and families can access benefits-linked grants, council tax support, cost-of-living payments, the Household Support Fund, childcare funding (including 30 hours free childcare), Sure Start Maternity Grants, and Disabled Facilities Grants. Housing grants include Right to Buy discounts, shared ownership schemes, and Help to Build. Search our "Benefits & Tax", "Families & Children", and "Housing" categories to see everything currently available to individuals.'
+          },
+          {
+            q: 'What housing grants and funding are available in the UK?',
+            a: 'UK housing grants include the Disabled Facilities Grant (up to £30,000 for adaptations), Warm Home Discount Scheme, Green Homes Grant vouchers (where available), Help to Buy schemes, Shared Ownership housing, and various council-level home improvement grants. First-time buyers may access LISA (Lifetime ISA) government bonuses. Social housing tenants and private renters may qualify for local council housing improvement grants. Filter by "Housing" on our platform to view all active schemes.'
+          },
+          {
+            q: 'What UK funding is available for community and charity projects?',
+            a: 'Community organisations, charities, and voluntary groups can access the National Lottery Community Fund, the UK Community Renewal Fund, Arts Council England grants, Sport England Community Asset Fund, and thousands of local authority community grants. Charitable organisations may also qualify for Gift Aid and charitable rate relief. Use the "Community" filter on UK Grants Finder to discover all active funding for community projects across England, Scotland, Wales, and Northern Ireland.'
+          },
+          {
+            q: 'How does UK Grants Finder work and is it free?',
+            a: 'UK Grants Finder is completely free to use. We automatically aggregate grant data from GOV.UK, Local Authority websites, UK funding bodies, and official government APIs. Our database is updated every hour to ensure accuracy. You can search by keyword, filter by category (energy, business, housing, etc.) or by status (active only). Every grant listing includes full eligibility details and a direct link to the official application page — we are not a middleman and do not charge any fees.'
+          },
+        ].map((faq, i) => (
+          <details key={i} style={{ borderBottom: '1px solid var(--border)', padding: '20px 0' }}>
+            <summary style={{ cursor: 'pointer', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              {faq.q}
+              <span style={{ fontSize: '1.4rem', color: 'var(--accent-primary)', flexShrink: 0, marginLeft: '12px' }}>+</span>
+            </summary>
+            <p style={{ marginTop: '14px', fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{faq.a}</p>
+          </details>
+        ))}
+      </section>
+
       <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
         <div>
           Powered by <strong>Supabase</strong> · Sourced from GOV.UK and UK funding bodies · Auto-updated every 6 hours
