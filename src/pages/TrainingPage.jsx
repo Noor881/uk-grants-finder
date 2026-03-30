@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 
@@ -21,21 +21,21 @@ function TrainingCard({ item }) {
       </div>
       <h3 className="card-title">{item.title}</h3>
       {item.provider && (
-        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 8 }}>🏫 {item.provider}</p>
+        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 8 }}>ðŸ« {item.provider}</p>
       )}
       <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: '0 0 12px' }}>
         {item.description?.slice(0, 160)}...
       </p>
       {item.duration && (
         <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 20, fontSize: '0.8rem', fontWeight: 600, background: 'rgba(236,64,122,0.08)', color: '#c2185b', border: '1px solid rgba(236,64,122,0.15)', marginBottom: 14 }}>
-          ⏱ {item.duration}
+          â± {item.duration}
         </span>
       )}
       <br/>
       {item.apply_url && (
         <a href={item.apply_url} target="_blank" rel="noopener noreferrer"
           style={{ display: 'inline-block', padding: '8px 18px', borderRadius: 8, background: '#ec407a', color: '#fff', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none', marginTop: 6 }}>
-          Apply Now →
+          Apply Now â†’
         </a>
       )}
     </div>
@@ -65,7 +65,7 @@ export default function TrainingPage() {
     <div style={{ minHeight: '100vh' }}>
       <section style={{ padding: '48px 24px 40px', background: 'linear-gradient(180deg, rgba(236,64,122,0.06) 0%, transparent 100%)', borderBottom: '1px solid var(--border)', textAlign: 'center' }}>
         <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, marginBottom: 12 }}>
-          🎓 Training & Skills
+          ðŸŽ“ Training & Skills
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: 28, maxWidth: 560, margin: '0 auto 28px' }}>
           Free courses, Skills Bootcamps, apprenticeships and funded adult education
@@ -90,10 +90,10 @@ export default function TrainingPage() {
           <div style={{ textAlign: 'center', padding: '80px 0', color: 'var(--text-muted)' }}>Loading programmes...</div>
         ) : items.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: 16 }}>🔄</div>
-            <h3 style={{ marginBottom: 8 }}>Fetching training data</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>Our scraper is collecting training programmes. Check back soon.</p>
-            <a href="https://www.gov.uk/skills-bootcamps" target="_blank" rel="noopener noreferrer" style={{ color: '#ec407a', fontWeight: 600 }}>Browse Skills Bootcamps on GOV.UK →</a>
+            <div style={{ fontSize: '3rem', marginBottom: 16 }}>ðŸ”„</div>
+            <h3 style={{ marginBottom: 8 }}>No results found</h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>We're updating our database. Check back shortly.</p>
+            <a href="https://www.gov.uk/skills-bootcamps" target="_blank" rel="noopener noreferrer" style={{ color: '#ec407a', fontWeight: 600 }}>Browse Skills Bootcamps on GOV.UK â†’</a>
           </div>
         ) : (
           <div className="cards-grid">{items.map(i => <TrainingCard key={i.id} item={i} />)}</div>
@@ -102,3 +102,4 @@ export default function TrainingPage() {
     </div>
   )
 }
+

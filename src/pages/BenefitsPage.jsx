@@ -34,7 +34,7 @@ function BenefitCard({ item }) {
             fontWeight: 600, background: 'rgba(255,179,0,0.1)', color: '#b37800',
             border: '1px solid rgba(255,179,0,0.2)',
           }}>
-            💰 {item.amount}
+            ðŸ’° {item.amount}
           </span>
         </div>
       )}
@@ -45,7 +45,7 @@ function BenefitCard({ item }) {
             background: 'var(--accent-primary)', color: '#fff', fontWeight: 600,
             fontSize: '0.85rem', textDecoration: 'none',
           }}>
-          Check Eligibility →
+          View on GOV.UK &rarr;
         </a>
       )}
     </div>
@@ -125,14 +125,14 @@ export default function BenefitsPage() {
           </div>
         ) : benefits.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: 16 }}>🔄</div>
-            <h3 style={{ marginBottom: 8 }}>Fetching benefits data</h3>
+            <div style={{ fontSize: '3rem', marginBottom: 16 }}>🏛️</div>
+            <h3 style={{ marginBottom: 8 }}>No results found</h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>
-              Our scraper is collecting benefits from GOV.UK. Check back in a few minutes.
+              Try a different search or browse all categories.
             </p>
             <a href="https://www.gov.uk/browse/benefits" target="_blank" rel="noopener noreferrer"
               style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>
-              Browse GOV.UK benefits directly →
+              Browse all benefits on GOV.UK &rarr;
             </a>
           </div>
         ) : (
@@ -144,3 +144,4 @@ export default function BenefitsPage() {
     </div>
   )
 }
+

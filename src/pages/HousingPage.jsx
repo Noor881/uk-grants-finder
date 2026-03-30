@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 
@@ -22,21 +22,21 @@ function HousingCard({ item }) {
       </div>
       <h3 className="card-title">{item.title}</h3>
       {item.location && (
-        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 8 }}>📍 {item.location}</p>
+        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 8 }}>ðŸ“ {item.location}</p>
       )}
       <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: '0 0 12px' }}>
         {item.description?.slice(0, 160)}...
       </p>
       {item.amount && (
         <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 20, fontSize: '0.8rem', fontWeight: 600, background: 'rgba(0,191,165,0.1)', color: '#00897b', border: '1px solid rgba(0,191,165,0.2)', marginBottom: 14 }}>
-          💷 {item.amount}
+          ðŸ’· {item.amount}
         </span>
       )}
       <br/>
       {item.apply_url && (
         <a href={item.apply_url} target="_blank" rel="noopener noreferrer"
           style={{ display: 'inline-block', padding: '8px 18px', borderRadius: 8, background: '#00bfa5', color: '#fff', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none', marginTop: 6 }}>
-          View Scheme →
+          View Scheme â†’
         </a>
       )}
     </div>
@@ -66,7 +66,7 @@ export default function HousingPage() {
     <div style={{ minHeight: '100vh' }}>
       <section style={{ padding: '48px 24px 40px', background: 'linear-gradient(180deg, rgba(0,191,165,0.06) 0%, transparent 100%)', borderBottom: '1px solid var(--border)', textAlign: 'center' }}>
         <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, marginBottom: 12 }}>
-          🏠 Housing Schemes
+          ðŸ  Housing Schemes
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: 28, maxWidth: 560, margin: '0 auto 28px' }}>
           Help to Buy, ECO4 energy grants, home improvement and council housing support
@@ -91,10 +91,10 @@ export default function HousingPage() {
           <div style={{ textAlign: 'center', padding: '80px 0', color: 'var(--text-muted)' }}>Loading schemes...</div>
         ) : items.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: 16 }}>🔄</div>
-            <h3 style={{ marginBottom: 8 }}>Fetching housing data</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>Our scraper is collecting housing schemes. Check back soon.</p>
-            <a href="https://www.gov.uk/affordable-home-ownership-schemes" target="_blank" rel="noopener noreferrer" style={{ color: '#00bfa5', fontWeight: 600 }}>Browse GOV.UK housing schemes →</a>
+            <div style={{ fontSize: '3rem', marginBottom: 16 }}>ðŸ”„</div>
+            <h3 style={{ marginBottom: 8 }}>No results found</h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>We're updating our database. Check back shortly.</p>
+            <a href="https://www.gov.uk/affordable-home-ownership-schemes" target="_blank" rel="noopener noreferrer" style={{ color: '#00bfa5', fontWeight: 600 }}>Browse GOV.UK housing schemes â†’</a>
           </div>
         ) : (
           <div className="cards-grid">{items.map(i => <HousingCard key={i.id} item={i} />)}</div>
@@ -103,3 +103,4 @@ export default function HousingPage() {
     </div>
   )
 }
+
