@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://uk-grants-finder.vercel.app/sitemap.xml
+Sitemap: https://ukgrants.online/sitemap.xml
