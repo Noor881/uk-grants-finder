@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Dark navy background -->
+  <rect width="1200" height="630" fill="#0a0e1a"/>
+
+  <!-- Subtle left radial glow -->
+  <radialGradient id="gL" cx="0" cy="50%" r="60%" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#0055cc" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#0a0e1a" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#gL)"/>
+
+  <!-- Blue left accent bar -->
+  <rect x="0" y="0" width="5" height="630" fill="#0066ff"/>
+
+  <!-- === FAVICON £ ICON (left) === -->
+  <g transform="translate(84, 180) scale(0.52)">
+    <rect width="512" height="512" rx="80" fill="#0066ff" opacity="0.12"/>
+    <rect x="175" y="172" width="155" height="28" rx="14" fill="#0066ff"/>
+    <rect x="188" y="172" width="36" height="130" fill="#0066ff"/>
+    <path d="M224 172 Q320 172 320 230 Q320 280 260 290 L224 290 L224 262 L258 262 Q290 255 290 230 Q290 200 224 200 Z" fill="#0a0e1a" opacity="0.9"/>
+    <rect x="162" y="262" width="130" height="26" rx="13" fill="#ffffff"/>
+    <rect x="145" y="342" width="210" height="26" rx="13" fill="#ffffff"/>
+  </g>
+
+  <!-- === MAIN TITLE === -->
+  <text x="360" y="250" font-family="'Arial Black', Arial, sans-serif"
+        font-size="78" font-weight="900" fill="#ffffff" letter-spacing="-2">UK Grants Finder</text>
+
+  <!-- Blue underline accent -->
+  <rect x="360" y="265" width="580" height="3" rx="2" fill="#0066ff" opacity="0.6"/>
+
+  <!-- Subtitle -->
+  <text x="360" y="318" font-family="Arial, sans-serif" font-size="30"
+        font-weight="400" fill="#5b9bd5" letter-spacing="0.3">
+    Free Government Grants &amp; Funding Search
+  </text>
+
+  <!-- Divider -->
+  <rect x="360" y="348" width="700" height="1" fill="#1e2d4a"/>
+
+  <!-- Category pills -->
+  <!-- Energy -->
+  <rect x="360" y="372" width="120" height="36" rx="18" fill="#ff704312" stroke="#ff7043" stroke-width="1.5"/>
+  <text x="420" y="395" font-family="Arial, sans-serif" font-size="16" fill="#ff7043" text-anchor="middle" font-weight="600">⚡ Energy</text>
+
+  <!-- Business -->
+  <rect x="494" y="372" width="128" height="36" rx="18" fill="#7c3aed12" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="558" y="395" font-family="Arial, sans-serif" font-size="16" fill="#a78bfa" text-anchor="middle" font-weight="600">💼 Business</text>
+
+  <!-- Housing -->
+  <rect x="636" y="372" width="118" height="36" rx="18" fill="#00bfa512" stroke="#00bfa5" stroke-width="1.5"/>
+  <text x="695" y="395" font-family="Arial, sans-serif" font-size="16" fill="#00bfa5" text-anchor="middle" font-weight="600">🏠 Housing</text>
+
+  <!-- Benefits -->
+  <rect x="768" y="372" width="120" height="36" rx="18" fill="#ffb30012" stroke="#ffb300" stroke-width="1.5"/>
+  <text x="828" y="395" font-family="Arial, sans-serif" font-size="16" fill="#ffb300" text-anchor="middle" font-weight="600">💳 Benefits</text>
+
+  <!-- Startups -->
+  <rect x="902" y="372" width="118" height="36" rx="18" fill="#0066ff12" stroke="#0066ff" stroke-width="1.5"/>
+  <text x="961" y="395" font-family="Arial, sans-serif" font-size="16" fill="#60a5fa" text-anchor="middle" font-weight="600">🚀 Startups</text>
+
+  <!-- Domain URL bottom -->
+  <text x="360" y="480" font-family="Arial, sans-serif" font-size="22"
+        fill="#2a4a6a" letter-spacing="2">ukgrants.online</text>
+
+  <!-- Right side decorative £ watermark -->
+  <text x="960" y="400" font-family="'Arial Black', Arial, sans-serif"
+        font-size="320" font-weight="900" fill="#0066ff" opacity="0.04">£</text>
+</svg>
