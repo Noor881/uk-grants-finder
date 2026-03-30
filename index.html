@@ -2,13 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300c6ff'><path d='M13 10V3L4 14h7v7l9-11h-7z'/></svg>" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230066ff'><path d='M13 10V3L4 14h7v7l9-11h-7z'/></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Find UK government grants, council funding schemes, and financial support opportunities. Live-updated database of UK funding available now." />
-    <meta name="keywords" content="UK grants, council funding, government grants UK, ECO4, financial support UK, boiler scheme" />
-    <meta property="og:title" content="UK Grants Finder – Live Funding Opportunities" />
-    <meta property="og:description" content="Search real-time UK government grants and council funding schemes. Auto-updated every hour." />
-    <title>UK Grants Finder – Live Funding Opportunities</title>
+
+    <!-- Primary SEO -->
+    <title>UK Grants Finder – Find Government Grants & Funding | Live Database</title>
+    <meta name="description" content="Search thousands of UK government grants, council funding schemes, and financial support opportunities. Real-time database updated every hour. Energy, business, housing, benefits and more." />
+    <meta name="keywords" content="UK grants, government grants UK, council funding, ECO4 grant, free grants UK, small business grants UK, housing grants, benefits UK, find a grant, funding finder UK" />
+    <meta name="author" content="UK Grants Finder" />
+    <link rel="canonical" href="https://uk-grants-finder.vercel.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://uk-grants-finder.vercel.app/" />
+    <meta property="og:title" content="UK Grants Finder – Find Government Grants & Funding" />
+    <meta property="og:description" content="Search thousands of UK government grants, council funding and financial support schemes. Free to use. Updated every hour from GOV.UK." />
+    <meta property="og:site_name" content="UK Grants Finder" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UK Grants Finder – Find Government Grants & Funding" />
+    <meta name="twitter:description" content="Search thousands of UK government grants, council funding and financial support schemes. Free to use. Updated every hour from GOV.UK." />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "UK Grants Finder",
+      "url": "https://uk-grants-finder.vercel.app/",
+      "description": "A comprehensive real-time database of UK government grants, council funding schemes, and financial support opportunities for individuals and businesses.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://uk-grants-finder.vercel.app/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "UK Grants Finder",
+        "url": "https://uk-grants-finder.vercel.app/",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@ukgrantsfinder.co.uk"
+        }
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
