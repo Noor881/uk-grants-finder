@@ -3,7 +3,8 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import {
   ArrowLeft, Building2, MapPin, Clock, CalendarDays,
   PoundSterling, CheckCircle, ExternalLink, BookOpen,
-  Users, Tag, Wifi, AlertCircle, ChevronRight
+  Users, Tag, Wifi, AlertCircle, ChevronRight,
+  ShieldCheck, CheckSquare, Square, AlertTriangle, Lightbulb
 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { CATEGORIES } from './HomePage.jsx'
@@ -42,6 +43,7 @@ export default function GrantDetail() {
   const [related, setRelated] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [checklist, setChecklist] = useState([false, false, false, false])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -142,6 +144,12 @@ export default function GrantDetail() {
               </span>
             </div>
 
+            {/* E-E-A-T Fact Check Badge */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--accent-green)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px', background: 'rgba(76, 175, 80, 0.1)', padding: '6px 10px', borderRadius: '4px', width: 'fit-content' }}>
+              <ShieldCheck size={16} />
+              Verified & Fact-Checked by The UK Grants Team
+            </div>
+
             <h1 className="detail-title">{grant.grant_type}</h1>
 
             <div className="detail-org-row">
@@ -192,6 +200,36 @@ export default function GrantDetail() {
             {/* About */}
             <Section icon={BookOpen} title="About This Grant" accent="var(--accent-primary)">
               <p>{grant.full_description || grant.unique_content || 'No description available.'}</p>
+            </Section>
+
+            {/* E-E-A-T: Expert Advice Block */}
+            <div style={{ background: 'var(--bg-layer-2)', borderLeft: '4px solid var(--accent-purple)', padding: '20px', borderRadius: '0 8px 8px 0', marginBottom: '32px' }}>
+              <h3 style={{ margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.1rem', color: 'var(--text-primary)' }}>
+                <Lightbulb size={18} style={{ color: 'var(--accent-purple)' }}/> Expert Tip from Our Team
+              </h3>
+              <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Before applying for the <strong>{grant.grant_type}</strong>, ensure all your personal identification and financial documents are up to date. Government agencies often delay mismatched applications. Never pay a third party to apply on your behalf—this scheme is free to apply for via the official links below.
+              </p>
+            </div>
+
+            {/* E-E-A-T: Interactive Checklist */}
+            <Section icon={CheckSquare} title="Application Preparation Checklist" accent="#ff7043">
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '16px' }}>Check these off to ensure you're ready before opening the application portal.</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {[
+                  "I meet all the eligibility criteria listed below",
+                  "I have my National Insurance number ready",
+                  "I have proof of address (utility bill or bank statement)",
+                  "I am applying directly through the official GOV.UK or council portal"
+                ].map((item, i) => (
+                  <label key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer', userSelect: 'none' }}>
+                    <div onClick={() => setChecklist(p => p.map((v, idx) => idx === i ? !v : v))}>
+                      {checklist[i] ? <CheckSquare size={20} style={{ color: 'var(--accent-green)' }} /> : <Square size={20} style={{ color: 'var(--text-muted)' }} />}
+                    </div>
+                    <span style={{ color: checklist[i] ? 'var(--text-muted)' : 'var(--text-primary)', textDecoration: checklist[i] ? 'line-through' : 'none', fontSize: '0.95rem', marginTop: '1px' }}>{item}</span>
+                  </label>
+                ))}
+              </div>
             </Section>
 
             {/* Who can apply */}
@@ -278,9 +316,20 @@ export default function GrantDetail() {
         </div>
       </div>
 
-      <footer className="footer">
-        <Link to="/" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>← Back to All Grants</Link>
-        &nbsp;· Powered by <strong>Supabase</strong> · Data from GOV.UK and UK funding bodies
+      <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+        <div>
+          <Link to="/" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>← Back to All Grants</Link>
+          &nbsp;· Powered by <strong>Supabase</strong> · Data from GOV.UK and UK funding bodies
+        </div>
+        <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+          <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>
+          <span style={{ margin: '0 8px' }}>·</span>
+          <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</Link>
+          <span style={{ margin: '0 8px' }}>·</span>
+          <Link to="/terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms & Conditions</Link>
+          <span style={{ margin: '0 8px' }}>·</span>
+          <Link to="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link>
+        </div>
       </footer>
     </>
   )

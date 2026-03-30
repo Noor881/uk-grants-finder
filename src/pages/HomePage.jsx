@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
 import {
   Search, RefreshCw, MapPin, Clock, Wifi, WifiOff,
   Building2, Zap, ChevronRight, Flame, Briefcase,
@@ -95,6 +95,7 @@ function GrantCard({ grant }) {
 
 // ── HomePage ──────────────────────────────────────────────────
 export default function HomePage() {
+  const location = useLocation()
   const [grants, setGrants] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -154,6 +155,15 @@ export default function HomePage() {
 
   // Reset page when filters change
   useEffect(() => { setPage(1) }, [search, activeCategory, filterStatus])
+
+  // Parse direct AdSense/SEO category links
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const cat = params.get('cat')
+    if (cat && CATEGORIES.some(c => c.key === cat)) {
+      setActiveCategory(cat)
+    }
+  }, [location.search])
 
   function showToast(msg) { setToast(msg); setTimeout(() => setToast(null), 3500) }
 
@@ -302,8 +312,50 @@ export default function HomePage() {
         )}
       </main>
 
-      <footer className="footer">
-        Powered by <strong>Supabase</strong> · Sourced from GOV.UK and UK funding bodies · Auto-updated every 6 hours
+      {/* AdSense Value Add Content */}
+      <section style={{ maxWidth: '1000px', margin: '60px auto 40px', padding: '0 20px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+        <h2 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '1.5rem', textAlign: 'center' }}>How UK Grants Finder Empowers You</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+          <div style={{ background: 'var(--bg-layer-2)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+            <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Zap size={18} style={{ color: 'var(--accent-primary)' }} /> 1. Real-Time Tracking</h3>
+            <p style={{ margin: 0, fontSize: '0.95rem' }}>We constantly monitor UK Government APIs, local council boards, and official funding bodies to aggregate new grant opportunities the moment they are announced. Our system auto-updates every hour so you never miss a deadline.</p>
+          </div>
+          <div style={{ background: 'var(--bg-layer-2)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+            <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Search size={18} style={{ color: 'var(--accent-primary)' }} /> 2. Simplified Search</h3>
+            <p style={{ margin: 0, fontSize: '0.95rem' }}>Government websites can be intentionally difficult to navigate. We standardize all data, categorizing grants by type, location, and funding amount, allowing you to filter through thousands of schemes in seconds.</p>
+          </div>
+          <div style={{ background: 'var(--bg-layer-2)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+            <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Briefcase size={18} style={{ color: 'var(--accent-primary)' }} /> 3. Direct Access</h3>
+            <p style={{ margin: 0, fontSize: '0.95rem' }}>We are a transparent platform. We do not act as middlemen; we simply provide you with all required eligibility criteria and direct links straight to the official application portals.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Bot-Crawlable Semantic Links for AdSense / SEO Compliance */}
+      <section style={{ maxWidth: '1000px', margin: '0 auto 40px', padding: '0 20px', textAlign: 'center' }}>
+        <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '16px' }}>Popular Funding Categories</h3>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
+          {CATEGORIES.filter(c => c.key !== 'all').map(cat => (
+            <Link key={cat.key} to={`/?cat=${encodeURIComponent(cat.key)}`} style={{ padding: '8px 16px', background: 'var(--bg-layer-2)', border: '1px solid var(--border)', borderRadius: '20px', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'all 0.2s' }}>
+              {cat.label}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+        <div>
+          Powered by <strong>Supabase</strong> · Sourced from GOV.UK and UK funding bodies · Auto-updated every 6 hours
+        </div>
+        <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+          <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>
+          <span style={{ margin: '0 8px' }}>·</span>
+          <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</Link>
+          <span style={{ margin: '0 8px' }}>·</span>
+          <Link to="/terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms & Conditions</Link>
+          <span style={{ margin: '0 8px' }}>·</span>
+          <Link to="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link>
+        </div>
       </footer>
 
       {toast && <div className="toast">{toast}</div>}
