@@ -1,4 +1,5 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 
@@ -11,8 +12,14 @@ const CATS = [
 ]
 
 function LoanCard({ item }) {
+  const navigate = useNavigate()
   return (
-    <div className="grant-card" style={{ cursor: 'default' }}>
+    <div
+      className="grant-card"
+      onClick={() => navigate(`/loan/${item.slug}`)}
+      role="button" tabIndex={0}
+      onKeyDown={e => e.key === 'Enter' && navigate(`/loan/${item.slug}`)}
+    >
       <div className="card-header">
         <span className="card-grant-type">{item.category}</span>
         <span className="status-badge status-active">
@@ -29,10 +36,10 @@ function LoanCard({ item }) {
       <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: '0 0 12px' }}>
         {item.description?.slice(0, 160)}...
       </p>
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 14 }}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {item.max_amount && (
           <span style={{ padding: '4px 12px', borderRadius: 20, fontSize: '0.8rem', fontWeight: 600, background: 'rgba(124,58,237,0.1)', color: '#7c3aed', border: '1px solid rgba(124,58,237,0.2)' }}>
-            ðŸ’· Up to {item.max_amount}
+            💷 Up to {item.max_amount}
           </span>
         )}
         {item.interest_rate && (
@@ -41,12 +48,6 @@ function LoanCard({ item }) {
           </span>
         )}
       </div>
-      {item.apply_url && (
-        <a href={item.apply_url} target="_blank" rel="noopener noreferrer"
-          style={{ display: 'inline-block', padding: '8px 18px', borderRadius: 8, background: '#7c3aed', color: '#fff', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none' }}>
-          Apply Now â†’
-        </a>
-      )}
     </div>
   )
 }
@@ -74,9 +75,9 @@ export default function LoansPage() {
     <div style={{ minHeight: '100vh' }}>
       <section style={{ padding: '48px 24px 40px', background: 'linear-gradient(180deg, rgba(124,58,237,0.06) 0%, transparent 100%)', borderBottom: '1px solid var(--border)', textAlign: 'center' }}>
         <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, marginBottom: 12 }}>
-          ðŸ¦ Business Loans Finder
+          🏦 Business Loans Finder
         </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: 28, maxWidth: 560, margin: '0 auto 28px' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: 560, margin: '0 auto 28px' }}>
           Government-backed loans, startup finance and SME funding schemes
         </p>
         <div style={{ position: 'relative', maxWidth: 520, margin: '0 auto' }}>
@@ -99,10 +100,10 @@ export default function LoansPage() {
           <div style={{ textAlign: 'center', padding: '80px 0', color: 'var(--text-muted)' }}>Loading loans...</div>
         ) : loans.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: 16 }}>ðŸ”„</div>
+            <div style={{ fontSize: '3rem', marginBottom: 16 }}>🏦</div>
             <h3 style={{ marginBottom: 8 }}>No results found</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>We're updating our database. Check back shortly.</p>
-            <a href="https://www.startuploans.co.uk" target="_blank" rel="noopener noreferrer" style={{ color: '#7c3aed', fontWeight: 600 }}>Browse Start Up Loans directly â†’</a>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>Try a different search or browse all categories.</p>
+            <a href="https://www.startuploans.co.uk" target="_blank" rel="noopener noreferrer" style={{ color: '#7c3aed', fontWeight: 600 }}>Browse Start Up Loans on GOV.UK →</a>
           </div>
         ) : (
           <div className="cards-grid">{loans.map(l => <LoanCard key={l.id} item={l} />)}</div>
@@ -111,4 +112,3 @@ export default function LoansPage() {
     </div>
   )
 }
-

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Search, CreditCard, Baby, Home, Heart, Users, Zap } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 
 const CATS = [
@@ -14,8 +14,14 @@ const CATS = [
 ]
 
 function BenefitCard({ item }) {
+  const navigate = useNavigate()
   return (
-    <div className="grant-card" style={{ cursor: 'default' }}>
+    <div
+      className="grant-card"
+      onClick={() => navigate(`/benefit/${item.slug}`)}
+      role="button" tabIndex={0}
+      onKeyDown={e => e.key === 'Enter' && navigate(`/benefit/${item.slug}`)}
+    >
       <div className="card-header">
         <span className="card-grant-type">{item.category}</span>
         <span className="status-badge status-active">
@@ -28,25 +34,9 @@ function BenefitCard({ item }) {
         {item.description?.slice(0, 160)}...
       </p>
       {item.amount && (
-        <div style={{ marginBottom: 12 }}>
-          <span style={{
-            padding: '4px 12px', borderRadius: 20, fontSize: '0.8rem',
-            fontWeight: 600, background: 'rgba(255,179,0,0.1)', color: '#b37800',
-            border: '1px solid rgba(255,179,0,0.2)',
-          }}>
-            ðŸ’° {item.amount}
-          </span>
-        </div>
-      )}
-      {item.gov_url && (
-        <a href={item.gov_url} target="_blank" rel="noopener noreferrer"
-          style={{
-            display: 'inline-block', padding: '8px 18px', borderRadius: 8,
-            background: 'var(--accent-primary)', color: '#fff', fontWeight: 600,
-            fontSize: '0.85rem', textDecoration: 'none',
-          }}>
-          View on GOV.UK &rarr;
-        </a>
+        <span style={{ padding: '4px 12px', borderRadius: 20, fontSize: '0.8rem', fontWeight: 600, background: 'rgba(255,179,0,0.1)', color: '#b37800', border: '1px solid rgba(255,179,0,0.2)' }}>
+          💰 {item.amount}
+        </span>
       )}
     </div>
   )

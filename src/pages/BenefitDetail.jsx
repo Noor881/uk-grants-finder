@@ -1,0 +1,146 @@
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import { ArrowLeft, ExternalLink, CheckCircle, PoundSterling, Users, BookOpen, ChevronRight } from 'lucide-react'
+import { supabase } from '../lib/supabaseClient'
+
+export default function BenefitDetail() {
+  const { slug } = useParams()
+  const navigate = useNavigate()
+  const [item, setItem] = useState(null)
+  const [related, setRelated] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    async function load() {
+      setLoading(true)
+      const { data } = await supabase.from('uk_benefits').select('*').eq('slug', slug).single()
+      setItem(data)
+      if (data?.category) {
+        const { data: rel } = await supabase
+          .from('uk_benefits').select('id,slug,title,category,amount,status')
+          .eq('category', data.category).neq('slug', slug).limit(3)
+        setRelated(rel || [])
+      }
+      setLoading(false)
+    }
+    load()
+  }, [slug])
+
+  if (loading) return <div style={{ textAlign: 'center', padding: '120px 24px', color: 'var(--text-muted)' }}>Loading...</div>
+  if (!item) return (
+    <div style={{ textAlign: 'center', padding: '120px 24px' }}>
+      <h2 style={{ marginBottom: 12 }}>Not found</h2>
+      <Link to="/benefits" style={{ color: 'var(--accent-primary)' }}>← Back to Benefits</Link>
+    </div>
+  )
+
+  return (
+    <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
+      <div style={{ maxWidth: 820, margin: '0 auto', padding: '40px 24px 80px' }}>
+
+        {/* Back */}
+        <button onClick={() => navigate('/benefits')} style={{
+          display: 'flex', alignItems: 'center', gap: 6, background: 'none',
+          border: 'none', cursor: 'pointer', color: 'var(--text-secondary)',
+          fontSize: '0.88rem', fontWeight: 500, marginBottom: 24, padding: 0,
+        }}>
+          <ArrowLeft size={16} /> Back to Benefits
+        </button>
+
+        {/* Header card */}
+        <div style={{
+          background: '#fff', borderRadius: 20, border: '1px solid var(--border)',
+          boxShadow: 'var(--shadow)', padding: '32px', marginBottom: 20,
+        }}>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 16 }}>
+            <span style={{ padding: '4px 12px', borderRadius: 20, fontSize: '0.78rem', fontWeight: 600, background: 'rgba(255,179,0,0.1)', color: '#b37800', border: '1px solid rgba(255,179,0,0.2)' }}>
+              {item.category}
+            </span>
+            <span className={`status-badge status-active`}>
+              <span className="live-dot" style={{ width: 6, height: 6 }} />
+              {item.status}
+            </span>
+          </div>
+          <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, marginBottom: 12 }}>
+            {item.title}
+          </h1>
+          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.97rem', marginBottom: 20 }}>
+            {item.description}
+          </p>
+
+          {item.amount && (
+            <div style={{ padding: '14px 18px', borderRadius: 12, background: 'rgba(255,179,0,0.07)', border: '1px solid rgba(255,179,0,0.2)', marginBottom: 20, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+              <PoundSterling size={18} color="#b37800" />
+              <span style={{ fontWeight: 700, color: '#b37800' }}>{item.amount}</span>
+            </div>
+          )}
+
+          {item.gov_url && (
+            <div>
+              <a href={item.gov_url} target="_blank" rel="noopener noreferrer" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                padding: '12px 28px', borderRadius: 10,
+                background: 'linear-gradient(135deg, #0066ff, #004ee0)',
+                color: '#fff', fontWeight: 700, fontSize: '0.95rem',
+                textDecoration: 'none', boxShadow: '0 4px 16px rgba(0,102,255,0.25)',
+              }}>
+                Check Eligibility on GOV.UK <ExternalLink size={15} />
+              </a>
+            </div>
+          )}
+        </div>
+
+        {/* Details */}
+        <div style={{ background: '#fff', borderRadius: 20, border: '1px solid var(--border)', boxShadow: 'var(--shadow)', padding: '28px', marginBottom: 20 }}>
+          {item.eligibility && (
+            <div style={{ marginBottom: 24 }}>
+              <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
+                <CheckCircle size={16} color="var(--accent-primary)" /> Who Can Claim
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.92rem' }}>{item.eligibility}</p>
+            </div>
+          )}
+          {item.how_to_apply && (
+            <div>
+              <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
+                <BookOpen size={16} color="var(--accent-primary)" /> How to Apply
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.92rem' }}>{item.how_to_apply}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Related */}
+        {related.length > 0 && (
+          <div style={{ background: '#fff', borderRadius: 20, border: '1px solid var(--border)', boxShadow: 'var(--shadow)', padding: '28px' }}>
+            <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 16 }}>Related Benefits</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {related.map(r => (
+                <Link key={r.id} to={`/benefit/${r.slug}`} style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '12px 16px', borderRadius: 10, border: '1px solid var(--border)',
+                  textDecoration: 'none', color: 'var(--text-primary)', transition: 'background 0.15s',
+                }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-deep)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                >
+                  <div>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{r.title}</div>
+                    {r.amount && <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 2 }}>{r.amount}</div>}
+                  </div>
+                  <ChevronRight size={16} color="var(--text-muted)" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Footer */}
+        <p style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 32 }}>
+          Information sourced from GOV.UK. Always verify eligibility on the official government website before applying.
+        </p>
+      </div>
+    </div>
+  )
+}
