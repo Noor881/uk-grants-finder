@@ -54,4 +54,5 @@ Sitemap: https://ukgrants.online/api/sitemap-grants.xml
 
 # ── IndexNow ─────────────────────────────────────────────────────
 # Enables fast indexing on Bing, Yandex, Seznam, Naver
-# Key file hosted at: https://ukgrants.online/ukgrants-indexnow-2025-secure-key-xf9q2m.txt
+# Key file 1: https://ukgrants.online/ukgrants-indexnow-2025-secure-key-xf9q2m.txt
+# Key file 2: https://ukgrants.online/83956a647312427ab45fbc96bd9512d8.txt
