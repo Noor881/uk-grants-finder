@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, ChevronRight, Mail, Send, MessageSquare } from 'lucide-react'
+import PageMeta from '../components/PageMeta'
 
 export default function ContactPage() {
   const navigate = useNavigate()
@@ -17,6 +18,11 @@ export default function ContactPage() {
 
   return (
     <>
+      <PageMeta
+        title="Contact UK Funding Hub — Report Errors or Ask a Question"
+        description="Contact the UK Funding Hub team to report inaccurate grant data, suggest a missing funding scheme, or ask a general question. We respond within 48 hours."
+        canonical="https://ukgrants.online/contact"
+      />
       <nav className="navbar">
         <button className="btn-back-nav" onClick={() => navigate(-1)}>
           <ArrowLeft size={16} /> Back

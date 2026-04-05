@@ -1,11 +1,17 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, ChevronRight, FileText } from 'lucide-react'
+import PageMeta from '../components/PageMeta'
 
 export default function TermsPage() {
   const navigate = useNavigate()
 
   return (
     <>
+      <PageMeta
+        title="Terms & Conditions — UK Funding Hub"
+        description="Terms and conditions for using UK Funding Hub. Free grant search service. Information is sourced from GOV.UK and official UK funding bodies."
+        canonical="https://ukgrants.online/terms"
+      />
       <nav className="navbar">
         <button className="btn-back-nav" onClick={() => navigate(-1)}>
           <ArrowLeft size={16} /> Back

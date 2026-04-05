@@ -66,6 +66,23 @@ export default function LandingPage() {
     },
   ]
 
+  const speakableSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'UK Funding Hub — Find Grants, Benefits & Loans',
+    url: 'https://ukgrants.online/',
+    description: 'Search thousands of UK government grants, benefits, loans and housing schemes. Free, real-time database sourced from GOV.UK.',
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.faq-answer', '.hero-summary', 'h2 + p'],
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'UK Funding Hub',
+      url: 'https://ukgrants.online/',
+    },
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
       <PageMeta
@@ -73,6 +90,7 @@ export default function LandingPage() {
         description="Search thousands of UK government grants, benefits, loans and housing schemes. Free, real-time database from GOV.UK. Find funding you qualify for now."
         canonical="https://ukgrants.online/"
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
 
       {/* ── HERO ── */}
       <section style={{

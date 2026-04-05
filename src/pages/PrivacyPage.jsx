@@ -1,11 +1,17 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, ChevronRight, ShieldCheck } from 'lucide-react'
+import PageMeta from '../components/PageMeta'
 
 export default function PrivacyPage() {
   const navigate = useNavigate()
 
   return (
     <>
+      <PageMeta
+        title="Privacy Policy — UK Funding Hub"
+        description="UK Funding Hub privacy policy. We do not sell personal data. Read how we collect, use and protect your information in compliance with UK GDPR."
+        canonical="https://ukgrants.online/privacy"
+      />
       <nav className="navbar">
         <button className="btn-back-nav" onClick={() => navigate(-1)}>
           <ArrowLeft size={16} /> Back

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, ExternalLink, CheckCircle, Clock, BookOpen, ChevronRight } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import PageMeta from '../components/PageMeta'
 
 export default function TrainingDetail() {
   const { slug } = useParams()
@@ -35,8 +36,26 @@ export default function TrainingDetail() {
     </div>
   )
 
+  const canonicalUrl = `https://ukgrants.online/training/${slug}`
+  const pageTitle = item ? `${item.title} — UK Free Training & Courses` : 'UK Training Programme Details'
+  const pageDesc = item
+    ? `${item.title}: who can apply, course details, and how to enrol. ${item.description?.slice(0, 100) || ''}`.slice(0, 160)
+    : 'UK government-funded training programme details and how to apply.'
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ukgrants.online/' },
+      { '@type': 'ListItem', position: 2, name: 'Training', item: 'https://ukgrants.online/training' },
+      { '@type': 'ListItem', position: 3, name: item?.title || 'Programme', item: canonicalUrl },
+    ]
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
+      <PageMeta title={pageTitle} description={pageDesc} canonical={canonicalUrl} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div style={{ maxWidth: 820, margin: '0 auto', padding: '40px 24px 80px' }}>
         <button onClick={() => navigate('/training')} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)', fontSize: '0.88rem', fontWeight: 500, marginBottom: 24, padding: 0 }}>
           <ArrowLeft size={16} /> Back to Training
