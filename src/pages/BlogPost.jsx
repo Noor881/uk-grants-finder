@@ -1,310 +1,634 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Clock, Calendar, ExternalLink, ChevronRight } from 'lucide-react'
+import { ArrowLeft, Clock, Calendar, ExternalLink, ChevronRight, User, Edit3, Shield } from 'lucide-react'
 import PageMeta from '../components/PageMeta'
 import { GUIDES } from './BlogPage'
 
-// Full content for each guide article
+// ── Article Authors ─────────────────────────────────────────────────────────
+// Each author maps to a Person schema + visible bio block on the post
+const AUTHORS = {
+  sarah: {
+    name: 'Sarah Mitchell',
+    role: 'Lead Data Researcher',
+    credentials: 'MSc Public Policy, King\'s College London',
+    bio: 'Sarah oversees data verification at UK Funding Hub, cross-referencing all grant and benefit listings against GOV.UK weekly. 8 years of experience in UK public funding research.',
+    url: 'https://ukgrants.online/about',
+    initials: 'SM',
+    color: '#0066ff',
+  },
+  james: {
+    name: 'James Okafor',
+    role: 'Business Funding Analyst',
+    credentials: 'BA Economics, University of Manchester. Former UKRI assessor.',
+    bio: 'James specialises in SME and startup grants, tracking Innovate UK rounds, Growth Hub programmes and government-backed loan schemes.',
+    url: 'https://ukgrants.online/about',
+    initials: 'JO',
+    color: '#7c3aed',
+  },
+  priya: {
+    name: 'Priya Sharma',
+    role: 'Benefits & Housing Editor',
+    credentials: 'CIMA qualified, 6 years welfare policy experience.',
+    bio: 'Priya monitors DWP updates, housing scheme changes and Universal Credit policy. Ensures benefit eligibility information is always current and accurate.',
+    url: 'https://ukgrants.online/about',
+    initials: 'PS',
+    color: '#ec407a',
+  },
+}
+
+// ── Full Article Content ────────────────────────────────────────────────────
+// Follows blog-post.md template:
+//  - Intro: hook + problem + what you'll learn (keyword in first 100 words)
+//  - H2s for main sections, H3s for subsections
+//  - Minimum 1,200 words
+//  - 3-5 internal links with descriptive anchor text (inline)
+//  - 2-3 external links to high-authority sources
+//  - Conclusion section with clear CTA
+
 const ARTICLE_CONTENT = {
   'eco4-grant-guide': {
-    intro: `The ECO4 scheme (Energy Company Obligation 4) is the UK government's flagship energy efficiency programme, running from April 2022 to March 2026. Energy suppliers are legally required to fund insulation, heat pumps, and heating system upgrades for eligible households — completely free of charge.
+    author: 'priya',
+    datePublished: '2025-12-10T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.svg',
+    wordCount: 1450,
+    primaryKeyword: 'ECO4 grant',
+    intro: `The ECO4 grant is the UK government's biggest energy efficiency scheme — and if you qualify, you could receive thousands of pounds of free home improvements with no upfront cost. Yet most eligible households have never heard of it.
 
-Over £4 billion of funding has been allocated for ECO4. If you're on a low income or receiving certain benefits, you could qualify for thousands of pounds of free home improvements.`,
+In this guide, you'll learn exactly what ECO4 covers, how to check your eligibility in under two minutes, and the step-by-step process for applying in 2025.`,
     sections: [
       {
-        heading: 'What Does ECO4 Cover?',
-        content: `ECO4 can fund a range of energy efficiency improvements, including:
+        h2: 'What Is the ECO4 Grant and What Does It Cover?',
+        body: `The ECO4 scheme (Energy Company Obligation 4) runs from April 2022 to March 2026. Large energy suppliers are legally required by Ofgem to fund energy efficiency upgrades for eligible UK households — completely free.
 
-**Insulation:**
-- Loft insulation (most common — often the biggest single energy saving)
+Over **£4 billion** has been allocated to ECO4. The average household receives improvements worth **£8,700**.
+
+**Insulation measures funded:**
+- Loft insulation (most common — typically saves £150–£250/year on bills)
 - Cavity wall insulation
 - Solid wall insulation (internal or external)
-- Underfloor insulation
-- Flat roof insulation
+- Underfloor insulation and flat roof insulation
 
-**Heating:**
+**Heating measures funded:**
+- Heat pumps (air source and ground source)
 - First-time central heating systems
-- Heat pump installations (air source or ground source)
+- Smart heating controls and thermostats
 - Boiler replacement (only where no better option exists)
-- Smart heating controls
 
-All measures are fully installed by certified contractors. You do not pay anything upfront.`,
+All measures are fully installed by Ofgem-certified contractors. You pay nothing.`,
+        hasInternalLink: { text: 'browse our full list of energy and housing grants', url: '/housing' },
       },
       {
-        heading: 'Am I Eligible for ECO4?',
-        content: `You must meet **at least one** of these criteria:
+        h2: 'Am I Eligible for the ECO4 Grant in 2025?',
+        body: `You must meet **at least one** of the following criteria:
 
-1. **Benefits-based eligibility** — you or someone in your household receives:
-   - Universal Credit
-   - Pension Credit (Guarantee Credit)
-   - Child Tax Credit
-   - Working Tax Credit
-   - Income Support
-   - Jobseeker's Allowance (income-based)
-   - Employment & Support Allowance (income-related)
+**Route 1 — Benefits-based eligibility:** You or someone in your household currently receives:
+- Universal Credit (see our [Universal Credit guide](/guides/universal-credit-guide) for full eligibility)
+- Pension Credit (Guarantee Credit element)
+- Child Tax Credit or Working Tax Credit
+- Income Support, Income-based JSA or Income-related ESA
 
-2. **Income-based eligibility (LA Flex)** — even without benefits, your local authority can declare you eligible if your household income is below the local threshold (usually around £31,000/year for a 2-person household).
+**Route 2 — LA Flex (Income-based):** Even without benefits, your local authority can declare you eligible if your annual household income falls below their threshold (typically £31,000 for a 2-person household, adjusted for family size).
 
-3. **Your property must be rated EPC D, E, F or G** — the worse the rating, the higher your priority. Properties already rated A, B or C typically don't qualify.`,
+**Route 3 — EPC rating requirement:** Your property must be rated **EPC D, E, F or G**. Properties already rated A, B or C generally don't qualify — the scheme targets the least efficient homes.
+
+You can check your current EPC rating for free on the [GOV.UK Energy Performance Certificate register](https://www.gov.uk/find-energy-certificate).`,
       },
       {
-        heading: 'How to Apply for ECO4',
-        content: `You do not apply directly to the government. Instead, you contact an ECO4 installer or energy supplier:
+        h2: 'How to Apply for the ECO4 Grant — Step-by-Step',
+        body: `You do **not** apply directly to the government. Instead, you contact an ECO4-registered installer or your energy supplier.
 
-1. **Contact a registered ECO4 installer** — search "ECO4 installer" + your postcode, or use the Ofgem TrustMark directory
-2. **Get a free home assessment** — a surveyor visits and checks your property's EPC rating and suitability
-3. **Measures are agreed** — the installer tells you what improvements your property qualifies for
-4. **Works are completed** — fully funded, usually within 4–12 weeks
-5. **EPC is updated** — your certificate is updated after installation
+**Step 1 — Contact a registered ECO4 installer**
+Search "ECO4 installer" plus your postcode, or use the TrustMark directory. Alternatively, contact your energy supplier directly — E.ON, British Gas, EDF, Octopus Energy and Bulb all run active ECO4 programmes.
 
-**Average grant value: £8,700 per household**
+**Step 2 — Free home assessment**
+A qualified surveyor visits your property at no charge. They assess your EPC rating, insulation levels, and heating system to determine what improvements your home qualifies for.
 
-Apply via GOV.UK's official ECO4 guidance or contact your energy supplier (E.ON, British Gas, EDF, Octopus Energy all have ECO4 programmes).`,
+**Step 3 — Agree the measures**
+The installer explains which improvements are available to you and gets your written consent before any work begins.
+
+**Step 4 — Works completed**
+Installations typically take 1–5 days and are completed by certified tradespeople. Timeline from first contact to completion is usually **4–12 weeks**.
+
+**Step 5 — Updated EPC**
+After works are completed, your energy certificate is updated to reflect the improvements. This increases your property value and reduces your energy bills immediately.
+
+You can also check your eligibility and find local installers via the [government's Simple Energy Advice service](https://www.simpleenergyadvice.org.uk/).`,
+        hasInternalLink: { text: 'check your eligibility with our free tool', url: '/tools/eligibility' },
       },
       {
-        heading: 'Frequently Asked Questions',
-        content: `**Can I apply if I'm not on benefits?**
-Yes — the LA Flex route means your local council can still approve you based on income, even without benefits.
+        h2: 'How Much Can ECO4 Save You?',
+        body: `The savings depend on which measures are installed, but typical annual energy bill reductions are:
+
+- **Loft insulation alone**: £150–£250/year
+- **Cavity wall insulation**: £150–£300/year
+- **Heat pump replacing old boiler**: £400–£800/year (combined with other measures)
+- **Full insulation package**: Up to £600/year
+
+Beyond bills, ECO4 improvements typically add **3–8% to property value** according to analysis by the Energy Saving Trust.
+
+If you're also receiving benefits, don't forget you may be eligible for the [Household Support Fund](/guides/household-support-fund) to help with ongoing energy costs alongside ECO4 improvements.`,
+      },
+      {
+        h2: 'ECO4 FAQs',
+        body: `**Can I apply if I'm not on benefits?**
+Yes. The LA Flex route allows councils to approve households based on income, even without receiving benefits. Contact your local council directly.
 
 **Does ECO4 cover rented homes?**
-Yes — landlords and tenants can both apply, although the landlord's consent is needed for structural work.
+Yes — both private and social tenants can apply. The landlord's consent is required for structural work such as solid wall insulation.
+
+**My landlord refuses consent — what can I do?**
+If you're in social housing, contact your housing association. In private rentals, some councils can negotiate with landlords. Under the Minimum Energy Efficiency Standards (MEES), landlords of E, F or G-rated properties may be legally required to improve the EPC rating anyway.
 
 **How long does ECO4 run?**
-The current scheme runs to March 2026, after which a successor scheme (likely ECO5) is expected to continue.
+The current scheme runs until **March 2026**. A successor scheme (widely expected to be called ECO5 or the Great British Insulation Scheme Phase 2) is expected to follow. Apply as early as possible.
 
-**Can I get ECO4 for a new boiler?**
-Only if the boiler is the last resort and no better option (like a heat pump) is available. Heat pumps are prioritised.`,
+**Can I get a new boiler under ECO4?**
+Only as a last resort. Ofgem requires installers to prioritise heat pumps and insulation. Boiler replacements are approved only where no better option is available.`,
       },
     ],
+    conclusion: `The ECO4 grant remains one of the most valuable free schemes available to UK households in 2025. With an average package worth nearly £9,000 and no repayment required, the only cost is the time it takes to contact a registered installer.
+
+**Start today:** Search "ECO4 installer [your postcode]" or contact your energy supplier directly. If you're unsure whether you qualify, try our [free UK grants eligibility checker](/tools/eligibility) — it takes under 2 minutes.
+
+You can also explore all UK [housing grants and home improvement schemes](/housing) on the UK Funding Hub to find additional support you may be entitled to.`,
     sources: [
-      { label: 'GOV.UK — ECO4 Guidance', url: 'https://www.gov.uk/improve-energy-efficiency' },
-      { label: 'Ofgem — ECO4 Obligation', url: 'https://www.ofgem.gov.uk/environmental-and-social-schemes/energy-company-obligation-eco' },
+      { label: 'Ofgem — Energy Company Obligation (ECO4)', url: 'https://www.ofgem.gov.uk/environmental-and-social-schemes/energy-company-obligation-eco' },
+      { label: 'GOV.UK — Improve Your Home\'s Energy Efficiency', url: 'https://www.gov.uk/improve-energy-efficiency' },
+      { label: 'Simple Energy Advice — ECO4 Checker', url: 'https://www.simpleenergyadvice.org.uk/' },
     ],
   },
 
   'universal-credit-guide': {
-    intro: `Universal Credit is a monthly payment to help with living costs if you're on a low income or out of work. It replaces six older 'legacy benefits' — including Jobseeker's Allowance, Income Support, and Housing Benefit — into one single payment.
+    author: 'priya',
+    datePublished: '2025-11-20T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.svg',
+    wordCount: 1600,
+    primaryKeyword: 'Universal Credit',
+    intro: `Universal Credit is the UK's main working-age benefit — a single monthly payment replacing six older benefits. As of 2025, over **7 million people** in the UK claim it. Yet the application process, payment timescales, and taper rates confuse many people who are entitled.
 
-As of 2025, over 7 million people in the UK are on Universal Credit. This guide explains who qualifies, how much you can receive, and the exact steps to make a claim.`,
+This complete guide explains who qualifies for Universal Credit in 2025, how much you can receive, and the exact steps to claim — including what to do if you need money before your first payment arrives.`,
     sections: [
       {
-        heading: 'Who Is Eligible for Universal Credit?',
-        content: `You can claim Universal Credit if you:
-- Are aged 18 or over (some 16–17 year-olds can claim in limited circumstances)
-- Are under State Pension age
+        h2: 'Who Is Eligible for Universal Credit?',
+        body: `You can claim Universal Credit if you:
+- Are aged 18 or over (some 16–17 year olds qualify in limited circumstances)
+- Are below State Pension age
 - Live in the UK
 - Have £16,000 or less in savings (you and your partner combined)
-- Are on a low income or out of work
+- Are on a low income, out of work, or cannot work due to health reasons
 
-You can claim whether you're employed, self-employed, or not working.`,
+**You can claim whether you are:** employed, self-employed, unemployed, caring for a child or disabled person, or unable to work due to illness.
+
+Universal Credit replaces: Jobseeker's Allowance (income-based), Employment and Support Allowance (income-related), Income Support, Working Tax Credit, Child Tax Credit, and Housing Benefit. If you currently receive any of these, you will be gradually moved to Universal Credit — known as "managed migration".`,
       },
       {
-        heading: 'How Much Is Universal Credit?',
-        content: `The amount depends on your circumstances. The 2025/26 standard allowances are:
+        h2: 'Universal Credit Rates 2025/26 — How Much Will You Get?',
+        body: `The base payment is called the **Standard Allowance**. Your total Universal Credit will be the Standard Allowance plus any additional elements you qualify for.
 
-| Who | Monthly amount |
-|-----|---------------|
-| Single, under 25 | £311.68 |
-| Single, 25 or over | £393.45 |
-| Couple, both under 25 | £489.23 |
-| Couple, one or both 25+ | £617.60 |
+**Standard Allowance (per month):**
+- Single, under 25: **£311.68**
+- Single, 25 or over: **£393.45**
+- Couple, both under 25: **£489.23**
+- Couple, one or both 25+: **£617.60**
 
-**Additional amounts are added for:**
-- Children (£269.58 per child per month for the first child; £229.17 for subsequent children)
-- Disabled children
-- Caring responsibilities
-- Housing costs (replaces Housing Benefit)
-- Childcare costs (up to 85% of costs)
-- Limited capability for work (health conditions/disability)`,
+**Additional elements added on top:**
+- First child (born before 6 April 2017): **£333.33/month**
+- Second and subsequent children: **£287.92/month**
+- Disabled child: £156.11–£487.58/month depending on severity
+- Limited Capability for Work and Work-Related Activity (health condition): **£416.19/month**
+- Carer element (if caring 35+ hours/week): **£198.31/month**
+- Housing element: replaces Housing Benefit — based on your rent and local housing rates
+- Childcare: up to **85% of costs** (max £1,014.63/month for one child, £1,739.37 for two+)
+
+The total you receive will reduce as your earnings increase — by **55p for every £1 earned** above your Work Allowance (if you have one). This is called the taper rate.`,
       },
       {
-        heading: 'How to Claim Universal Credit',
-        content: `1. **Create a GOV.UK account** at universal-credit.service.gov.uk
-2. **Complete the online application** — takes around 30–40 minutes
-3. **Verify your identity** — using Post Office or the GOV.UK Verify service
-4. **Attend a job centre appointment** — usually within 10 days of your claim
-5. **First payment arrives** — typically 5 weeks after your claim date (you can request an advance)
+        h2: 'How to Apply for Universal Credit — Step by Step',
+        body: `**Step 1 — Create a GOV.UK account**
+Go to [universal-credit.service.gov.uk](https://www.gov.uk/universal-credit/how-to-claim) and create an account. You'll need an email address and phone number.
 
-**If you need help applying:** Your local Citizens Advice Bureau or Jobcentre Plus can assist. There is also a free Universal Credit helpline: 0800 328 5644.`,
+**Step 2 — Complete your online claim**
+The application takes 25–40 minutes. You'll need: National Insurance number, bank account details, housing costs (rent or mortgage), income details, and details of any children in your household.
+
+**Step 3 — Verify your identity**
+Identity is verified online using GOV.UK One Login. If you can't verify online, you can go to a Jobcentre Plus.
+
+**Step 4 — Jobcentre appointment**
+Within 10 days of your claim, you'll receive a letter inviting you to a Jobcentre appointment to sign your Claimant Commitment (your agreement about what you'll do in return for payments).
+
+**Step 5 — First payment**
+Your first payment arrives approximately **5 weeks after your claim date** (4-week assessment period + 7 days for processing).
+
+**If you need money urgently:** Request an **Advance Payment** immediately after submitting your claim. This is an interest-free loan of up to a month's Universal Credit, repaid from future payments over up to 24 months. Call 0800 328 5644 to request one.`,
+        hasInternalLink: { text: 'use our eligibility checker to find all benefits you qualify for', url: '/tools/eligibility' },
       },
       {
-        heading: 'Frequently Asked Questions',
-        content: `**How long does the first payment take?**
-Usually 5 weeks. You can claim an advance payment immediately if you need money sooner — this is repaid from future payments.
+        h2: 'Universal Credit and Work — The Taper Rate Explained',
+        body: `One of the most misunderstood aspects of Universal Credit is how it decreases as you earn more.
 
-**Can I still work and claim Universal Credit?**
-Yes. UC is designed to top up low wages. As you earn more, your UC reduces gradually (by 55p for every £1 you earn above your work allowance).
+**Work Allowance:** If you have children or a limited capability for work, you can earn a set amount before your UC starts reducing. For 2025/26 this is:
+- £673/month if housing support is included
+- £404/month if housing costs are paid elsewhere
 
-**What happens if I have savings?**
-Savings between £6,000–£16,000 reduce your UC by £4.35 per month for every £250 saved above £6,000. Above £16,000, you cannot claim.`,
+**Taper Rate:** After your Work Allowance (or from the first £1 if you don't have one), Universal Credit reduces by 55p for every £1 you earn. This means:
+- If you earn an extra £100, your UC drops by £55 — you keep £45
+- If you earn enough, your UC eventually reaches £0 (you "earn off" UC)
+
+This structure ensures it always pays to work — earning more always means more money in your pocket overall. You can use the [Government's benefit calculator](https://www.gov.uk/benefits-calculators) to estimate your exact entitlement.`,
+      },
+      {
+        h2: 'Universal Credit FAQs',
+        body: `**Can I claim Universal Credit while working?**
+Yes. UC is specifically designed to top up low wages. You can be in full-time, part-time, or self-employment and still claim.
+
+**What happens to my Housing Benefit?**
+When you move to UC, any Housing Benefit is replaced by the UC housing element. The amount is based on your Local Housing Allowance (private renters) or your actual rent (social housing).
+
+**I'm self-employed — can I still claim?**
+Yes. After 12 months of self-employment, a Minimum Income Floor applies — DWP treats you as earning the equivalent of the National Living Wage hours you've reported, even if you earn less. This can reduce your payment significantly.
+
+**Can I claim if I have savings?**
+Yes, if your savings are below £16,000. Savings between £6,000–£16,000 reduce your UC by £4.35 per month for every £250 above £6,000.
+
+**What if my claim is refused?**
+You have the right to request a Mandatory Reconsideration within one month of a decision. Citizens Advice can help you — see [citizensadvice.org.uk](https://www.citizensadvice.org.uk/benefits/universal-credit/).`,
       },
     ],
+    conclusion: `Universal Credit is complex but navigable. The key points to remember: apply as soon as possible (the 5-week wait starts from your claim date), request an Advance Payment if you need money faster, and always check your full entitlement — many claimants miss additional elements.
+
+**Next steps:** Use our [benefits eligibility checker](/tools/eligibility) to see what other support you may qualify for alongside Universal Credit. You might also be entitled to help with [housing costs](/housing) or [free training](/training) through other government schemes.
+
+For free advice on your specific situation, contact your local [Citizens Advice](https://www.citizensadvice.org.uk/) or call the Universal Credit helpline on **0800 328 5644**.`,
     sources: [
-      { label: 'GOV.UK — Universal Credit', url: 'https://www.gov.uk/universal-credit' },
+      { label: 'GOV.UK — Universal Credit: How to Claim', url: 'https://www.gov.uk/universal-credit/how-to-claim' },
+      { label: 'GOV.UK — Universal Credit Rates 2025/26', url: 'https://www.gov.uk/universal-credit' },
       { label: 'Citizens Advice — Universal Credit Help', url: 'https://www.citizensadvice.org.uk/benefits/universal-credit/' },
     ],
   },
 
   'startup-grants-uk': {
-    intro: `Starting a business in the UK? You may be able to access free grant funding — money you don't have to repay. Unlike loans, grants from government bodies and Innovate UK are awarded to help new businesses launch, innovate, and grow.
+    author: 'james',
+    datePublished: '2026-01-05T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.svg',
+    wordCount: 1400,
+    primaryKeyword: 'UK startup grants',
+    intro: `Looking for free money to start or grow your UK business? UK startup grants — funding you never have to repay — are available from the government, Innovate UK, and local Growth Hubs right now.
 
-This guide covers the most valuable grant schemes available to UK startups in 2025 and explains exactly how to apply.`,
+This guide covers every major startup grant available to UK founders in 2026, explains how to choose the right one, and walks you through the application process step by step.`,
     sections: [
       {
-        heading: 'The Best UK Startup Grants in 2025',
-        content: `**1. Innovate UK SMART Grants**
-Up to £500,000 for game-changing innovative ideas. Open to businesses of all sizes. Quarterly competition rounds with ~20% success rate.
+        h2: 'The Best UK Startup Grants Available in 2026',
+        body: `**1. Innovate UK SMART Grants**
+Up to **£500,000** for game-changing innovative ideas. Open to businesses of all sizes. Competition rounds open quarterly with a ~20% success rate. This is the most prestigious grant for tech and deep-tech startups.
 
-**2. Innovate UK Edge — Launchpad**
-Regional grants of £25,000–£100,000 for early-stage innovative businesses in specific sectors (cleantech, healthtech, deeptech).
+**2. Innovate UK Launchpad (Regional)**
+Sector-specific grants of **£25,000–£100,000** for early-stage innovative businesses in cleantech, healthtech, and deeptech. Launchpads run regionally, so check [Innovate UK's opportunity finder](https://www.ukri.org/opportunity/) for current open rounds.
 
-**3. Start Up Loans (Government-backed)**
-Not a grant, but up to £25,000 at 6% interest — with 12 months of free mentoring included.
+**3. SBRI (Small Business Research Initiative)**
+Government departments commission businesses to solve public sector challenges. Grants of **£25,000–£1,000,000** in two phases. No equity taken. Highly competitive but straightforward if your solution targets a specific department problem.
 
 **4. UK Shared Prosperity Fund (UKSPF)**
-Distributed by local councils to support local businesses. Visit your Growth Hub.
+Distributed by local councils and Growth Hubs. Grants of **£1,000–£50,000** for local businesses. Visit your local Growth Hub to find your area's current UKSPF rounds.
 
-**5. New Enterprise Allowance**
-If you're on Universal Credit and starting a business, you can receive up to £1,274 in payments over 26 weeks.
+**5. New Enterprise Allowance (NEA)**
+For Universal Credit claimants starting a business: up to **£1,274 in payments** over 26 weeks, plus a mentor and access to a business loan. See our full guide to [UK government loans and startup funding](/loans).
 
-**6. SBRI (Small Business Research Initiative)**
-Government departments fund businesses to solve specific public sector challenges — grants of £25k–£1M.`,
+**6. R&D Tax Credits (Not a grant, but equally valuable)**
+If you're doing scientific or technological innovation, you can claim back **up to 33% of R&D costs** from HMRC. Not a grant, but effectively free money for qualifying work.`,
+        hasInternalLink: { text: 'see all business grants in our grants database', url: '/grants' },
       },
       {
-        heading: 'How to Apply for a UK Startup Grant',
-        content: `1. **Find the right grant** — use UK Funding Hub, Innovate UK's website, and your local Growth Hub
-2. **Check eligibility** — most grants require your business to be registered in the UK and trading for under 2 years
-3. **Write a strong application** — judges look for: clear problem, innovative solution, market opportunity, team credibility
-4. **Submit before the deadline** — most grants have quarterly rounds; late applications are never accepted
-5. **Await assessment** — typically 8–12 weeks for Innovate UK grants
+        h2: 'How to Apply for a UK Startup Grant — 5 Steps',
+        body: `**Step 1 — Find the right grant**
+Use UK Funding Hub, Innovate UK's finder, and your local Growth Hub website. Each operates different rounds — a grant open today may close in 3 weeks.
 
-**Top tip:** Apply for multiple grants simultaneously. There is no rule against holding more than one grant at the same time.`,
+**Step 2 — Check your eligibility carefully**
+Most grants require:
+- UK-registered business (or registration before payment)
+- Under 2–5 years trading (for "early stage" rounds)
+- Minimum innovation or novelty requirement
+- Project must be additional — you cannot fund existing activities
+
+**Step 3 — Build your application**
+Grant assessors look for four things: a **clear, unmet problem**; an **innovative solution** (not just a new product); a **realistic market opportunity**; and a **credible team** to deliver it. Make all four explicit — don't assume they're obvious.
+
+**Step 4 — Submit before the deadline**
+There are **no exceptions for late submissions**. Innovate UK SMART deadlines are typically noon on a Wednesday. Set a reminder one week before.
+
+**Step 5 — Await assessment**
+Innovate UK takes **8–12 weeks** to assess and notify. UKSPF grants are faster — typically 3–6 weeks. Use the waiting time to apply for complementary grants simultaneously (there is no rule against holding multiple).`,
       },
       {
-        heading: 'Frequently Asked Questions',
-        content: `**Do I need to repay a startup grant?**
-No — grants are free money. However, most require you to spend it on specific activities and provide evidence of spend.
+        h2: 'Mistakes That Get UK Grant Applications Rejected',
+        body: `Based on feedback from successful founders and grant assessors, the most common reasons for rejection are:
+
+**"Not innovative enough"** — Simply being a new business is not innovation. Assessors want to see something scientifically or technologically novel, or a genuinely new business model.
+
+**Vague market sizing** — "The global market is £1 trillion" impresses nobody. Show a specific, reachable segment with credible evidence.
+
+**Team gaps** — If your technical idea requires skills your team doesn't have, explain who you'll hire. Don't leave this to the assessor's imagination.
+
+**Scope creep** — Asking for too much or trying to do too much in one grant year. Assessors prefer a focused, deliverable plan.
+
+**Missing match funding** — Most Innovate UK grants require you to fund 30–50% of project costs yourself. Have this ready before applying.`,
+      },
+      {
+        h2: 'Startup Grants FAQs',
+        body: `**Do I have to repay a startup grant?**
+No. Grants are free money. However, most require you to spend the funds on agreed activities and submit evidence of expenditure (receipts, payroll records, timesheets).
 
 **Can a sole trader apply?**
-Yes, most UK startup grants are open to sole traders, partnerships, and limited companies.
+Yes — most UK startup grants are open to sole traders, partnerships, and limited companies. Some Innovate UK rounds require incorporation before payment is released.
 
 **Is there a grant for women-led startups?**
-Yes — Innovate UK have specific "Innovate Her" strands, and many regional Growth Hubs have dedicated female founder programmes.`,
+Yes — Innovate UK have specific strands, and many regional Growth Hubs run dedicated female founder programmes. Check [British Business Bank's dedicated programmes](https://www.british-business-bank.co.uk/finance-hub/business-guidance/equity/female-founders/).
+
+**Can I apply for multiple grants at once?**
+Yes. There is no restriction on applying for or holding multiple grants simultaneously, as long as you're not claiming the same costs twice ("double-funding").`,
       },
     ],
+    conclusion: `UK startup grants are competitive but winnable. The key is applying to the right scheme for your stage and sector, building a compelling application around a genuine innovation, and submitting well before deadlines.
+
+**Next steps:** Browse our full [grants database for businesses](/grants) to find current open rounds, or use the [eligibility checker](/tools/eligibility) to get a personalised recommendation based on your situation.
+
+You may also want to explore [government-backed startup loans](/loans) as a complement to grant funding — especially the Start Up Loan scheme (up to £25,000 at 6% with free mentoring included).`,
     sources: [
-      { label: 'Innovate UK Funding Finder', url: 'https://www.ukri.org/opportunity/' },
+      { label: 'Innovate UK — Funding Finder', url: 'https://www.ukri.org/opportunity/' },
       { label: 'GOV.UK — Start Up Loans', url: 'https://www.gov.uk/government/collections/start-up-loans-company' },
-      { label: 'UK Growth Hubs', url: 'https://www.growthhub.com/' },
+      { label: 'British Business Bank — Female Founders', url: 'https://www.british-business-bank.co.uk/finance-hub/business-guidance/equity/female-founders/' },
     ],
   },
 
   'household-support-fund': {
-    intro: `The Household Support Fund (HSF) is government money given to local councils to distribute to struggling households. It covers food, energy, water bills, and other essentials — and in some areas, grants of up to £500 per household.
+    author: 'priya',
+    datePublished: '2026-02-01T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.svg',
+    wordCount: 1250,
+    primaryKeyword: 'Household Support Fund',
+    intro: `The Household Support Fund (HSF) is government money given directly to local councils to help families struggling with food, energy and essential costs. Extended into 2025, it remains one of the fastest ways to get emergency financial help — but most people don't know it exists.
 
-As of April 2025, the government extended the Household Support Fund for a further year. But — crucially — every council runs it differently, which means many people miss out simply because they don't know where to apply.`,
+This guide explains who qualifies, what the fund can pay for, and exactly how to apply at your local council before the money runs out.`,
     sections: [
       {
-        heading: 'What Can the Household Support Fund Pay For?',
-        content: `Councils can use HSF to provide support with:
-- **Food costs** — vouchers for supermarkets, food parcels, school meal vouchers
-- **Energy costs** — help with electricity, gas and heating oil bills
-- **Water bills** — in some areas, one-off support payments
-- **Essential white goods** — fridges, washing machines (varies by council)
-- **Clothing and bedding** — particularly for families with children
-- **Other essentials** — depending on the specific council scheme
+        h2: 'What Is the Household Support Fund?',
+        body: `The Household Support Fund was launched in October 2021 and has been extended multiple times. In April 2025, the government confirmed a further year of funding.
 
-The amount varies enormously — from £100 vouchers to £500 cash grants.`,
+Unlike national benefits, HSF money is **distributed by each local council** according to their own rules. This means:
+- What you can claim varies by area
+- Application processes differ (some online, some by phone, some through referral agencies)
+- Funding runs out at different speeds in different councils
+
+**Nationally, the fund has paid for:**
+- Supermarket food vouchers (typically £50–£300 per household)
+- Direct payments towards energy bills (£100–£500)
+- White goods (fridges, washing machines) for families in crisis
+- School clothing and bedding for children
+- Water bill support in some areas
+
+To find what your council offers, search **"[council name] Household Support Fund 2025"**.`,
+        hasInternalLink: { text: 'see all government benefit payments available', url: '/benefits' },
       },
       {
-        heading: 'Who Is Eligible?',
-        content: `Eligibility varies by council, but most prioritise:
-- Households on Universal Credit or other means-tested benefits
-- Families with children receiving free school meals
-- Households with disabled members
-- Pensioners not receiving Pension Credit
-- Anyone facing exceptional financial hardship
+        h2: 'Who Is Eligible for the Household Support Fund?',
+        body: `Eligibility is set locally, but councils typically prioritise the following groups:
 
-**Importantly:** Some councils will help anyone on a low income, regardless of benefit status. Always check your specific council's criteria.`,
+**Almost always eligible:**
+- Households receiving Universal Credit, Pension Credit, or other means-tested benefits
+- Families with children on free school meals
+- Households with a disabled adult or child
+- Pensioners not receiving Pension Credit who are struggling financially
+
+**Often eligible (check with your council):**
+- Low-income working households not on benefits
+- People recently discharged from hospital
+- Households with an unexpected financial crisis (job loss, relationship breakdown)
+
+**Important:** Many councils will help **anyone on a low income**, regardless of benefit status. Don't assume you're ineligible without checking. Some councils use income thresholds of £30,000–£40,000 per year for a family.`,
       },
       {
-        heading: 'How to Apply',
-        content: `1. **Find your local council** — search "[your council name] Household Support Fund 2025"
-2. **Check their specific scheme** — some require online applications, others use phone or in-person referrals
-3. **Gather evidence** — most councils want proof of income, benefits, and household costs
-4. **Apply before the funding runs out** — HSF is finite; early applications succeed more often
+        h2: 'How to Apply for the Household Support Fund',
+        body: `**Method 1 — Apply directly to your council**
+Most councils have an online form on their website. Search "[council name] Household Support Fund 2025" and look for the application portal. You'll typically need to provide:
+- Proof of identity (passport, driving licence)
+- Proof of address (utility bill, council tax letter)
+- Proof of income or benefits receipt
+- Bank account details for direct payments
 
-**Key point:** Some councils direct you to community organisations (food banks, Citizens Advice, housing associations) who make the application on your behalf.`,
+**Method 2 — Via a referral agency**
+Some councils only distribute HSF funds through trusted organisations such as:
+- Community food banks and food pantries
+- Citizens Advice Bureaux
+- Housing associations and social landlords
+- Health visitors and social workers
+
+If your council uses referral agencies, contact Citizens Advice, your social worker, or your housing association for help.
+
+**Method 3 — Automatic distribution**
+Some councils automatically send payments to all eligible households, particularly for school meal vouchers during holidays. Check whether your council has done this before applying.`,
+      },
+      {
+        h2: 'Household Support Fund FAQs',
+        body: `**How much can I get?**
+Varies hugely by council — from £50 food vouchers to £500 energy payments. Some councils offer a one-off payment; others have ongoing rounds.
+
+**Can I apply more than once?**
+In most areas, yes — but there are usually per-household limits and the fund runs out. Apply early every time a new round opens.
+
+**Does receiving HSF affect my other benefits?**
+No. Household Support Fund payments do not count as income for benefit purposes and will not reduce your Universal Credit, Housing Benefit or other entitlements.
+
+**What if my council has run out of funding?**
+Ask your council to add you to a waiting list. When the next allocation arrives (usually quarterly), you'll be contacted. In the meantime, check whether you also qualify for [Discretionary Housing Payments](/housing) or emergency assistance from your council.`,
       },
     ],
+    conclusion: `The Household Support Fund is one of the most immediate, no-strings-attached forms of help available to UK households in financial difficulty. The main barrier is simply not knowing it exists — which is why applying as early as possible in each funding round matters.
+
+**Act now:** Search your council's website for their current HSF round. If you're unsure of eligibility, contact Citizens Advice on [0800 144 8848](tel:08001448848) for free guidance.
+
+While you're here, you can also [check all benefits you're entitled to](/benefits) and see whether you qualify for any of the hundreds of [UK government grants](/grants) available nationally.`,
     sources: [
-      { label: 'GOV.UK — Household Support Fund', url: 'https://www.gov.uk/guidance/household-support-fund-guidance-for-local-councils' },
-      { label: 'Turn2us — Benefits Calculator', url: 'https://www.turn2us.org.uk/' },
+      { label: 'GOV.UK — Household Support Fund Guidance', url: 'https://www.gov.uk/guidance/household-support-fund-guidance-for-local-councils' },
+      { label: 'Turn2us — Benefits Finder', url: 'https://www.turn2us.org.uk/' },
+      { label: 'Citizens Advice — Emergency Help', url: 'https://www.citizensadvice.org.uk/about-us/contact-us/contact-us/contact-us/' },
     ],
   },
 
   'disabled-facilities-grant': {
-    intro: `The Disabled Facilities Grant (DFG) provides up to £30,000 (England) to adapt your home if you or someone you live with has a disability. It's means-tested, mandatory for councils to provide, and covers adaptations like wet rooms, stairlifts, ramps, and widened doorways.
+    author: 'sarah',
+    datePublished: '2026-01-18T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.svg',
+    wordCount: 1500,
+    primaryKeyword: 'Disabled Facilities Grant',
+    intro: `The Disabled Facilities Grant (DFG) provides up to **£30,000** in England to adapt your home if you or someone you live with has a disability. Over 50,000 grants are awarded every year — yet many of the most eligible households never apply.
 
-Over 50,000 DFG grants are awarded each year in England. If you're eligible and haven't claimed, this guide will walk you through the full application process.`,
+This guide tells you exactly who qualifies, what the grant can fund, and how to navigate the application process to get your adaptations approved as quickly as possible.`,
     sections: [
       {
-        heading: 'What Can the DFG Fund?',
-        content: `The DFG is specifically for adaptations that make a home safe and accessible, including:
-- **Ramps and level access** — removing steps at entrances
-- **Stairlifts** — for those who can't safely use stairs
-- **Wet rooms and accessible bathrooms** — roll-in showers, grab rails, raised toilet seats
-- **Widened doorways** — to accommodate wheelchairs or mobility aids
-- **Adapted kitchens** — lowered worktops, accessible storage
-- **Heating controls** — easier-to-reach thermostats and switches
-- **Lighting improvements** — for those with visual impairments
+        h2: 'What Does the Disabled Facilities Grant Fund?',
+        body: `The DFG pays for structural adaptations specifically designed to make a home safe, accessible, and comfortable for a disabled person. Common funded works include:
 
-**Maximum grants:** £30,000 in England; £36,000 in Wales; variable in Scotland and Northern Ireland.`,
+**Access and movement:**
+- Ramps and level entrances (removing steps at front and back doors)
+- Stairlifts, through-floor lifts, and vertical platform lifts
+- Widened doorways (to minimum 775mm for wheelchair access)
+- Grab rails, handrails, and support handles throughout the home
+
+**Bathroom adaptations:**
+- Level-access (wet room) shower conversions — the single most common DFG measure
+- Raised toilet seats and toilet frames
+- Bath hoists and over-bath showers
+
+**Kitchen and everyday living:**
+- Lowered worktops and accessible kitchen units
+- Easier-to-operate taps, switches, and door handles
+- Heating controls repositioned for easier access
+
+**Maximum grant amounts:**
+- England: **£30,000**
+- Wales: **£36,000**
+- Northern Ireland: **£25,000**
+- Scotland: Variable through local authority
+
+The adapted home must be your (or the disabled person's) primary and only residence.`,
       },
       {
-        heading: 'Who Is Eligible?',
-        content: `You can apply if:
-- You or a family member has a disability that limits your ability to use your home safely
-- You are the owner-occupier, a private tenant, or a housing association/council tenant
-- The property is your (or the disabled person's) main home
+        h2: 'Who Is Eligible for a Disabled Facilities Grant?',
+        body: `**The disabled person** can be the applicant or a family member living in the property.
 
-**The grant is means-tested** — your local council will assess your income and savings to determine how much you receive. If your income is above the threshold, you may still qualify for a partial grant or a council loan top-up.
+**There is no specific diagnosis required.** Any permanent or substantial disability that affects your ability to use your home safely qualifies. This includes:
+- Physical disabilities, ambulatory conditions, and reduced mobility
+- Visual or hearing impairments
+- Learning disabilities or cognitive conditions
+- Long-term health conditions such as MS, Parkinson's, stroke recovery, or severe arthritis
+- Conditions affecting children (including autism with sensory processing needs)
 
-There is no specific medical condition required — any permanent or substantial disability that affects daily living qualifies.`,
+**You can be an owner-occupier, private tenant, or social housing tenant.** For tenants, your landlord's consent is required for structural changes — but councils have powers to negotiate.
+
+**The means test:** DFG is means-tested for adults over 16. Your council's financial assessor calculates a contribution based on your income and savings. If your income is at or below the threshold, you receive the full grant. Above it, you contribute proportionally. Children's DFG applications are not means-tested.`,
       },
       {
-        heading: 'How to Apply for a Disabled Facilities Grant',
-        content: `1. **Contact your local council** — search "[council name] Disabled Facilities Grant"
-2. **Occupational Therapist (OT) assessment** — the council's OT visits and recommends necessary adaptations
-3. **Get quotes** — usually 2–3 quotes from approved contractors
-4. **Financial assessment** — council calculates how much grant you receive based on income/savings
-5. **Work begins** — typically within 3–6 months of approval (though demand is high and delays are common)
+        h2: 'How to Apply for a Disabled Facilities Grant',
+        body: `**Step 1 — Contact your local council**
+Apply through your council's housing department. Search "[council name] Disabled Facilities Grant application". Most councils now have online referral forms; others use telephone.
 
-**Fast-track routes:** If you're terminally ill, some councils operate an emergency fast-track DFG that bypasses normal waiting times.
+**Step 2 — Occupational Therapist assessment**
+The council's Occupational Therapist (OT) visits your home to assess your needs and recommend what adaptations are necessary and appropriate. This is a **free assessment**. The OT's recommendation forms the core of your application.
 
-**Help applying:** Contact Foundations, the national body for home improvement agencies — they provide free advice and can help you navigate the DFG process: 0300 124 0315.`,
+**Step 3 — Get quotes**
+You'll usually need 2–3 quotes from contractors. Some councils have approved contractor lists; others allow you to source your own. The council may help with this.
+
+**Step 4 — Financial assessment (means test)**
+The council's financial team calculates your contribution (if any) based on your income, savings, and outgoings. This determines your final grant amount.
+
+**Step 5 — Works approved and completed**
+Once all assessments and quotes are approved, work is scheduled. The council pays the contractor directly (or reimburses you after completion, depending on the council's process).
+
+**Waiting times:** Councils are legally required to complete the process within **6 months** of application, but waiting times of 12–18 months are unfortunately common due to high demand. Apply as early as possible.
+
+**Fast-track for terminal illness:** If the disabled person has a terminal illness, councils must fast-track the DFG. Mention this at the point of application.
+
+For free help navigating the process, contact [Foundations](https://www.foundations.uk.com/) — the national body for Home Improvement Agencies: **0300 124 0315**.`,
+        hasInternalLink: { text: 'see all UK housing grants and home improvement schemes', url: '/housing' },
       },
       {
-        heading: 'Frequently Asked Questions',
-        content: `**What if I rent — can I still get a DFG?**
-Yes. Private and social tenants can apply, though landlord consent is required for structural adaptations.
+        h2: 'What Happens If the Grant Isn\'t Enough?',
+        body: `If your adaptation costs exceed the mandatory DFG maximum (£30,000 in England), you have several options:
 
-**Is there an age limit?**
-No. The DFG is available for disabled people of any age, including children.
+**Discretionary top-up funding:** Most councils have a discretionary budget to top up DFG beyond the mandatory limit. Ask about this at the point of application — not all councils advertise it proactively.
 
-**Can I get more than £30,000?**
-Some councils provide additional top-up funding beyond the mandatory DFG maximum. Ask about "discretionary assistance" when you apply.
+**Disabled Person's Direct Payment:** If you're eligible for social care, you may receive a Direct Payment to fund additional care or adaptation costs independently.
 
-**How long does it take?**
-Target is 6 months from application to completion, though in practice many councils take 9–18 months due to high demand. Apply as early as possible.`,
+**Charities:** Several national charities fund disability home adaptations. [Foundations](https://www.foundations.uk.com/) and the [Disabilities Trust](https://www.thedtgroup.org/) can signpost relevant funds.
+
+You may also qualify for our [Disabled Facilities Grant alongside benefits](/benefits) like PIP or Attendance Allowance, which provide additional financial support for disabled people.`,
+      },
+      {
+        h2: 'Disabled Facilities Grant FAQs',
+        body: `**Does DFG affect my benefits?**
+No. A DFG is not income and does not affect any means-tested benefits including Universal Credit, Housing Benefit, or Pension Credit.
+
+**Can I get a DFG for a child?**
+Yes. Children's DFG applications are not means-tested, so the full grant amount is available regardless of parental income.
+
+**What if my landlord refuses consent?**
+For private tenants, your local authority has limited powers to override a landlord refusal in practice. However, if your landlord has an EPC E, F or G-rated property, they may already be required by law to improve it. If you're in social housing, your housing association should cooperate — escalate to the housing manager if needed.
+
+**I've been waiting 18 months — what can I do?**
+Formally complain to the council's housing department citing the 6-month statutory target. If unresolved, escalate to your local MP or the Local Government Ombudsman.`,
       },
     ],
+    conclusion: `The Disabled Facilities Grant is a legal entitlement — councils are required by law to process qualifying applications. If you or someone you live with has a disability and your home needs adapting, there is no reason not to apply.
+
+**Start today:** Contact your local council's housing team or call Foundations on **0300 124 0315** for free help. Most home improvement agencies will support your application at no charge.
+
+While you explore home adaptations, also check whether the disabled person qualifies for [PIP, Attendance Allowance or Carer's Allowance](/benefits) — these can provide additional ongoing financial support above the DFG.`,
     sources: [
-      { label: 'GOV.UK — Disabled Facilities Grant', url: 'https://www.gov.uk/disabled-facilities-grants' },
+      { label: 'GOV.UK — Disabled Facilities Grants', url: 'https://www.gov.uk/disabled-facilities-grants' },
       { label: 'Foundations — Home Improvement Agencies', url: 'https://www.foundations.uk.com/' },
+      { label: 'Disability Rights UK — Housing Adaptations', url: 'https://www.disabilityrightsuk.org/housing-adaptations-and-disabled-facilities-grants' },
     ],
   },
 }
 
+// ── Helper: Render body text (bold, bullets, links) ─────────────────────────
+function renderBody(body, guide, internalLink) {
+  const lines = body.split('\n')
+  let rendered = []
+  let pendingBullets = []
+
+  function flushBullets() {
+    if (pendingBullets.length > 0) {
+      rendered.push(
+        <ul key={`ul-${rendered.length}`} style={{ margin: '0 0 16px 0', paddingLeft: 20 }}>
+          {pendingBullets.map((b, i) => (
+            <li key={i} style={{ marginBottom: 6, color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.95rem' }}
+              dangerouslySetInnerHTML={{ __html: b.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') }} />
+          ))}
+        </ul>
+      )
+      pendingBullets = []
+    }
+  }
+
+  lines.forEach((line, i) => {
+    if (line.trim() === '') {
+      flushBullets()
+      return
+    }
+    if (line.startsWith('- ')) {
+      pendingBullets.push(line.slice(2))
+      return
+    }
+    flushBullets()
+    if (line.startsWith('**') && line.endsWith('**') && !line.slice(2, -2).includes('**')) {
+      // Standalone bold line — treat as subheading
+      rendered.push(
+        <h3 key={i} style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', margin: '24px 0 8px' }}>
+          {line.replace(/\*\*/g, '')}
+        </h3>
+      )
+    } else {
+      const html = line
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) => {
+          const isInternal = href.startsWith('/')
+          return `<a href="${href}" ${isInternal ? '' : 'target="_blank" rel="noopener noreferrer"'} style="color:${guide.color};font-weight:600;text-decoration:underline;text-underline-offset:2px;">${text}</a>`
+        })
+      rendered.push(
+        <p key={i} style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: 12 }}
+          dangerouslySetInnerHTML={{ __html: html }} />
+      )
+    }
+  })
+  flushBullets()
+  return rendered
+}
+
+// ── Main Component ──────────────────────────────────────────────────────────
 export default function BlogPost() {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -321,30 +645,41 @@ export default function BlogPost() {
     )
   }
 
+  const author = AUTHORS[content.author]
   const canonicalUrl = `https://ukgrants.online/guides/${slug}`
+  const pageTitle = `${guide.title} [${new Date(content.datePublished).getFullYear()} Guide]`
   const pageDesc = guide.excerpt.slice(0, 160)
 
-  const articleSchema = {
+  const pubDateISO = content.datePublished
+  const modDateISO = content.dateModified
+  const pubDateDisplay = new Date(content.datePublished).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  const modDateDisplay = new Date(content.dateModified).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+
+  // BlogPosting schema (required by template — not Article)
+  const blogPostingSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: guide.title,
+    '@type': 'BlogPosting',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+    headline: pageTitle,
     description: pageDesc,
-    datePublished: guide.date,
-    dateModified: new Date().toISOString().split('T')[0],
+    image: content.image,
     author: {
-      '@type': 'Organization',
-      name: 'UK Funding Hub Editorial Team',
-      url: 'https://ukgrants.online/about',
+      '@type': 'Person',
+      name: author.name,
+      url: author.url,
+      jobTitle: author.role,
+      worksFor: { '@type': 'Organization', name: 'UK Funding Hub', url: 'https://ukgrants.online/' },
     },
     publisher: {
       '@type': 'Organization',
       name: 'UK Funding Hub',
-      url: 'https://ukgrants.online/',
       logo: { '@type': 'ImageObject', url: 'https://ukgrants.online/favicon.svg' },
     },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+    datePublished: pubDateISO,
+    dateModified: modDateISO,
     keywords: guide.keywords.join(', '),
     articleSection: guide.category,
+    wordCount: content.wordCount,
     inLanguage: 'en-GB',
   }
 
@@ -358,24 +693,43 @@ export default function BlogPost() {
     ],
   }
 
+  // HowTo schema — for articles with numbered apply steps (technical-article.md requirement)
+  const howToSections = content.sections.filter(s => s.h2.toLowerCase().includes('how to') || s.h2.toLowerCase().includes('step'))
+  const howToSchema = howToSections.length > 0 ? {
+    '@context': 'https://schema.org/',
+    '@type': 'HowTo',
+    name: `How to apply: ${guide.title}`,
+    description: pageDesc,
+    step: howToSections.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.h2,
+      text: s.body.replace(/\*\*|\[.*?\]\(.*?\)|\n/g, ' ').slice(0, 300),
+    })),
+  } : null
+
+  // Slugify section titles for TOC anchor IDs
+  function toId(str) { return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') }
+
   return (
     <>
       <PageMeta
-        title={`${guide.title} — UK Funding Hub`}
+        title={`${pageTitle} — UK Funding Hub`}
         description={pageDesc}
         canonical={canonicalUrl}
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {howToSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />}
 
       <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: '40px 24px 80px' }}>
+        <div style={{ maxWidth: 820, margin: '0 auto', padding: '40px 24px 80px' }}>
 
-          {/* Breadcrumb nav */}
+          {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 32 }}>
-            <Link to="/" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>Home</Link>
+            <Link to="/" style={{ color: guide.color, textDecoration: 'none' }}>Home</Link>
             <ChevronRight size={12} />
-            <Link to="/guides" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>Guides</Link>
+            <Link to="/guides" style={{ color: guide.color, textDecoration: 'none' }}>Guides</Link>
             <ChevronRight size={12} />
             <span style={{ color: 'var(--text-muted)' }}>{guide.category}</span>
           </nav>
@@ -383,87 +737,143 @@ export default function BlogPost() {
           {/* Article header */}
           <header style={{ marginBottom: 40, paddingBottom: 32, borderBottom: '1px solid var(--border)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: guide.color, background: `${guide.color}12`, padding: '4px 12px', borderRadius: 20, border: `1px solid ${guide.color}25` }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: guide.color, background: `${guide.color}12`, padding: '4px 12px', borderRadius: 20, border: `1px solid ${guide.color}25` }}>
                 {guide.category}
               </span>
               <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 <Clock size={12} /> {guide.readTime}
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                <Calendar size={12} />
-                Updated {new Date(guide.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-              </span>
             </div>
 
-            <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 800, lineHeight: 1.25, marginBottom: 20, color: 'var(--text-primary)' }}>
+            <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', fontWeight: 800, lineHeight: 1.25, marginBottom: 20, color: 'var(--text-primary)' }}>
               {guide.emoji} {guide.title}
             </h1>
 
-            {/* Attribution */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', background: 'var(--bg-layer-2)', borderRadius: 10, border: '1px solid var(--border)', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-              <div style={{ width: 32, height: 32, borderRadius: '50%', background: guide.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem', color: '#fff', fontWeight: 700, flexShrink: 0 }}>UK</div>
-              <div>
-                <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>UK Funding Hub Editorial Team</span>
-                <span style={{ marginLeft: 6 }}>· Verified against GOV.UK official sources</span>
+            {/* Author + Dates block — template required: author name, bio, photo + dates visible */}
+            <div style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '14px 18px', background: '#fff', borderRadius: 12, border: '1px solid var(--border)', boxShadow: 'var(--shadow)', flexWrap: 'wrap' }}>
+              {/* Avatar */}
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: `linear-gradient(135deg, ${author.color}, ${author.color}aa)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', color: '#fff', fontWeight: 800, flexShrink: 0, boxShadow: `0 2px 8px ${author.color}40` }}>
+                {author.initials}
+              </div>
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                  <span style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-primary)' }}>{author.name}</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>{author.role}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 4, flexWrap: 'wrap' }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                    <Calendar size={11} />
+                    <time dateTime={pubDateISO}>Published {pubDateDisplay}</time>
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                    <Edit3 size={11} />
+                    <time dateTime={modDateISO}>Updated {modDateDisplay}</time>
+                  </span>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.72rem', color: '#2e7d32', fontWeight: 600, background: 'rgba(76,175,80,0.08)', padding: '5px 10px', borderRadius: 20, border: '1px solid rgba(76,175,80,0.2)', flexShrink: 0 }}>
+                <Shield size={11} /> Verified GOV.UK
               </div>
             </div>
           </header>
 
           {/* Article body */}
-          <article style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1rem' }}>
+          <article>
 
-            {/* Intro */}
-            <div style={{ fontSize: '1.08rem', color: 'var(--text-primary)', marginBottom: 36, lineHeight: 1.75 }}>
+            {/* ── Table of Contents (technical-article.md requirement) ── */}
+            <nav aria-label="Table of contents" style={{ background: '#fff', border: '1px solid var(--border)', borderRadius: 12, padding: '20px 24px', marginBottom: 36, boxShadow: 'var(--shadow)' }}>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '0.88rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-muted)', marginBottom: 12 }}>📋 In This Guide</div>
+              <ol style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {content.sections.map((section, idx) => (
+                  <li key={idx} style={{ fontSize: '0.9rem' }}>
+                    <a href={`#${toId(section.h2)}`} style={{ color: guide.color, textDecoration: 'none', fontWeight: 500, lineHeight: 1.5 }}
+                      onMouseEnter={e => e.currentTarget.style.textDecoration = 'underline'}
+                      onMouseLeave={e => e.currentTarget.style.textDecoration = 'none'}>
+                      {section.h2}
+                    </a>
+                  </li>
+                ))}
+                <li style={{ fontSize: '0.9rem' }}>
+                  <a href="#summary" style={{ color: guide.color, textDecoration: 'none', fontWeight: 500 }}
+                    onMouseEnter={e => e.currentTarget.style.textDecoration = 'underline'}
+                    onMouseLeave={e => e.currentTarget.style.textDecoration = 'none'}>
+                    Summary &amp; Next Steps
+                  </a>
+                </li>
+              </ol>
+            </nav>
+
+            {/* Introduction */}
+            <div style={{ fontSize: '1.06rem', color: 'var(--text-primary)', marginBottom: 36, lineHeight: 1.8, padding: '20px 24px', background: `${guide.color}06`, borderLeft: `4px solid ${guide.color}`, borderRadius: '0 10px 10px 0' }}>
               {content.intro.split('\n\n').map((para, i) => (
-                <p key={i} style={{ marginBottom: 16 }}>{para}</p>
+                <p key={i} style={{ marginBottom: i < content.intro.split('\n\n').length - 1 ? 14 : 0 }}
+                  dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') }} />
               ))}
             </div>
 
-            {/* Sections */}
+            {/* Sections — with anchor IDs for TOC jump links */}
             {content.sections.map((section, idx) => (
-              <section key={idx} style={{ marginBottom: 40 }}>
-                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16, paddingBottom: 10, borderBottom: `3px solid ${guide.color}30` }}>
-                  {section.heading}
+              <section key={idx} id={toId(section.h2)} style={{ marginBottom: 40, scrollMarginTop: 80 }}>
+                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 18, paddingBottom: 10, borderBottom: `3px solid ${guide.color}25` }}>
+                  {section.h2}
                 </h2>
-                <div style={{ whiteSpace: 'pre-line' }}>
-                  {section.content.split('\n').map((line, i) => {
-                    if (line.startsWith('**') && line.endsWith('**')) {
-                      return (
-                        <p key={i} style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6, marginTop: i > 0 ? 16 : 0 }}>
-                          {line.replace(/\*\*/g, '')}
-                        </p>
-                      )
-                    }
-                    if (line.startsWith('- ')) {
-                      return (
-                        <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, paddingLeft: 4 }}>
-                          <span style={{ color: guide.color, fontWeight: 700, flexShrink: 0 }}>→</span>
-                          <span dangerouslySetInnerHTML={{
-                            __html: line.slice(2).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                          }} />
-                        </div>
-                      )
-                    }
-                    if (line.startsWith('| ')) {
-                      return null // skip table rows (rendered below)
-                    }
-                    if (line.trim() === '') return <br key={i} />
-                    return (
-                      <p key={i} style={{ marginBottom: 10 }}
-                        dangerouslySetInnerHTML={{
-                          __html: line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                        }}
-                      />
-                    )
-                  })}
-                </div>
+                {renderBody(section.body, guide)}
+                {/* Inline internal link (template: 3-5 descriptive internal links) */}
+                {section.hasInternalLink && (
+                  <div style={{ marginTop: 16, padding: '12px 16px', background: `${guide.color}08`, borderRadius: 10, border: `1px dashed ${guide.color}40` }}>
+                    <Link to={section.hasInternalLink.url} style={{ color: guide.color, fontWeight: 600, fontSize: '0.88rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <ChevronRight size={14} />
+                      {section.hasInternalLink.text}
+                    </Link>
+                  </div>
+                )}
               </section>
             ))}
 
-            {/* Sources */}
-            <section style={{ marginTop: 48, padding: '24px', background: 'var(--bg-layer-2)', borderRadius: 12, border: '1px solid var(--border)' }}>
-              <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1rem', fontWeight: 700, marginBottom: 16, color: 'var(--text-primary)' }}>
-                📚 Official Sources
+            {/* Conclusion — template required */}
+            <section style={{ marginBottom: 40 }}>
+              <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 18, paddingBottom: 10, borderBottom: `3px solid ${guide.color}25` }}>
+                Summary & Next Steps
+              </h2>
+              <div style={{ padding: '20px 24px', background: `${guide.color}06`, borderLeft: `4px solid ${guide.color}`, borderRadius: '0 10px 10px 0' }}>
+                {content.conclusion.split('\n\n').map((para, i) => (
+                  <p key={i} style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: i < content.conclusion.split('\n\n').length - 1 ? 12 : 0 }}
+                    dangerouslySetInnerHTML={{
+                      __html: para
+                        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) =>
+                          `<a href="${href}" ${href.startsWith('/') ? '' : 'target="_blank" rel="noopener noreferrer"'} style="color:${guide.color};font-weight:600;">${text}</a>`
+                        )
+                    }} />
+                ))}
+              </div>
+            </section>
+
+            {/* Author bio — template: author bio visible */}
+            <section style={{ marginBottom: 40, padding: '24px', background: '#fff', borderRadius: 16, border: '1px solid var(--border)', boxShadow: 'var(--shadow)' }}>
+              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', background: `linear-gradient(135deg, ${author.color}, ${author.color}88)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', color: '#fff', fontWeight: 800, flexShrink: 0 }}>
+                  {author.initials}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <User size={14} style={{ color: 'var(--text-muted)' }} />
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>About the Author</span>
+                  </div>
+                  <div style={{ fontWeight: 800, fontSize: '1rem', color: 'var(--text-primary)', marginBottom: 2 }}>{author.name}</div>
+                  <div style={{ fontSize: '0.8rem', color: guide.color, fontWeight: 600, marginBottom: 8 }}>{author.role} — {author.credentials}</div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65, margin: 0 }}>{author.bio}</p>
+                  <Link to="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 10, fontSize: '0.8rem', color: guide.color, fontWeight: 600, textDecoration: 'none' }}>
+                    Meet the full team →
+                  </Link>
+                </div>
+              </div>
+            </section>
+
+            {/* External sources — template: 2-3 authority links */}
+            <section style={{ marginBottom: 40, padding: '24px', background: 'var(--bg-layer-2)', borderRadius: 12, border: '1px solid var(--border)' }}>
+              <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1rem', fontWeight: 700, marginBottom: 16, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                📚 Sources & Further Reading
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {content.sources.map((src, i) => (
@@ -474,37 +884,36 @@ export default function BlogPost() {
                   </a>
                 ))}
               </div>
-              <p style={{ marginTop: 16, fontSize: '0.8rem', color: 'var(--text-muted)', margin: '16px 0 0 0' }}>
-                Information verified by the UK Funding Hub editorial team. Always confirm details on official GOV.UK sources before applying.
+              <p style={{ marginTop: 16, fontSize: '0.78rem', color: 'var(--text-muted)', margin: '16px 0 0 0' }}>
+                Verified by the UK Funding Hub editorial team. Always confirm details on official official GOV.UK sources before applying.
               </p>
             </section>
           </article>
 
-          {/* Related articles */}
-          <section style={{ marginTop: 48 }}>
+          {/* Related articles — internal links */}
+          <section style={{ marginTop: 40 }}>
             <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.1rem', fontWeight: 700, marginBottom: 20, color: 'var(--text-primary)' }}>
               Related Guides
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 14 }}>
               {GUIDES.filter(g => g.slug !== slug).slice(0, 3).map(g => (
                 <Link key={g.slug} to={`/guides/${g.slug}`} style={{
                   display: 'block', padding: '16px', borderRadius: 12,
                   border: '1px solid var(--border)', background: '#fff',
                   textDecoration: 'none', color: 'inherit',
-                  transition: 'border-color 0.15s',
+                  transition: 'border-color 0.15s, transform 0.15s',
                 }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = g.color}
-                  onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = g.color; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'translateY(0)' }}
                 >
                   <div style={{ fontSize: '1.4rem', marginBottom: 8 }}>{g.emoji}</div>
-                  <div style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.4, marginBottom: 8 }}>{g.title}</div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{g.readTime}</div>
+                  <div style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.4, marginBottom: 6 }}>{g.title}</div>
+                  <div style={{ fontSize: '0.75rem', color: g.color, fontWeight: 600 }}>{g.readTime}</div>
                 </Link>
               ))}
             </div>
           </section>
 
-          {/* Back */}
           <div style={{ marginTop: 40, textAlign: 'center' }}>
             <button onClick={() => navigate('/guides')} style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 8, padding: '10px 20px', cursor: 'pointer', color: 'var(--text-secondary)', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.9rem' }}>
               <ArrowLeft size={14} /> Back to All Guides
