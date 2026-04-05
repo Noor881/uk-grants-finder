@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, ExternalLink, CheckCircle, PoundSterling, Users, BookOpen, ChevronRight } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import PageMeta from '../components/PageMeta'
 
 export default function BenefitDetail() {
   const { slug } = useParams()
@@ -35,8 +36,26 @@ export default function BenefitDetail() {
     </div>
   )
 
+  const canonicalUrl = `https://ukgrants.online/benefit/${slug}`
+  const pageTitle = item ? `${item.title} — UK Benefits Guide` : 'UK Benefit Details'
+  const pageDesc = item
+    ? `${item.title}: eligibility, how to claim, and how to apply. ${item.description?.slice(0, 100) || ''}`.slice(0, 160)
+    : 'UK government benefit details and eligibility.'
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ukgrants.online/' },
+      { '@type': 'ListItem', position: 2, name: 'Benefits', item: 'https://ukgrants.online/benefits' },
+      { '@type': 'ListItem', position: 3, name: item?.title || 'Benefit', item: canonicalUrl },
+    ]
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
+      <PageMeta title={pageTitle} description={pageDesc} canonical={canonicalUrl} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div style={{ maxWidth: 820, margin: '0 auto', padding: '40px 24px 80px' }}>
 
         {/* Back */}
