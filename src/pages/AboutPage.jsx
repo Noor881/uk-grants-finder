@@ -51,7 +51,11 @@ const organizationSchema = {
     areaServed: 'GB',
     availableLanguage: 'English',
   },
-  sameAs: ['https://ukgrants.online/'],
+  sameAs: [
+    'https://twitter.com/ukgrantshub',
+    'https://www.linkedin.com/company/uk-funding-hub',
+    'https://www.facebook.com/ukgrantshub',
+  ],
 }
 
 const personSchemas = TEAM.map(t => ({
@@ -66,7 +70,29 @@ const personSchemas = TEAM.map(t => ({
     url: 'https://ukgrants.online/',
   },
   knowsAbout: t.area,
+  url: 'https://ukgrants.online/about',
+  sameAs: ['https://ukgrants.online/about'],
 }))
+
+// ProfilePage schema — 2025 addition for E-E-A-T author/team pages (schema-types.md)
+const profilePageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: 'UK Funding Hub Editorial Team',
+  url: 'https://ukgrants.online/about',
+  description: 'Meet the research team behind UK Funding Hub. Our editors verify all grant, benefit and loan data against GOV.UK and official sources.',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'UK Funding Hub',
+    url: 'https://ukgrants.online/',
+    member: TEAM.map(t => ({
+      '@type': 'Person',
+      name: t.name,
+      jobTitle: t.role,
+      description: t.bio,
+    })),
+  },
+}
 
 export default function AboutPage() {
   return (
@@ -77,6 +103,7 @@ export default function AboutPage() {
         canonical="https://ukgrants.online/about"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }} />
       {personSchemas.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}

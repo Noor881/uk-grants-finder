@@ -49,7 +49,7 @@ const ARTICLE_CONTENT = {
     author: 'priya',
     datePublished: '2025-12-10T09:00:00+00:00',
     dateModified: '2026-04-06T09:00:00+00:00',
-    image: 'https://ukgrants.online/og-image.svg',
+    image: 'https://ukgrants.online/og-image.png',
     wordCount: 1450,
     primaryKeyword: 'ECO4 grant',
     intro: `The ECO4 grant is the UK government's biggest energy efficiency scheme — and if you qualify, you could receive thousands of pounds of free home improvements with no upfront cost. Yet most eligible households have never heard of it.
@@ -162,7 +162,7 @@ You can also explore all UK [housing grants and home improvement schemes](/housi
     author: 'priya',
     datePublished: '2025-11-20T09:00:00+00:00',
     dateModified: '2026-04-06T09:00:00+00:00',
-    image: 'https://ukgrants.online/og-image.svg',
+    image: 'https://ukgrants.online/og-image.png',
     wordCount: 1600,
     primaryKeyword: 'Universal Credit',
     intro: `Universal Credit is the UK's main working-age benefit — a single monthly payment replacing six older benefits. As of 2025, over **7 million people** in the UK claim it. Yet the application process, payment timescales, and taper rates confuse many people who are entitled.
@@ -271,7 +271,7 @@ For free advice on your specific situation, contact your local [Citizens Advice]
     author: 'james',
     datePublished: '2026-01-05T09:00:00+00:00',
     dateModified: '2026-04-06T09:00:00+00:00',
-    image: 'https://ukgrants.online/og-image.svg',
+    image: 'https://ukgrants.online/og-image.png',
     wordCount: 1400,
     primaryKeyword: 'UK startup grants',
     intro: `Looking for free money to start or grow your UK business? UK startup grants — funding you never have to repay — are available from the government, Innovate UK, and local Growth Hubs right now.
@@ -365,7 +365,7 @@ You may also want to explore [government-backed startup loans](/loans) as a comp
     author: 'priya',
     datePublished: '2026-02-01T09:00:00+00:00',
     dateModified: '2026-04-06T09:00:00+00:00',
-    image: 'https://ukgrants.online/og-image.svg',
+    image: 'https://ukgrants.online/og-image.png',
     wordCount: 1250,
     primaryKeyword: 'Household Support Fund',
     intro: `The Household Support Fund (HSF) is government money given directly to local councils to help families struggling with food, energy and essential costs. Extended into 2025, it remains one of the fastest ways to get emergency financial help — but most people don't know it exists.
@@ -460,7 +460,7 @@ While you're here, you can also [check all benefits you're entitled to](/benefit
     author: 'sarah',
     datePublished: '2026-01-18T09:00:00+00:00',
     dateModified: '2026-04-06T09:00:00+00:00',
-    image: 'https://ukgrants.online/og-image.svg',
+    image: 'https://ukgrants.online/og-image.png',
     wordCount: 1500,
     primaryKeyword: 'Disabled Facilities Grant',
     intro: `The Disabled Facilities Grant (DFG) provides up to **£30,000** in England to adapt your home if you or someone you live with has a disability. Over 50,000 grants are awarded every year — yet many of the most eligible households never apply.
@@ -681,6 +681,11 @@ export default function BlogPost() {
     articleSection: guide.category,
     wordCount: content.wordCount,
     inLanguage: 'en-GB',
+    // speakable — required by seo-aeo.md + seo-technical.md Voice Search for Google Assistant, Siri, Alexa
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.article-intro', 'h2 + p', '#summary + p', '.article-faq-answer'],
+    },
   }
 
   const breadcrumbSchema = {
@@ -804,7 +809,7 @@ export default function BlogPost() {
             </nav>
 
             {/* Introduction */}
-            <div style={{ fontSize: '1.06rem', color: 'var(--text-primary)', marginBottom: 36, lineHeight: 1.8, padding: '20px 24px', background: `${guide.color}06`, borderLeft: `4px solid ${guide.color}`, borderRadius: '0 10px 10px 0' }}>
+            <div className="article-intro" style={{ fontSize: '1.06rem', color: 'var(--text-primary)', marginBottom: 36, lineHeight: 1.8, padding: '20px 24px', background: `${guide.color}06`, borderLeft: `4px solid ${guide.color}`, borderRadius: '0 10px 10px 0' }}>
               {content.intro.split('\n\n').map((para, i) => (
                 <p key={i} style={{ marginBottom: i < content.intro.split('\n\n').length - 1 ? 14 : 0 }}
                   dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') }} />
