@@ -12,6 +12,9 @@ Disallow: /*.json$
 User-agent: GPTBot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ChatGPT-User
 Allow: /
 
@@ -33,6 +36,9 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
+User-agent: cohere-ai
+Allow: /
+
 User-agent: CCBot
 Allow: /
 
@@ -45,3 +51,7 @@ Allow: /
 # ── Sitemap ───────────────────────────────────────────────────────
 Sitemap: https://ukgrants.online/sitemap.xml
 Sitemap: https://ukgrants.online/sitemap-index.xml
+
+# ── IndexNow ─────────────────────────────────────────────────────
+# Enables fast indexing on Bing, Yandex, Seznam, Naver
+# Key file hosted at: https://ukgrants.online/ukgrants-indexnow-2025-secure-key-xf9q2m.txt

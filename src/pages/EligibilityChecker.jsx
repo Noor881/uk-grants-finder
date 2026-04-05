@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight, ChevronLeft, CheckCircle } from 'lucide-react'
+import PageMeta from '../components/PageMeta'
 
 const QUESTIONS = [
   {
@@ -265,6 +266,11 @@ export default function EligibilityChecker() {
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
+      <PageMeta
+        title="UK Grants Eligibility Checker — Find What You Qualify For"
+        description="Answer 5 quick questions and instantly find which UK government grants, benefits, loans and housing schemes you're eligible for. Free and no sign-up required."
+        canonical="https://ukgrants.online/tools/eligibility"
+      />
       <div style={{ maxWidth: 680, margin: '0 auto', padding: '60px 24px' }}>
 
         {/* Progress bar */}

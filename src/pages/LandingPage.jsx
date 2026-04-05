@@ -423,10 +423,11 @@ export default function LandingPage() {
       <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <div>© 2025 UK Funding Hub · Free funding search for everyone in the United Kingdom</div>
         <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-          <Link to="/about"   style={{ color: 'inherit', textDecoration: 'none' }}>About</Link>
-          <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</Link>
-          <Link to="/terms"   style={{ color: 'inherit', textDecoration: 'none' }}>Terms</Link>
-          <Link to="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy</Link>
+          <Link to="/guides"   style={{ color: 'inherit', textDecoration: 'none', fontWeight: 500 }}>Guides</Link>
+          <Link to="/about"    style={{ color: 'inherit', textDecoration: 'none' }}>About</Link>
+          <Link to="/contact"  style={{ color: 'inherit', textDecoration: 'none' }}>Contact</Link>
+          <Link to="/terms"    style={{ color: 'inherit', textDecoration: 'none' }}>Terms</Link>
+          <Link to="/privacy"  style={{ color: 'inherit', textDecoration: 'none' }}>Privacy</Link>
         </div>
       </footer>
     </div>

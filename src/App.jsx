@@ -17,6 +17,8 @@ import TermsPage from './pages/TermsPage.jsx'
 import PrivacyPage from './pages/PrivacyPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
+import BlogPage from './pages/BlogPage.jsx'
+import BlogPost from './pages/BlogPost.jsx'
 
 export default function App() {
   return (
@@ -39,6 +41,8 @@ export default function App() {
         <Route path="/privacy"              element={<PrivacyPage />} />
         <Route path="/about"                element={<AboutPage />} />
         <Route path="/contact"              element={<ContactPage />} />
+        <Route path="/guides"               element={<BlogPage />} />
+        <Route path="/guides/:slug"         element={<BlogPost />} />
       </Routes>
       <CookieBanner />
     </>

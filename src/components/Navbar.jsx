@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { to: '/loans',    label: 'Loans' },
   { to: '/housing',  label: 'Housing' },
   { to: '/training', label: 'Training' },
+  { to: '/guides',   label: 'Guides' },
   { to: '/about',    label: 'About' },
 ]
 
