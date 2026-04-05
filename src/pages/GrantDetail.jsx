@@ -4,7 +4,7 @@ import {
   ArrowLeft, Building2, MapPin, Clock, CalendarDays,
   PoundSterling, CheckCircle, ExternalLink, BookOpen,
   Users, Tag, Wifi, AlertCircle, ChevronRight,
-  ShieldCheck, CheckSquare, Square, AlertTriangle, Lightbulb
+  ShieldCheck, CheckSquare, Square, AlertTriangle, Lightbulb, Calendar
 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { CATEGORIES } from './HomePage.jsx'
@@ -123,6 +123,11 @@ export default function GrantDetail() {
     ? `Apply for ${grant.grant_type}. ${grant.unique_content?.slice(0, 120) || 'Full eligibility details and direct application link.'}`.slice(0, 160)
     : 'UK government grant details and how to apply.'
 
+  const verifiedDate = grant?.last_updated
+    ? new Date(grant.last_updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+    : new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  const isoDate = grant?.last_updated || new Date().toISOString()
+
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -133,10 +138,35 @@ export default function GrantDetail() {
     ]
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    description: pageDesc,
+    datePublished: isoDate,
+    dateModified: isoDate,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+    author: {
+      '@type': 'Organization',
+      name: 'UK Funding Hub Editorial Team',
+      url: 'https://ukgrants.online/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'UK Funding Hub',
+      url: 'https://ukgrants.online/',
+      logo: { '@type': 'ImageObject', url: 'https://ukgrants.online/favicon.svg' },
+    },
+    articleSection: grant?.category || 'Grants',
+    keywords: `${grant?.grant_type}, UK grants, ${grant?.category}, ${grant?.council_name || ''}, apply for grants UK`,
+    inLanguage: 'en-GB',
+  }
+
   return (
     <>
       <PageMeta title={pageTitle} description={pageDesc} canonical={canonicalUrl} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       {/* NAVBAR */}
       <nav className="navbar">
@@ -166,10 +196,16 @@ export default function GrantDetail() {
               </span>
             </div>
 
-            {/* E-E-A-T Fact Check Badge */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--accent-green)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px', background: 'rgba(76, 175, 80, 0.1)', padding: '6px 10px', borderRadius: '4px', width: 'fit-content' }}>
-              <ShieldCheck size={16} />
-              Verified & Fact-Checked by The UK Grants Team
+            {/* E-E-A-T Fact Check Badge + Last Verified */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--accent-green)', fontSize: '0.82rem', fontWeight: 600, background: 'rgba(76, 175, 80, 0.1)', padding: '6px 10px', borderRadius: '4px' }}>
+                <ShieldCheck size={15} />
+                Verified &amp; Fact-Checked by The UK Grants Team
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontSize: '0.78rem', background: 'var(--bg-layer-2)', padding: '6px 10px', borderRadius: '4px', border: '1px solid var(--border)' }}>
+                <Calendar size={12} />
+                <span>Last verified: <strong>{verifiedDate}</strong></span>
+              </div>
             </div>
 
             <h1 className="detail-title">{grant.grant_type}</h1>
@@ -290,6 +326,27 @@ export default function GrantDetail() {
                 </a>
               </div>
             )}
+
+            {/* Cross-section internal links */}
+            <div className="detail-section">
+              <h2 className="detail-section-title">Also Explore</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12 }}>
+                {[
+                  { to: '/benefits', label: '🏛️ Benefits', desc: 'Entitlements you can claim', color: '#ffb300' },
+                  { to: '/housing', label: '🏠 Housing', desc: 'Home improvement grants', color: '#00bfa5' },
+                  { to: '/loans', label: '🏦 Loans', desc: 'Government-backed loans', color: '#7c3aed' },
+                  { to: '/training', label: '🎓 Training', desc: 'Free funded courses', color: '#ec407a' },
+                ].map(s => (
+                  <Link key={s.to} to={s.to} style={{ padding: '14px', borderRadius: 10, border: `1px solid ${s.color}25`, background: `${s.color}06`, textDecoration: 'none', display: 'block', transition: 'border-color 0.15s' }}
+                    onMouseEnter={e => e.currentTarget.style.borderColor = s.color}
+                    onMouseLeave={e => e.currentTarget.style.borderColor = `${s.color}25`}
+                  >
+                    <div style={{ fontWeight: 700, fontSize: '0.88rem', color: s.color, marginBottom: 3 }}>{s.label}</div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{s.desc}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* ── Sidebar ── */}

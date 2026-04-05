@@ -50,7 +50,7 @@ Allow: /
 
 # ── Sitemap ───────────────────────────────────────────────────────
 Sitemap: https://ukgrants.online/sitemap.xml
-Sitemap: https://ukgrants.online/sitemap-index.xml
+Sitemap: https://ukgrants.online/api/sitemap-grants.xml
 
 # ── IndexNow ─────────────────────────────────────────────────────
 # Enables fast indexing on Bing, Yandex, Seznam, Naver
