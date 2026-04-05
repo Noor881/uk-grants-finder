@@ -109,8 +109,83 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <!-- ── Static pre-render for bots / AI crawlers ──────────────────────────
+       React replaces this div the moment JavaScript executes.
+       Bots that don't run JS (ChatGPT, Perplexity, Claude, link previews)
+       read this raw HTML and see real content, headings, links and schema.
+       Human visitors never see this — React hydration removes it instantly.
+  ─────────────────────────────────────────────────────────────────────── -->
+  <div id="root">
+    <noscript>
+      <style>
+        #prerender-static { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 860px; margin: 0 auto; padding: 24px; color: #111; line-height: 1.7; }
+        #prerender-static h1 { font-size: 1.8rem; color: #0a1628; }
+        #prerender-static h2 { font-size: 1.2rem; color: #0a1628; margin-top: 2rem; }
+        #prerender-static a { color: #0066ff; }
+        #prerender-static footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.85rem; color: #666; }
+      </style>
+    </noscript>
+    <div id="prerender-static" style="display:none" aria-hidden="true"
+         data-prerender="true"
+         data-remove-on-hydration="true">
+      <!-- This block is hidden via display:none by default.
+           Bots that read HTML attributes can still parse the content.
+           Bots that render CSS may show it if JS is disabled. -->
+      <header>
+        <nav aria-label="Site navigation">
+          <a href="/">UK Funding Hub</a> |
+          <a href="/grants">Grants</a> |
+          <a href="/benefits">Benefits</a> |
+          <a href="/loans">Loans</a> |
+          <a href="/housing">Housing</a> |
+          <a href="/training">Training</a> |
+          <a href="/guides">Guides</a> |
+          <a href="/about">About</a>
+        </nav>
+        <h1>UK Funding Hub — Grants, Benefits &amp; Loans Finder</h1>
+        <p>UK Funding Hub is a free, independent platform providing a real-time database of UK government grants, benefits, loans, housing schemes and free training programmes. Updated every hour from GOV.UK and official sources.</p>
+      </header>
+      <main>
+        <h2>Find UK Funding By Category</h2>
+        <ul>
+          <li><a href="/grants">Government Grants</a> — Business grants, energy grants (ECO4, GBIS), community and innovation funding from GOV.UK and Innovate UK</li>
+          <li><a href="/benefits">Benefits &amp; Support</a> — Universal Credit, Personal Independence Payment (PIP), Child Benefit, Housing Benefit, Pension Credit and more</li>
+          <li><a href="/loans">Government Loans</a> — Start Up Loans, Recovery Loan Scheme, government-backed business finance</li>
+          <li><a href="/housing">Housing Schemes</a> — Help to Buy, Shared Ownership, Disabled Facilities Grant (up to £30,000), Right to Buy</li>
+          <li><a href="/training">Free Training</a> — Skills Bootcamps, Adult Education Budget, apprenticeship funding, sector skills grants</li>
+        </ul>
+
+        <h2>Expert Guides on UK Government Funding</h2>
+        <ul>
+          <li><a href="/guides/eco4-grant-guide">ECO4 Grant 2025: How to Get Free Insulation &amp; Heating</a> — Free home improvements worth thousands for eligible households on benefits or with a low EPC rating</li>
+          <li><a href="/guides/universal-credit-guide">Universal Credit Complete Guide 2025</a> — How to claim, payment timescales, the 5-week wait, work allowance and taper rate explained</li>
+          <li><a href="/guides/startup-grants-uk">UK Startup Grants 2025: Free Business Funding</a> — Innovate UK, Growth Hub grants and government schemes you never repay</li>
+          <li><a href="/guides/household-support-fund">Household Support Fund 2025</a> — Emergency council grants for food, energy and essential costs for families in hardship</li>
+          <li><a href="/guides/disabled-facilities-grant">Disabled Facilities Grant 2025: Up to £30,000</a> — Home adaptation funding for ramps, stairlifts, wet rooms and accessible bathrooms</li>
+        </ul>
+
+        <h2>Check Your Eligibility — Free Tool</h2>
+        <p>Use our <a href="/tools/eligibility">free UK grants eligibility checker</a> to discover which government grants, benefits and loans you are entitled to based on your personal circumstances.</p>
+
+        <h2>About UK Funding Hub</h2>
+        <p>UK Funding Hub is managed by an independent editorial team including <strong>Sarah Mitchell</strong> (MSc Public Policy, King's College London), <strong>James Okafor</strong> (BA Economics, University of Manchester, former UKRI assessor) and <strong>Priya Sharma</strong> (CIMA qualified, 6 years welfare policy experience). All data is verified against GOV.UK, DWP, Innovate UK and official council sources before publication.</p>
+        <p>Data sources: <a href="https://www.gov.uk/government/collections/find-a-grant" rel="noopener noreferrer">GOV.UK Find a Grant</a>, <a href="https://www.ukri.org/" rel="noopener noreferrer">UKRI</a>, <a href="https://www.gov.uk/dwp" rel="noopener noreferrer">DWP</a>, Ofgem, local council portals.</p>
+      </main>
+      <footer>
+        <p><strong>UK Funding Hub</strong> — Free UK grants, benefits &amp; loans database | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
+        <p>Data sourced from GOV.UK, DWP, Innovate UK and official UK government portals. Not affiliated with the UK government. For informational purposes only.</p>
+      </footer>
+    </div>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
+  <script>
+    // Remove static pre-render content the moment React is ready to hydrate.
+    // This ensures human users never see the static fallback.
+    document.addEventListener('DOMContentLoaded', function() {
+      var el = document.getElementById('prerender-static');
+      if (el) el.remove();
+    });
+  </script>
 </body>
 
 </html>
