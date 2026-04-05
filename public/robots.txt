@@ -1,10 +1,47 @@
+# UK Funding Hub — robots.txt
+# https://ukgrants.online/
+
 User-agent: *
 Allow: /
-
-# Block crawlers from hitting non-content pages
 Disallow: /src/
 Disallow: /node_modules/
 Disallow: /*.json$
 
-# Sitemap location
+# ── AI Crawler Management ─────────────────────────────────────────
+# Allow all AI crawlers to index content (helps with GEO/AEO visibility)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# ── Sitemap ───────────────────────────────────────────────────────
 Sitemap: https://ukgrants.online/sitemap.xml
+Sitemap: https://ukgrants.online/sitemap-index.xml

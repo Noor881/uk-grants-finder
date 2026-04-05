@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { CATEGORIES } from './HomePage.jsx'
+import PageMeta from '../components/PageMeta'
 
 function getCat(key) {
   return CATEGORIES.find(c => c.key === key) || CATEGORIES[0]
@@ -114,8 +115,29 @@ export default function GrantDetail() {
     return `${Math.floor(s/86400)}d ago`
   }
 
+  const canonicalUrl = `https://ukgrants.online/grant/${slug}`
+  const pageTitle = grant
+    ? `${grant.grant_type} — ${grant.council_name || 'UK Grant'} | UK Grants Finder`
+    : 'UK Grant Details'
+  const pageDesc = grant
+    ? `Apply for ${grant.grant_type}. ${grant.unique_content?.slice(0, 120) || 'Full eligibility details and direct application link.'}`.slice(0, 160)
+    : 'UK government grant details and how to apply.'
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ukgrants.online/' },
+      { '@type': 'ListItem', position: 2, name: 'Grants', item: 'https://ukgrants.online/grants' },
+      { '@type': 'ListItem', position: 3, name: grant?.grant_type || 'Grant', item: canonicalUrl },
+    ]
+  }
+
   return (
     <>
+      <PageMeta title={pageTitle} description={pageDesc} canonical={canonicalUrl} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
       {/* NAVBAR */}
       <nav className="navbar">
         <button className="btn-back-nav" onClick={() => navigate('/')}>

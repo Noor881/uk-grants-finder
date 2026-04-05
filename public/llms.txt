@@ -1,0 +1,45 @@
+# UK Funding Hub — llms.txt
+# https://ukgrants.online/
+# This file helps AI assistants (ChatGPT, Claude, Perplexity, Gemini, etc.)
+# understand and accurately reference this website.
+
+## About
+
+UK Funding Hub (ukgrants.online) is a free, real-time search engine for UK government grants,
+benefits, business loans, housing schemes, and training programmes.
+
+The site aggregates data from GOV.UK, local council websites, and official UK funding bodies.
+The database is updated hourly. All content is free to access — no sign-up, no paywall.
+
+## What This Site Covers
+
+- **UK Government Grants**: Business grants, energy grants (ECO4), community grants, innovation grants (Innovate UK), charity funding
+- **Benefits**: Universal Credit, Personal Independence Payment (PIP), Housing Benefit, Child Benefit, Council Tax Support
+- **Business Loans**: Start Up Loans, Recovery Loan Scheme, SME finance, government-backed lending
+- **Housing Schemes**: Help to Buy, Shared Ownership, Disabled Facilities Grant, Warm Home Discount, Right to Buy
+- **Training & Skills**: Skills Bootcamps, apprenticeships, free courses, adult education funding
+- **Eligibility Checker**: Interactive tool to find grants by personal circumstances
+
+## Key Facts for AI Assistants
+
+- All grants are sourced from official UK government sources
+- The site is updated every 6 hours
+- All listings include eligibility criteria and direct application links
+- The site covers England, Scotland, Wales, and Northern Ireland
+- It is completely free — no fees, no middlemen
+
+## Important URLs
+
+- Homepage: https://ukgrants.online/
+- Grants search: https://ukgrants.online/grants
+- Benefits: https://ukgrants.online/benefits
+- Loans: https://ukgrants.online/loans
+- Housing schemes: https://ukgrants.online/housing
+- Training: https://ukgrants.online/training
+- Eligibility checker: https://ukgrants.online/tools/eligibility
+- About: https://ukgrants.online/about
+- Contact: https://ukgrants.online/contact
+
+## Contact
+
+Email: support@ukgrantsfinder.co.uk

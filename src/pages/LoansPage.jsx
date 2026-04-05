@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import PageMeta from '../components/PageMeta'
 
 const CATS = [
   { key: 'all',       label: 'All Loans',     color: '#7c3aed' },
@@ -73,6 +74,11 @@ export default function LoansPage() {
 
   return (
     <div style={{ minHeight: '100vh' }}>
+      <PageMeta
+        title="UK Business Loans — Start Up Loans & SME Finance"
+        description="Find government-backed UK business loans: Start Up Loans (£500–£25,000), Recovery Loan Scheme, British Business Bank funding and SME finance schemes."
+        canonical="https://ukgrants.online/loans"
+      />
       <section style={{ padding: '48px 24px 40px', background: 'linear-gradient(180deg, rgba(124,58,237,0.06) 0%, transparent 100%)', borderBottom: '1px solid var(--border)', textAlign: 'center' }}>
         <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, marginBottom: 12 }}>
           🏦 Business Loans Finder

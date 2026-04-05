@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
+import PageMeta from '../components/PageMeta'
 
 export default function LandingPage() {
   const sections = [
@@ -67,6 +68,11 @@ export default function LandingPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
+      <PageMeta
+        title="UK Funding Hub — Find Grants, Benefits &amp; Loans"
+        description="Search thousands of UK government grants, benefits, loans and housing schemes. Free, real-time database from GOV.UK. Find funding you qualify for now."
+        canonical="https://ukgrants.online/"
+      />
 
       {/* ── HERO ── */}
       <section style={{
@@ -291,6 +297,108 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
+      </section>
+
+
+      {/* ── WHAT WE COVER (E-E-A-T + Keyword Depth) ── */}
+      <section style={{ maxWidth: 900, margin: '0 auto', padding: '60px 24px 20px' }}>
+        <h2 style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)',
+          fontWeight: 800,
+          textAlign: 'center',
+          color: 'var(--text-primary)',
+          marginBottom: 16,
+        }}>
+          The UK's Most Complete Free Funding Search
+        </h2>
+        <p style={{ textAlign: 'center', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: 700, margin: '0 auto 48px', fontSize: '0.97rem' }}>
+          UK Funding Hub aggregates grants, benefits, loans and housing schemes directly from GOV.UK, local councils, 
+          and UK funding bodies — covering England, Scotland, Wales and Northern Ireland. 
+          Our database is updated every 6 hours so you never miss a deadline. It's 100% free, with no sign-up required.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20, marginBottom: 48 }}>
+          {[
+            { title: '💰 Grants', items: ['Innovate UK Smart Grants', 'Community Grants', 'Energy Grants (ECO4)', 'Business Start-up Grants', 'Charity Funding'] },
+            { title: '🏛️ Benefits', items: ['Universal Credit', 'Personal Independence Payment', 'Housing Benefit', 'Child Benefit', 'Council Tax Support'] },
+            { title: '🏦 Loans & Finance', items: ['Start Up Loans (£500–£25,000)', 'Recovery Loan Scheme', 'British Business Bank', 'SME Finance', 'Invoice Finance'] },
+            { title: '🏠 Housing', items: ['Help to Buy', 'Shared Ownership', 'ECO4 Heating Grants', 'Disabled Facilities Grant', 'Warm Home Discount'] },
+          ].map(col => (
+            <div key={col.title} style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 16, padding: '20px 24px' }}>
+              <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 12, color: 'var(--text-primary)' }}>{col.title}</div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                {col.items.map(item => (
+                  <li key={item} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <span style={{ color: 'var(--accent-primary)', fontSize: '0.7rem' }}>▶</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FAQ SECTION (keyword-rich, no FAQPage schema) ── */}
+      <section style={{ maxWidth: 860, margin: '0 auto', padding: '0 24px 60px' }}>
+        <h2 style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)',
+          fontWeight: 800,
+          textAlign: 'center',
+          color: 'var(--text-primary)',
+          marginBottom: 8,
+        }}>
+          Frequently Asked Questions
+        </h2>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: 32, fontSize: '0.9rem' }}>
+          Everything you need to know about UK grants, benefits and funding in 2025
+        </p>
+        {[
+          {
+            q: 'What UK grants are available for individuals in 2025?',
+            a: 'Individuals in the UK can access the Household Support Fund, cost-of-living payments, Sure Start Maternity Grant, Disabled Facilities Grant (up to £30,000), Council Tax Reduction, and various local authority emergency grants. Energy grants like ECO4 are also available for homeowners and renters on qualifying benefits. Use our free eligibility checker to find which schemes apply to your situation.',
+          },
+          {
+            q: 'What are the best UK government grants for small businesses?',
+            a: 'Small businesses can apply for Innovate UK Smart Grants (up to £500,000 for R&D), UK Shared Prosperity Fund grants, Growth Hub support grants, Seed Enterprise Investment Scheme (SEIS), and sector-specific grants from bodies like Creative England and Innovate UK Edge. Many grants are regional — use our Business category filter to find schemes available in your area.',
+          },
+          {
+            q: 'How do I apply for ECO4 energy grants?',
+            a: 'ECO4 (Energy Company Obligation) is one of the UK\'s largest energy grants, providing free insulation, heat pumps, and heating upgrades to low-income households. To qualify, you typically need to be receiving Universal Credit, Pension Credit, or another qualifying benefit. Applications go through your energy supplier or a government-approved installer — not directly through GOV.UK.',
+          },
+          {
+            q: 'Are there UK grants for first-time home buyers?',
+            a: 'Yes. First-time buyers can access Help to Buy: Shared Ownership, First Homes scheme (30-50% discount on new builds), Lifetime ISA government bonus (25% on savings up to £4,000/year), and Right to Buy (for eligible council tenants). Search our Housing Schemes section to see all currently active programmes.',
+          },
+          {
+            q: 'What training and skills funding is available to adults in the UK?',
+            a: 'Adults in England can access Skills Bootcamps (free, flexible training in tech, engineering, and green jobs), Multiply (free numeracy courses), and Level 3 qualifications funded by the government. Apprenticeships are available at all ages. Scotland, Wales, and Northern Ireland have their own devolved programmes. Browse our Training & Skills section for full details.',
+          },
+          {
+            q: 'Is this website free? Do I need to create an account?',
+            a: 'Yes — UK Funding Hub is completely free with no account or sign-up required. We are not a grant agency or intermediary. We simply present publicly available information about grants and funding, with direct links to official application portals. We never charge fees or ask for personal financial information.',
+          },
+        ].map((faq, i) => (
+          <details key={i} style={{ borderBottom: '1px solid var(--border)', padding: '18px 0' }}>
+            <summary style={{
+              cursor: 'pointer',
+              fontWeight: 700,
+              fontSize: '1rem',
+              color: 'var(--text-primary)',
+              listStyle: 'none',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: 12,
+            }}>
+              {faq.q}
+              <span style={{ fontSize: '1.3rem', color: 'var(--accent-primary)', flexShrink: 0 }}>+</span>
+            </summary>
+            <p style={{ marginTop: 12, fontSize: '0.93rem', color: 'var(--text-secondary)', lineHeight: 1.75 }}>{faq.a}</p>
+          </details>
+        ))}
       </section>
 
       {/* ── FOOTER ── */}

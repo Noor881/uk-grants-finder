@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import PageMeta from '../components/PageMeta'
 
 const CATS = [
   { key: 'all',             label: 'All Training',    color: '#ec407a' },
@@ -63,6 +64,11 @@ export default function TrainingPage() {
 
   return (
     <div style={{ minHeight: '100vh' }}>
+      <PageMeta
+        title="Free UK Training & Skills Funding — Bootcamps 2025"
+        description="Find free UK training and skills funding: Skills Bootcamps, apprenticeships, free courses, adult education and government-funded programmes for 2025."
+        canonical="https://ukgrants.online/training"
+      />
       <section style={{ padding: '48px 24px 40px', background: 'linear-gradient(180deg, rgba(236,64,122,0.06) 0%, transparent 100%)', borderBottom: '1px solid var(--border)', textAlign: 'center' }}>
         <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, marginBottom: 12 }}>
           🎓 Training & Skills

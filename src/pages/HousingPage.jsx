@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import PageMeta from '../components/PageMeta'
 
 const CATS = [
   { key: 'all',          label: 'All Schemes',      color: '#00bfa5' },
@@ -64,6 +65,11 @@ export default function HousingPage() {
 
   return (
     <div style={{ minHeight: '100vh' }}>
+      <PageMeta
+        title="UK Housing Grants — ECO4, Help to Buy & Schemes"
+        description="Find UK housing grants and schemes: ECO4 energy grants, Help to Buy, Shared Ownership, Disabled Facilities Grant, Warm Home Discount and council housing support."
+        canonical="https://ukgrants.online/housing"
+      />
       <section style={{ padding: '48px 24px 40px', background: 'linear-gradient(180deg, rgba(0,191,165,0.06) 0%, transparent 100%)', borderBottom: '1px solid var(--border)', textAlign: 'center' }}>
         <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, marginBottom: 12 }}>
           🏠 Housing Schemes

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import PageMeta from '../components/PageMeta'
 
 const CATS = [
   { key: 'all',               label: 'All Benefits',     color: '#0066ff' },
@@ -63,6 +64,11 @@ export default function BenefitsPage() {
 
   return (
     <div style={{ minHeight: '100vh' }}>
+      <PageMeta
+        title="UK Benefits Finder — Universal Credit, PIP & More"
+        description="Find UK government benefits you qualify for: Universal Credit, Personal Independence Payment, Housing Benefit, Child Benefit and more. Free eligibility checker."
+        canonical="https://ukgrants.online/benefits"
+      />
       {/* Hero */}
       <section style={{
         padding: '48px 24px 40px',

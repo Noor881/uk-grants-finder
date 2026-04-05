@@ -6,6 +6,7 @@ import {
   Home, CreditCard, Users, Baby, LayoutGrid, Heart
 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import PageMeta from '../components/PageMeta'
 
 // ── Category config ───────────────────────────────────────────
 export const CATEGORIES = [
@@ -190,6 +191,11 @@ export default function HomePage() {
 
   return (
     <>
+      <PageMeta
+        title="Find UK Government Grants & Funding — 2025"
+        description="Search all UK government grants for businesses, individuals, charities and councils. Filter by category, status and amount. Updated every hour from GOV.UK."
+        canonical="https://ukgrants.online/grants"
+      />
       <nav className="navbar">
         <div className="navbar-logo"><Zap size={22} />UK Grants Finder</div>
         <div className="navbar-meta">

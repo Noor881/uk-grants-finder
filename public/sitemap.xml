@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <!-- Hub homepage -->
   <url>
     <loc>https://ukgrants.online/</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,26 +13,31 @@
   <!-- Main section finders -->
   <url>
     <loc>https://ukgrants.online/grants</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://ukgrants.online/benefits</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ukgrants.online/loans</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ukgrants.online/housing</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ukgrants.online/training</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
@@ -38,6 +45,7 @@
   <!-- Interactive tools -->
   <url>
     <loc>https://ukgrants.online/tools/eligibility</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -45,21 +53,25 @@
   <!-- Static pages -->
   <url>
     <loc>https://ukgrants.online/about</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ukgrants.online/contact</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ukgrants.online/privacy</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://ukgrants.online/terms</loc>
+    <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
