@@ -47,7 +47,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!api|assets|favicon|robots\\.txt|sitemap\\.xml|llms\\.txt|og-image).*)",
+      "source": "/((?!api|assets|favicon|robots\\.txt|sitemap\\.xml|llms\\.txt|og-image|83956a647312427ab45fbc96bd9512d8|ukgrants-indexnow).*)",
       "destination": "/index.html"
     }
   ]
