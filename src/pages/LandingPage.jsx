@@ -181,10 +181,10 @@ export default function LandingPage() {
         flexWrap: 'wrap',
       }}>
         {[
-          { num: '157+', label: 'Live Grants' },
+          { num: '343+', label: 'Live Grants' },
           { num: '5',    label: 'Funding Types' },
           { num: 'Free', label: 'Always Free' },
-          { num: '6hr',  label: 'Update Cycle' },
+          { num: 'Daily', label: 'Update Cycle' },
         ].map((s, i) => (
           <div key={i} style={{
             padding: '20px 40px',

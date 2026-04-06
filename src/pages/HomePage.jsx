@@ -192,17 +192,10 @@ export default function HomePage() {
   return (
     <>
       <PageMeta
-        title="Find UK Government Grants & Funding — 2025"
-        description="Search all UK government grants for businesses, individuals, charities and councils. Filter by category, status and amount. Updated every hour from GOV.UK."
+        title="Find UK Government Grants & Funding — 2026"
+        description="Search all UK government grants for businesses, individuals, charities and councils. Filter by category, status and amount. Updated daily from GOV.UK."
         canonical="https://ukgrants.online/grants"
       />
-      <nav className="navbar">
-        <div className="navbar-logo"><Zap size={22} />UK Grants Finder</div>
-        <div className="navbar-meta">
-          {online ? <><span className="live-dot" /> Live</> : <><WifiOff size={13} /> Offline</>}
-          {lastFetched && <span style={{ marginLeft: 8 }}>· {timeAgo(lastFetched)}</span>}
-        </div>
-      </nav>
 
       <section className="hero">
         <div className="hero-badge"><Wifi size={12} />Real-time · Auto-Updated Every Hour</div>
