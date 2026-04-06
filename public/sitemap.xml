@@ -2,26 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Core pages -->
-  <url><loc>https://ukgrants.online/</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/grants</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/benefits</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/loans</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/housing</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/training</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/tools/eligibility</loc><lastmod>2026-04-06</lastmod></url>
+  <url><loc>https://ukgrants.online/</loc><lastmod>2026-04-06</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://ukgrants.online/grants</loc><lastmod>2026-04-06</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ukgrants.online/benefits</loc><lastmod>2026-04-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ukgrants.online/loans</loc><lastmod>2026-04-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/housing</loc><lastmod>2026-04-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/training</loc><lastmod>2026-04-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/tools/eligibility</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- Guides / Blog -->
-  <url><loc>https://ukgrants.online/guides</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/guides/eco4-grant-guide</loc><lastmod>2025-12-10</lastmod></url>
-  <url><loc>https://ukgrants.online/guides/universal-credit-guide</loc><lastmod>2025-11-20</lastmod></url>
-  <url><loc>https://ukgrants.online/guides/startup-grants-uk</loc><lastmod>2026-01-05</lastmod></url>
-  <url><loc>https://ukgrants.online/guides/household-support-fund</loc><lastmod>2026-02-01</lastmod></url>
-  <url><loc>https://ukgrants.online/guides/disabled-facilities-grant</loc><lastmod>2026-01-18</lastmod></url>
+  <!-- Guides index -->
+  <url><loc>https://ukgrants.online/guides</loc><lastmod>2026-04-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
-  <!-- Trust pages -->
-  <url><loc>https://ukgrants.online/about</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/contact</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/privacy</loc><lastmod>2026-04-06</lastmod></url>
-  <url><loc>https://ukgrants.online/terms</loc><lastmod>2026-04-06</lastmod></url>
+  <!-- Original guides (2025) -->
+  <url><loc>https://ukgrants.online/guides/eco4-grant-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ukgrants.online/guides/universal-credit-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ukgrants.online/guides/startup-grants-uk</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/household-support-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/disabled-facilities-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- New guides batch 1 (April 2026) -->
+  <url><loc>https://ukgrants.online/guides/council-tax-reduction</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/innovate-uk-grants</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/carers-allowance-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/free-childcare-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/uk-energy-grants-2025</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- City guides batch (April 2026) -->
+  <url><loc>https://ukgrants.online/guides/london-grants-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/manchester-grants-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/birmingham-grants-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/scotland-grants-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/bristol-grants-guide</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- 2026 topical guides (April 2026) -->
+  <url><loc>https://ukgrants.online/guides/spring-budget-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ukgrants.online/guides/universal-credit-rates-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ukgrants.online/guides/national-living-wage-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ukgrants.online/guides/renters-rights-act-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ukgrants.online/guides/uk-business-grants-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
+  <!-- Local area city guides (April 2026) -->
+  <url><loc>https://ukgrants.online/guides/leeds-grants-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/liverpool-grants-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/newcastle-north-east-grants-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/cardiff-wales-grants-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/guides/sheffield-yorkshire-grants-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Trust / static pages -->
+  <url><loc>https://ukgrants.online/about</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ukgrants.online/contact</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://ukgrants.online/privacy</loc><lastmod>2026-04-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://ukgrants.online/terms</loc><lastmod>2026-04-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
 </urlset>

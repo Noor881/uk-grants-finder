@@ -24,6 +24,7 @@ const TABLES = [
 
 // Static URLs always included in every submission
 const STATIC_URLS = [
+  // Core pages
   `${SITE}/`,
   `${SITE}/grants`,
   `${SITE}/benefits`,
@@ -33,17 +34,44 @@ const STATIC_URLS = [
   `${SITE}/about`,
   `${SITE}/contact`,
   `${SITE}/tools/eligibility`,
+
+  // Guides index
   `${SITE}/guides`,
+
+  // Original guides
   `${SITE}/guides/eco4-grant-guide`,
   `${SITE}/guides/universal-credit-guide`,
   `${SITE}/guides/startup-grants-uk`,
   `${SITE}/guides/household-support-fund`,
   `${SITE}/guides/disabled-facilities-grant`,
+
+  // Batch 1 guides (April 2026)
   `${SITE}/guides/council-tax-reduction`,
   `${SITE}/guides/innovate-uk-grants`,
   `${SITE}/guides/carers-allowance-guide`,
   `${SITE}/guides/free-childcare-guide`,
   `${SITE}/guides/uk-energy-grants-2025`,
+
+  // City guides batch 1
+  `${SITE}/guides/london-grants-guide`,
+  `${SITE}/guides/manchester-grants-guide`,
+  `${SITE}/guides/birmingham-grants-guide`,
+  `${SITE}/guides/scotland-grants-guide`,
+  `${SITE}/guides/bristol-grants-guide`,
+
+  // 2026 topical guides
+  `${SITE}/guides/spring-budget-2026`,
+  `${SITE}/guides/universal-credit-rates-2026`,
+  `${SITE}/guides/national-living-wage-2026`,
+  `${SITE}/guides/renters-rights-act-2026`,
+  `${SITE}/guides/uk-business-grants-2026`,
+
+  // Local area city guides (April 2026)
+  `${SITE}/guides/leeds-grants-2026`,
+  `${SITE}/guides/liverpool-grants-2026`,
+  `${SITE}/guides/newcastle-north-east-grants-2026`,
+  `${SITE}/guides/cardiff-wales-grants-2026`,
+  `${SITE}/guides/sheffield-yorkshire-grants-2026`,
 ]
 
 async function fetchSlugs(table, path, slugCol) {
