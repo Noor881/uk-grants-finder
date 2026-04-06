@@ -400,4 +400,425 @@ No. Home energy improvement grants are not treated as taxable income.`,
     ],
     relatedSlugs: ['eco4-grant-guide', 'disabled-facilities-grant', 'household-support-fund'],
   },
+
+  'london-grants-guide': {
+    author: 'sarah',
+    datePublished: '2026-04-01T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1350,
+    primaryKeyword: 'London grants 2025',
+    intro: `London is home to more government grant programmes than any other region in the UK — yet many London residents and businesses never access the funding available to them. From Greater London Authority (GLA) grants to borough-level council funding and national schemes with London-specific rates, this guide covers every major source of free government money available in the capital in 2025.`,
+    sections: [
+      {
+        h2: 'GLA and Mayoral Grants for London',
+        body: `The Greater London Authority runs several grant programmes for London residents and businesses:
+
+**Warm Homes Discount:** London households on Pension Credit receive an automatic £150 discount on their electricity bill each winter. Lower-income London households may also qualify — contact your energy supplier.
+
+**Mayor's Reuse and Repair Fund:** Grants for London community organisations running repair cafes, reuse hubs, and tool libraries to reduce waste in London.
+
+**Green New Deal grants:** London businesses can access GLA-backed grants for low-carbon retrofitting, electric vehicle fleet upgrades, and clean energy installations.
+
+Find all London-specific grants in our [grants database](/grants?location=london).`,
+      },
+      {
+        h2: 'London Borough Council Grants',
+        body: `Every London borough operates its own grants programme. Key examples in 2025:
+
+**Tower Hamlets:** Community grants of £1,000–£20,000 for local organisations serving Tower Hamlets residents.
+
+**Southwark Council:** Discretionary Housing Payments (DHP) for residents struggling with rent in Southwark.
+
+**Westminster City Council:** Business support grants for small businesses trading in Westminster borough.
+
+**Hackney:** Community Energy Fund grants for Hackney residents installing solar panels or improving home energy efficiency.
+
+Contact your specific borough council for current grant programmes — they change quarterly.`,
+      },
+      {
+        h2: 'National Grants Available in London',
+        body: `Several national UK grant schemes have particularly strong uptake and availability in London:
+
+**ECO4:** Greater London Authority operates LA Flex referrals, meaning London households who would not normally qualify nationally may be referred by the GLA. See our [ECO4 guide](/guides/eco4-grant-guide).
+
+**Innovate UK:** London has the highest density of Innovate UK-funded businesses in the UK, particularly in Shoreditch Tech City, Canary Wharf fintech, and King's Cross life sciences. See our [Innovate UK guide](/guides/innovate-uk-grants).
+
+**Start Up Loans:** The government's Start Up Loan scheme (up to £25,000, interest rate 6%) is available to London entrepreneurs. Delivered through local enterprise partners in London.`,
+      },
+      {
+        h2: 'London Cost of Living Grants',
+        body: `London residents face some of the highest living costs in the UK. Key financial support available:
+
+**Household Support Fund:** London councils distribute Household Support Fund money for food, energy, and essential costs. Each London borough has its own application process.
+
+**Discretionary Housing Payments:** Additional housing support beyond Housing Benefit, available from all London boroughs for residents in housing difficulty.
+
+**Free School Meals:** All primary school children in London schools receive free meals (Mayor of London's universal provision). Secondary school students from low-income families also qualify nationally.
+
+Check our [benefits database](/benefits) for the full list of London-accessible benefits.`,
+      },
+      {
+        h2: 'How to Apply for London Grants',
+        body: `**Step 1:** Search our [London grants database](/grants) filtered by London location.
+
+**Step 2:** Visit the [Business Gateway London](https://www.london.gov.uk/business) for business-specific support.
+
+**Step 3:** Contact your London borough council directly — many grants are not advertised online.
+
+**Step 4:** Use our [eligibility checker](/tools/eligibility) to see all national grants you qualify for regardless of location.
+
+**Step 5:** For business grants, contact your local Business Improvement District (BID) — most London commercial areas have one.`,
+      },
+    ],
+    conclusion: {
+      summary: 'London has more grant funding available than any other UK region. Between GLA programmes, borough council grants, and national schemes, most London residents and businesses can access some form of free financial support in 2025.',
+      nextSteps: [
+        'Search [London grants](/grants) in our database',
+        'Check [ECO4 eligibility](/guides/eco4-grant-guide) for your London home',
+        'Use our [eligibility checker](/tools/eligibility)',
+      ],
+    },
+    faqs: [
+      { q: 'Are there grants specifically for London businesses?', a: 'Yes — the GLA, London Enterprise Action Partnership (LEAP), and individual London boroughs all run business grant schemes in addition to national programmes.' },
+      { q: 'Can London renters get energy grants?', a: 'Yes. ECO4 and the Warm Homes Discount are both available to renters, though ECO4 requires landlord consent for physical works.' },
+    ],
+    relatedSlugs: ['eco4-grant-guide', 'innovate-uk-grants', 'household-support-fund'],
+  },
+
+  'manchester-grants-guide': {
+    author: 'james',
+    datePublished: '2026-04-01T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1300,
+    primaryKeyword: 'Manchester grants 2025',
+    intro: `Greater Manchester is one of the best-funded regions outside London, with a Combined Authority, a Metro Mayor, and 10 individual borough councils all running grant programmes in 2025. Whether you're a Manchester resident needing cost of living support or a business looking for growth funding, this guide covers every major source of free government money available in Greater Manchester.`,
+    sections: [
+      {
+        h2: 'Greater Manchester Combined Authority (GMCA) Grants',
+        body: `The GMCA distributes significant funding for Greater Manchester businesses and residents:
+
+**GM Business Fund:** Grants of £5,000–£100,000 for Greater Manchester SMEs investing in equipment, premises, or new markets. Delivered through the Growth Company.
+
+**GM Skills Fund:** Subsidised training and skills development for Greater Manchester businesses, particularly in advanced manufacturing, digital, health, and green energy.
+
+**Bee Network transport grants:** Subsidised travel and transport support for low-income Greater Manchester residents accessing work, training, or healthcare.
+
+Visit [greatermanchester-ca.gov.uk](https://www.greatermanchester-ca.gov.uk) for current funding opportunities.`,
+      },
+      {
+        h2: 'Manchester City Council Grants',
+        body: `Manchester City Council runs several key grant programmes:
+
+**ECO4 Boiler Scheme:** Manchester City Council actively refers eligible households through the LA Flex route. Eligible households receive free boiler replacements and insulation with no upfront cost. See our [full ECO4 guide](/guides/eco4-grant-guide).
+
+**Manchester Discretionary Support Scheme:** Emergency financial support for Manchester residents in crisis — covering food, energy, and essential household items.
+
+**Community Safety grants:** Funding for Manchester community organisations delivering crime prevention and neighbourhood safety programmes.
+
+Contact Manchester City Council on 0161 234 5000 or visit manchester.gov.uk.`,
+      },
+      {
+        h2: 'Manchester Business Grants',
+        body: `Manchester businesses have access to some of the most generous regional business grant funding in the UK:
+
+**Growth Company grants:** As the GMCA's business growth arm, the Growth Company delivers grants via MediaCityUK (creative and digital), Manchester Airport Growth Fund (logistics and supply chain), and sector-specific innovation grants.
+
+**Innovate UK:** Manchester has a thriving innovation ecosystem. The city hosts significant Innovate UK-funded businesses in health tech, clean energy, and AI. Read our [Innovate UK guide](/guides/innovate-uk-grants).
+
+**Manchester Digital:** Digital technology businesses in Manchester can access subsidised innovation support and grant funding through Manchester Digital, the UK's largest tech cluster outside London.`,
+      },
+      {
+        h2: 'Energy and Housing Grants in Manchester',
+        body: `Manchester residents can access several energy and housing grant schemes:
+
+**ECO4:** Available to Manchester households on benefits or with poor EPC ratings. Manchester City Council actively refers through LA Flex. Contact your energy supplier or call 0800 444 202.
+
+**Greater Manchester Housing Schemes:** Shared ownership and affordable housing schemes are actively promoted by GMCA. Visit [gmhousing.co.uk](https://www.gmhousing.co.uk) for current availability.
+
+**Household Support Fund:** Manchester City Council distributes HSF money quarterly. Apply via manchester.gov.uk/support for food and energy help.`,
+      },
+      {
+        h2: 'How to Apply for Manchester Grants',
+        body: `**Step 1:** Search our [Manchester grants database](/grants) filtered by location.
+
+**Step 2:** Contact the Growth Company at growthco.uk for business grants.
+
+**Step 3:** Contact Manchester City Council (0161 234 5000) for resident support schemes.
+
+**Step 4:** Use our [eligibility checker](/tools/eligibility) for national grants.
+
+**Step 5:** Visit Business Gateway Manchester for free business advice and grant application support.`,
+      },
+    ],
+    conclusion: {
+      summary: 'Greater Manchester has some of the best regional grant funding outside London — covering businesses, residents, energy efficiency, and skills development.',
+      nextSteps: [
+        'Search [Manchester grants](/grants) in our database',
+        'Read the [ECO4 grant guide](/guides/eco4-grant-guide) for free home upgrades',
+        'View all [business grants](/grants) available in Manchester',
+      ],
+    },
+    faqs: [
+      { q: 'Are grants available in all 10 Greater Manchester boroughs?', a: 'Yes — Salford, Trafford, Bolton, Bury, Oldham, Rochdale, Stockport, Tameside, and Wigan all have their own grant schemes in addition to GMCA-wide programmes.' },
+      { q: 'Can Manchester businesses get grants for hiring?', a: 'Yes — the GMCA Skills Fund and Apprenticeship Incentive both provide payment for taking on new staff or training existing employees.' },
+    ],
+    relatedSlugs: ['eco4-grant-guide', 'innovate-uk-grants', 'startup-grants-uk'],
+  },
+
+  'birmingham-grants-guide': {
+    author: 'james',
+    datePublished: '2026-04-02T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1300,
+    primaryKeyword: 'Birmingham grants 2025',
+    intro: `Birmingham is the UK's second largest city and home to a wide range of government grants for both residents and businesses in 2025. From West Midlands Combined Authority (WMCA) business grants to Birmingham City Council resident support schemes and national funding with strong Birmingham uptake — this guide covers all the major funding sources available to you.`,
+    sections: [
+      {
+        h2: 'West Midlands Combined Authority Grants',
+        body: `The WMCA manages significant funding for businesses and residents across Birmingham and surrounding areas:
+
+**West Midlands Investment Fund:** Grants and loans for West Midlands SMEs investing in growth, exports, and innovation. Delivered through Midlands Engine.
+
+**West Midlands Construction & Housing Skills Fund:** Funded training for careers in construction, housebuilding, and civil engineering in the West Midlands — fully subsidised for unemployed residents.
+
+**Levelling Up Birmingham:** WMCA manages Levelling Up Fund money for infrastructure, regeneration, and community projects across Birmingham and Solihull.
+
+Visit [wmca.org.uk](https://www.wmca.org.uk) for current grant rounds.`,
+      },
+      {
+        h2: 'Birmingham City Council Resident Grants',
+        body: `Despite financial pressures, Birmingham City Council still operates several support schemes:
+
+**Birmingham Discretionary Support Scheme:** Emergency grants for Birmingham residents in financial crisis — for food, utility bills, and essential household items.
+
+**First-Time Buyer Scheme:** Birmingham City Council offers shared ownership and Help to Buy support for first-time buyers in Birmingham. Read about this in our [housing schemes guide](/housing).
+
+**Birmingham Free School Meals Extension:** Birmingham has extended free school meals beyond the national criteria in some wards — check with your child's school.
+
+Call Birmingham City Council on 0121 303 1111 for current grant availability.`,
+      },
+      {
+        h2: 'Birmingham Business Grants',
+        body: `Birmingham businesses can access significant grant funding in 2025:
+
+**Business Growth West Midlands:** Grants of £1,000–£150,000 for West Midlands businesses investing in equipment, technology, or premises. Requires match funding.
+
+**GBSLEP (Greater Birmingham and Solihull Local Enterprise Partnership):** Sector-specific grants for Birmingham businesses in advanced manufacturing, professional services, and health and life sciences.
+
+**Innovate UK:** Birmingham has growing clusters in automotive tech (near the NEC), FinTech, and green energy. Many Birmingham businesses have successfully accessed Innovate UK SMART grants. See our [Innovate UK guide](/guides/innovate-uk-grants).`,
+      },
+      {
+        h2: 'Energy Grants in Birmingham',
+        body: `Birmingham residents can access national energy grants with council support:
+
+**ECO4:** Birmingham City Council actively refers households via LA Flex. Local energy charity NEA (National Energy Action) also operates in Birmingham and can refer households directly to installers. Call 0800 444 202.
+
+**Household Support Fund:** Birmingham distributes HSF money for food and energy. Apply via birmingham.gov.uk/support or through Citizens Advice Birmingham.
+
+**Birmingham Energy Savers:** A local project supporting Birmingham homeowners and renters in accessing energy efficiency measures — available via birminghamenergysavers.net.`,
+      },
+      {
+        h2: 'How to Apply for Birmingham Grants',
+        body: `**Step 1:** Search our [Birmingham grants database](/grants) for local schemes.
+
+**Step 2:** Contact Business Growth West Midlands at businessgrowthwestmidlands.com for business funding.
+
+**Step 3:** Call Birmingham City Council (0121 303 1111) for resident support.
+
+**Step 4:** Use our [eligibility checker](/tools/eligibility) to find national grants.
+
+**Step 5:** Contact Citizens Advice Birmingham for independent grants guidance.`,
+      },
+    ],
+    conclusion: {
+      summary: 'Birmingham residents and businesses have access to WMCA funding, national grant schemes, and Birmingham City Council support programmes. Use this guide as your starting point.',
+      nextSteps: [
+        'Search [Birmingham grants](/grants) in our database',
+        'Check [ECO4 eligibility](/guides/eco4-grant-guide)',
+        'View [Innovate UK business grants](/guides/innovate-uk-grants)',
+      ],
+    },
+    faqs: [
+      { q: 'Are there grants for Birmingham small businesses?', a: 'Yes — Business Growth West Midlands, GBSLEP, and WMCA all offer grants specifically for small and medium enterprises in Birmingham.' },
+      { q: 'Can Birmingham renters get grants?', a: 'Yes. Energy grants (ECO4, Warm Home Discount) are available to renters. Benefits and financial support grants are also available regardless of tenure.' },
+    ],
+    relatedSlugs: ['eco4-grant-guide', 'innovate-uk-grants', 'disabled-facilities-grant'],
+  },
+
+  'scotland-grants-guide': {
+    author: 'sarah',
+    datePublished: '2026-04-02T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1350,
+    primaryKeyword: 'Scotland grants 2025',
+    intro: `Scotland has some of the most generous grant and financial support programmes in the UK — including schemes that go significantly beyond what is available in England. From Scottish Government energy grants to Business Gateway funding and unique Scottish benefits, this guide covers all the key sources of free money available to Scottish residents and businesses in 2025.`,
+    sections: [
+      {
+        h2: 'Scottish Government Grants for Residents',
+        body: `Scotland offers several grants and benefits that are either unique to Scotland or more generous than England:
+
+**Free Childcare (30 hours for all 3–4 year olds):** In Scotland, all 3 and 4 year olds receive 30 hours of free childcare per week — regardless of whether parents work. This is more generous than England's scheme. See our full [childcare guide](/guides/free-childcare-guide).
+
+**Scottish Child Payment:** £26.70 per week per child (under 16) for families on qualifying benefits in Scotland. Not available in England.
+
+**Best Start Grant:** Pregnancy and Baby Payment (£754.65), Early Learning Payment (£335.40), and School Age Payment (£335.40) for low-income Scottish families.
+
+**Free Personal Care:** Scotland provides free personal care for adults aged 65+ regardless of income — a significant benefit not available in England.`,
+      },
+      {
+        h2: 'HEEPS — Scottish Home Energy Grants',
+        body: `The Home Energy Efficiency Programmes for Scotland (HEEPS) fund energy improvements for Scottish households through a network of local authority and national schemes:
+
+**Warmer Homes Scotland:** Free energy efficiency improvements for fuel-poor Scottish households — insulation, heating systems, and renewables. Delivered by Home Energy Scotland. Call 0808 808 2282 (free).
+
+**Area Based Schemes (ABS):** Local council-led schemes that improve energy efficiency street by street in Scotland's most fuel-poor areas. Over £200 million invested since 2013.
+
+**Cashback for Businesses scheme:** Scottish Government cashback grants for businesses installing energy-saving equipment.
+
+Contact Home Energy Scotland on 0808 808 2282 — free advice and referrals for all Scottish households.`,
+      },
+      {
+        h2: 'Business Gateway and Scottish Enterprise Grants',
+        body: `Scotland has a well-funded business support ecosystem:
+
+**Business Gateway:** Free business advice and small grants for Scottish businesses. Available in every local authority area. Visit bgateway.com.
+
+**Scottish Enterprise Regional Selective Assistance (RSA):** Capital grants for larger Scottish businesses or inward investment projects creating or safeguarding jobs in Scotland. Grants from £10,000 to several million pounds.
+
+**Scottish EDGE:** Grants of up to £100,000 for Scottish high-growth startups and social enterprises competing in the Scottish EDGE competition.
+
+**Highlands and Islands Enterprise (HIE):** Additional grant funding available for businesses in the Highlands and Islands — often more generous than central Scotland rates due to remoteness premiums.
+
+**Innovate UK in Scotland:** Scottish businesses can access all UK-wide Innovate UK funding. See our [Innovate UK guide](/guides/innovate-uk-grants).`,
+      },
+      {
+        h2: 'Scottish Benefits — Unique to Scotland',
+        body: `Scotland has devolved some welfare powers and created several unique benefit programmes through Social Security Scotland:
+
+**Disability payments:** Adult Disability Payment (replacing PIP in Scotland), Child Disability Payment, Carer Support Payment (replacing Carer's Allowance).
+
+**Winter Heating Payment:** An annual £58.75 payment for Scottish households on qualifying low-income benefits — regardless of weather conditions. More predictable than England's Winter Fuel Payment.
+
+**Funeral Support Payment:** Grants for low-income Scottish households meeting funeral costs — no upper limit on actual funeral costs covered.
+
+Check [mygov.scot](https://www.mygov.scot) for the complete list of Scottish benefits you may be entitled to.`,
+      },
+      {
+        h2: 'How to Apply for Scotland Grants',
+        body: `**Step 1:** Visit [mygov.scot](https://www.mygov.scot) for Scottish Government benefit and grant applications.
+
+**Step 2:** Contact Home Energy Scotland on 0808 808 2282 for energy grants.
+
+**Step 3:** Contact Business Gateway at bgateway.com for business grants.
+
+**Step 4:** Use our [eligibility checker](/tools/eligibility) for national UK grants also available in Scotland.
+
+**Step 5:** Contact your local council for any local authority-specific grant programmes.`,
+      },
+    ],
+    conclusion: {
+      summary: 'Scotland offers some of the UK\'s most generous grant and benefit programmes — including unique Scottish payments, free personal care, and strong home energy schemes. Make sure you\'re claiming everything you\'re entitled to.',
+      nextSteps: [
+        'Visit [mygov.scot](https://www.mygov.scot) for Scottish Government support',
+        'Call Home Energy Scotland on 0808 808 2282 for energy grants',
+        'Check [Scotland grants](/grants) in our database',
+      ],
+    },
+    faqs: [
+      { q: 'Are Scottish Government grants available to everyone in Scotland?', a: 'Most Scottish Government grants and benefits are available to anyone resident in Scotland, regardless of where they were born or their nationality. Some require a minimum period of residency.' },
+      { q: 'Can Scottish businesses get both Scottish and UK-wide grants?', a: 'Yes. Scottish businesses can access Scottish Enterprise, Business Gateway, and HIE grants alongside UK-wide programmes like Innovate UK and the Start Up Loan scheme.' },
+    ],
+    relatedSlugs: ['eco4-grant-guide', 'innovate-uk-grants', 'free-childcare-guide'],
+  },
+
+  'bristol-grants-guide': {
+    author: 'james',
+    datePublished: '2026-04-03T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1250,
+    primaryKeyword: 'Bristol grants 2025',
+    intro: `Bristol is one of the UK's greenest and most innovative cities — and that's reflected in its grant landscape. Bristol residents and businesses can access Bristol City Council schemes, West of England Growth Hub funding, national grants, and a range of green economy grants specific to the Bristol region in 2025.`,
+    sections: [
+      {
+        h2: 'Bristol City Council Grants',
+        body: `Bristol City Council operates several key grant programmes:
+
+**Bristol Small Business Resilience Grant:** Grants of £5,000–£25,000 for Bristol businesses in creative industries, green technology, digital, and health sectors. Delivered via the West of England Growth Hub.
+
+**Bristol Household Support Fund:** Emergency grants for Bristol residents struggling with food, energy, and essential costs. Apply via bristol.gov.uk/support.
+
+**Bristol Clean Air Zone Fund:** Support for Bristol businesses replacing polluting vehicles to comply with Bristol's Clean Air Zone.
+
+**Bristol One City Climate Fund:** Grants for Bristol grassroots organisations delivering climate action and clean energy projects.
+
+Contact Bristol City Council at 0117 922 2000 or visit bristol.gov.uk.`,
+      },
+      {
+        h2: 'West of England Growth Hub Grants',
+        body: `The West of England Growth Hub serves the Bristol, Bath and North East Somerset, and South Gloucestershire area:
+
+**Growth Through People:** Subsidised leadership and management training for West of England businesses — up to £1,500 per place fully funded.
+
+**Scale Up West of England:** Grants for high-growth West of England businesses scaling operations, entering new markets, or investing in automation.
+
+**Innovation grants:** Business R&D grants through the West of England Innovation Programme, targeted at clean tech, advanced engineering, and creative industries.
+
+Visit growthworks.co.uk for current Bristol and West of England grant rounds.`,
+      },
+      {
+        h2: 'Bristol Energy and Housing Grants',
+        body: `Bristol is a leader in community energy and has strong home energy grant uptake:
+
+**ECO4 in Bristol:** Bristol City Council actively refers households through LA Flex, particularly in wards identified as fuel poor. Call 0800 444 202 or visit bristol.gov.uk/eco4.
+
+**Bristol City Leap:** Bristol's City Leap initiative funds large-scale clean energy infrastructure. Local businesses and residents may benefit from subsidised installation of heat networks and district heating systems.
+
+**Living rent grants:** Bristol has piloted selective licensing in some private rental areas, pushing landlords to improve energy efficiency — benefiting renters indirectly.
+
+**Disabled Facilities Grant:** Bristol processes DFG applications through Bristol City Council's Occupational Therapy team. Read our [DFG guide](/guides/disabled-facilities-grant).`,
+      },
+      {
+        h2: 'Bristol Creative and Social Enterprise Grants',
+        body: `Bristol has a thriving creative and social economy with dedicated grant funding:
+
+**Bristol Arts Council funding:** Some Bristol arts organisations have direct commissioning relationships with Bristol City Council, and the city allocates millions annually to arts and culture.
+
+**UnLtd Bristol:** Social entrepreneurs in Bristol can access UnLtd grants of £500–£15,000 to develop social enterprises addressing Bristol community challenges.
+
+**Quartet Community Foundation:** A Bristol-based funder supporting Bristol community organisations with grants from £500 to £30,000.
+
+These are particularly relevant for community groups, charities, and social enterprises operating in Bristol.`,
+      },
+      {
+        h2: 'How to Apply for Bristol Grants',
+        body: `**Step 1:** Search our [Bristol grants database](/grants?location=bristol) for current schemes.
+
+**Step 2:** Contact the West of England Growth Hub at growthworks.co.uk for business funding.
+
+**Step 3:** Visit bristol.gov.uk for resident support schemes.
+
+**Step 4:** Use our [eligibility checker](/tools/eligibility) for national grants.
+
+**Step 5:** Contact Business West (the West of England Chamber of Commerce) for free grant application support.`,
+      },
+    ],
+    conclusion: {
+      summary: 'Bristol offers a combination of City Council grants, West of England Growth Hub business funding, national schemes, and unique green economy grants. Explore all the options available to you.',
+      nextSteps: [
+        'Search [Bristol grants](/grants) in our database',
+        'Contact the West of England Growth Hub at growthworks.co.uk',
+        'Check [ECO4 eligibility](/guides/eco4-grant-guide)',
+      ],
+    },
+    faqs: [
+      { q: 'Are Bristol grants available to surrounding areas like Bath and Weston-super-Mare?', a: 'West of England Growth Hub grants cover Bristol, Bath and North East Somerset, and South Gloucestershire. Bath residents should also check Bath and North East Somerset Council schemes.' },
+      { q: 'Does Bristol have grants for cyclists or EV owners?', a: 'Yes — Bristol has several sustainable transport grants including subsidies for cargo bikes for businesses and EV charging equipment, particularly for businesses in the Clean Air Zone. Contact Bristol City Council transport team.' },
+    ],
+    relatedSlugs: ['eco4-grant-guide', 'startup-grants-uk', 'disabled-facilities-grant'],
+  },
 }

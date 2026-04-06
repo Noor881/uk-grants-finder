@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Clock, Calendar, ExternalLink, ChevronRight, User, Edit3, Shield } from 'lucide-react'
 import PageMeta from '../components/PageMeta'
 import { GUIDES } from './BlogPage'
+import { NEW_ARTICLES } from './BlogPostNewArticles'
 
 // ── Article Authors ─────────────────────────────────────────────────────────
 // Each author maps to a Person schema + visible bio block on the post
@@ -44,7 +45,7 @@ const AUTHORS = {
 //  - 2-3 external links to high-authority sources
 //  - Conclusion section with clear CTA
 
-const ARTICLE_CONTENT = {
+const ARTICLE_CONTENT = { ...NEW_ARTICLES,
   'eco4-grant-guide': {
     author: 'priya',
     datePublished: '2025-12-10T09:00:00+00:00',
@@ -628,8 +629,6 @@ function renderBody(body, guide, internalLink) {
   return rendered
 }
 
-import { NEW_ARTICLES } from './BlogPostNewArticles'
-Object.assign(ARTICLE_CONTENT, NEW_ARTICLES)
 
 // ── Main Component ──────────────────────────────────────────────────────────
 export default function BlogPost() {
@@ -702,7 +701,7 @@ export default function BlogPost() {
   }
 
   // HowTo schema — for articles with numbered apply steps (technical-article.md requirement)
-  const howToSections = content.sections.filter(s => s.h2.toLowerCase().includes('how to') || s.h2.toLowerCase().includes('step'))
+  const howToSections = (content.sections || []).filter(s => s.h2.toLowerCase().includes('how to') || s.h2.toLowerCase().includes('step'))
   const howToSchema = howToSections.length > 0 ? {
     '@context': 'https://schema.org/',
     '@type': 'HowTo',
