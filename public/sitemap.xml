@@ -54,4 +54,124 @@
   <url><loc>https://ukgrants.online/privacy</loc><lastmod>2026-04-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://ukgrants.online/terms</loc><lastmod>2026-04-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
+  <!-- City-specific grant pages — London Boroughs (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/tower-hamlets-household-support-fund-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/hackney-business-growth-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/southwark-healthy-homes-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/newham-startup-grant-2026</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/lambeth-community-chest-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/camden-green-homes-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/islington-social-enterprise-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/haringey-families-together-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/brent-green-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/waltham-forest-creative-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/croydon-tech-city-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/ealing-green-growth-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/hounslow-heathrow-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/enfield-green-logistics-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/barking-dagenham-east-london-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/greater-london-authority-green-new-deal-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/london-mayor-good-growth-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- City-specific grant pages — Greater Manchester (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/manchester-tech-seed-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/salford-startup-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/trafford-retail-high-street-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/bolton-innovation-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/oldham-community-asset-transfer-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/rochdale-social-enterprise-town-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/wigan-coal-country-heritage-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/stockport-clean-air-zone-business-support</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/bury-active-travel-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/tameside-inclusive-communities-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/manchester-world-city-cultural-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/greater-manchester-digital-inclusion-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City-specific grant pages — West Midlands (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/birmingham-business-rates-relief</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/wmca-net-zero-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/coventry-social-enterprise-seed-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/wolverhampton-retail-high-street-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/sandwell-skills-employer-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/walsall-town-centre-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/dudley-black-country-growth-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/coventry-jobs-growth-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City-specific grant pages — Yorkshire (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/leeds-digital-health-innovation-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/bradford-creative-economy-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/leeds-climate-home-improvement-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/kirklees-warm-and-well-scheme</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/sheffield-advanced-manufacturing-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/rotherham-regeneration-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/doncaster-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/barnsley-made-here-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/west-yorkshire-green-business-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/york-heritage-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/hull-creative-city-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/humber-offshore-wind-supply-chain-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- City-specific grant pages — North East (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/newcastle-innovation-growth-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/sunderland-software-city-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/gateshead-quayside-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/durham-county-agri-food-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/middlesbrough-teesside-startup-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/northumberland-rural-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/tees-valley-hydrogen-innovation-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/teesworks-chemical-sector-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- City-specific grant pages — Liverpool & North West (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/liverpool-freeport-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/lcr-good-growth-fund</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/blackpool-tourism-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/preston-lancashire-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/warrington-logistics-tech-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/chester-visitor-economy-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City-specific grant pages — East Midlands (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/nottingham-creative-city-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/derby-manufacturing-excellence-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/lincoln-agri-food-tech-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/derby-east-midlands-devo-growth-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- City-specific grant pages — South East (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/brighton-green-futures-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/southampton-port-city-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/oxford-innovation-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/cambridge-deep-tech-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/milton-keynes-future-city-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/guildford-surrey-innovation-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/reading-retail-high-street-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/hertfordshire-life-sciences-cluster-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City-specific grant pages — South West & Bristol (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/bristol-clean-city-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/bath-tourism-experience-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/plymouth-ocean-city-marine-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/exeter-net-zero-pioneer-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/cornwall-marine-fisheries-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/bristol-bath-creative-cluster-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City-specific grant pages — Scotland (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/glasgow-tech-scaler-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/edinburgh-creative-industries-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/aberdeen-energy-transition-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/dundee-waterfront-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/inverness-highland-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/highland-council-north-coast-500-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/aberdeen-north-sea-decommissioning-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- City-specific grant pages — Wales (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/cardiff-bay-innovation-hub-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/swansea-bay-marine-tech-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/newport-wales-manufacturing-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/wrexham-wales-business-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/anglesey-isle-rural-enterprise-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City-specific grant pages — Northern Ireland (April 2026) -->
+  <url><loc>https://ukgrants.online/grants/belfast-innovation-tech-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ukgrants.online/grants/derry-city-growth-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ukgrants.online/grants/belfast-innovation-tech-grant</loc><lastmod>2026-04-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
 </urlset>
