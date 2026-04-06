@@ -56,6 +56,10 @@
     {
       "path": "/api/indexnow-submit",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/govuk-scraper",
+      "schedule": "0 6 * * *"
     }
   ]
 }
