@@ -42,7 +42,7 @@ export default function TrainingDetail() {
   )
 
   const canonicalUrl = `https://ukgrants.online/training/${slug}`
-  const pageTitle = `${item.title} — Free UK Training & Skills 2025`
+  const pageTitle = `${item.title} — Free UK Training & Skills 2026`
   const pageDesc = `${item.title}: eligibility, how to enrol, and what's covered. ${item.description?.slice(0, 90) || ''}`.slice(0, 160)
   const verifiedDate = formatVerified(item.updated_at || item.created_at)
   const isoDate = item.updated_at || item.created_at || new Date().toISOString()

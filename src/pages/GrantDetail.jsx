@@ -117,8 +117,8 @@ export default function GrantDetail() {
 
   const canonicalUrl = `https://ukgrants.online/grant/${slug}`
   const pageTitle = grant
-    ? `${grant.grant_type} — ${grant.council_name || 'UK Grant'} | UK Grants Finder`
-    : 'UK Grant Details'
+    ? `${grant.grant_type} — ${grant.council_name || 'UK Grant'} | UK Funding Hub`
+    : 'UK Grant Details — UK Funding Hub'
   const pageDesc = grant
     ? `Apply for ${grant.grant_type}. ${grant.unique_content?.slice(0, 120) || 'Full eligibility details and direct application link.'}`.slice(0, 160)
     : 'UK government grant details and how to apply.'
@@ -492,7 +492,7 @@ export default function GrantDetail() {
 
       <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
         <div>
-          © 2025 UK Grants Finder · Free funding search for everyone in the United Kingdom
+          © 2026 UK Funding Hub · Free funding search for everyone in the United Kingdom
         </div>
         <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
           <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>

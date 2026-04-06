@@ -352,7 +352,7 @@ export default function HomePage() {
         </p>
         {[
           {
-            q: 'What UK grants are available for startups in 2025?',
+            q: 'What UK grants are available for startups in 2026?',
             a: 'UK startups can access a wide range of government funding. Key schemes include Innovate UK Smart Grants (up to £500,000 for R&D), the Start Up Loans programme (government-backed loans of £500–£25,000), Seed Enterprise Investment Scheme (SEIS) tax-relief funding, and regional Growth Hubs offering local startup support grants. Many Local Enterprise Partnerships (LEPs) also offer specific startup grants. Use our search to filter by the "Business" category to find all currently active startup funding opportunities.'
           },
           {
@@ -377,7 +377,7 @@ export default function HomePage() {
           },
           {
             q: 'How does UK Grants Finder work and is it free?',
-            a: 'UK Grants Finder is completely free to use. We automatically aggregate grant data from GOV.UK, Local Authority websites, UK funding bodies, and official government APIs. Our database is updated every hour to ensure accuracy. You can search by keyword, filter by category (energy, business, housing, etc.) or by status (active only). Every grant listing includes full eligibility details and a direct link to the official application page — we are not a middleman and do not charge any fees.'
+            a: 'UK Funding Hub is completely free to use. We automatically aggregate grant data from GOV.UK, Local Authority websites, UK funding bodies, and official government APIs. Our database is updated daily to ensure accuracy. You can search by keyword, filter by category (energy, business, housing, etc.) or by status (active only). Every grant listing includes full eligibility details and a direct link to the official application page — we are not a middleman and do not charge any fees.'
           },
         ].map((faq, i) => (
           <details key={i} style={{ borderBottom: '1px solid var(--border)', padding: '20px 0' }}>
@@ -392,7 +392,7 @@ export default function HomePage() {
 
       <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
         <div>
-          © 2025 UK Grants Finder · Helping thousands find funding across the United Kingdom
+          © 2026 UK Funding Hub · Helping thousands find funding across the United Kingdom
         </div>
         <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
           <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>

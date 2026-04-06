@@ -371,12 +371,12 @@ export default function LandingPage() {
           Frequently Asked Questions
         </h2>
         <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: 32, fontSize: '0.9rem' }}>
-          Everything you need to know about UK grants, benefits and funding in 2025
+          Everything you need to know about UK grants, benefits and funding in 2026
         </p>
         {[
           {
-            q: 'What UK grants are available for individuals in 2025?',
-            a: 'Individuals in the UK can access the Household Support Fund, cost-of-living payments, Sure Start Maternity Grant, Disabled Facilities Grant (up to £30,000), Council Tax Reduction, and various local authority emergency grants. Energy grants like ECO4 are also available for homeowners and renters on qualifying benefits. Use our free eligibility checker to find which schemes apply to your situation.',
+            q: 'What UK grants are available for individuals in 2026?',
+            a: 'Individuals in the UK can access the Household Support Fund, cost-of-living payments, Sure Start Maternity Grant, Disabled Facilities Grant (up to £30,000), Council Tax Reduction, and various local authority emergency grants. Energy grants like ECO4 are also available for homeowners and renters on qualifying benefits. Use our free eligibility checker to find which schemes apply to your situation in 2026.',
           },
           {
             q: 'What are the best UK government grants for small businesses?',
@@ -421,7 +421,7 @@ export default function LandingPage() {
 
       {/* ── FOOTER ── */}
       <footer className="footer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-        <div>© 2025 UK Funding Hub · Free funding search for everyone in the United Kingdom</div>
+        <div>© 2026 UK Funding Hub · Free funding search for everyone in the United Kingdom</div>
         <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
           <Link to="/guides"   style={{ color: 'inherit', textDecoration: 'none', fontWeight: 500 }}>Guides</Link>
           <Link to="/about"    style={{ color: 'inherit', textDecoration: 'none' }}>About</Link>

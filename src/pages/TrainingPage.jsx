@@ -65,8 +65,8 @@ export default function TrainingPage() {
   return (
     <div style={{ minHeight: '100vh' }}>
       <PageMeta
-        title="Free UK Training & Skills Funding — Bootcamps 2025"
-        description="Find free UK training and skills funding: Skills Bootcamps, apprenticeships, free courses, adult education and government-funded programmes for 2025."
+        title="Free UK Training & Skills Funding — Bootcamps 2026"
+        description="Find free UK training and skills funding: Skills Bootcamps, apprenticeships, free courses, adult education and government-funded programmes for 2026."
         canonical="https://ukgrants.online/training"
       />
       <section style={{ padding: '48px 24px 40px', background: 'linear-gradient(180deg, rgba(236,64,122,0.06) 0%, transparent 100%)', borderBottom: '1px solid var(--border)', textAlign: 'center' }}>

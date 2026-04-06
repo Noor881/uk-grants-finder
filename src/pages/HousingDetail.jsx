@@ -42,8 +42,8 @@ export default function HousingDetail() {
   )
 
   const canonicalUrl = `https://ukgrants.online/housing/${slug}`
-  const pageTitle = `${item.title} — UK Housing Grants & Schemes 2025`
-  const pageDesc = `${item.title}: eligibility, how to apply and who qualifies in 2025. ${item.description?.slice(0, 90) || ''}`.slice(0, 160)
+  const pageTitle = `${item.title} — UK Housing Grants & Schemes 2026`
+  const pageDesc = `${item.title}: eligibility, how to apply and who qualifies in 2026. ${item.description?.slice(0, 90) || ''}`.slice(0, 160)
   const verifiedDate = formatVerified(item.updated_at || item.created_at)
   const isoDate = item.updated_at || item.created_at || new Date().toISOString()
 

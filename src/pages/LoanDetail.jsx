@@ -42,8 +42,8 @@ export default function LoanDetail() {
   )
 
   const canonicalUrl = `https://ukgrants.online/loan/${slug}`
-  const pageTitle = `${item.title} — UK Government Loans 2025`
-  const pageDesc = `${item.title}: eligibility, interest rates, and how to apply in 2025. ${item.description?.slice(0, 90) || ''}`.slice(0, 160)
+  const pageTitle = `${item.title} — UK Government Loans 2026`
+  const pageDesc = `${item.title}: eligibility, interest rates, and how to apply in 2026. ${item.description?.slice(0, 90) || ''}`.slice(0, 160)
   const verifiedDate = formatVerified(item.updated_at || item.created_at)
   const isoDate = item.updated_at || item.created_at || new Date().toISOString()
 
