@@ -628,6 +628,9 @@ function renderBody(body, guide, internalLink) {
   return rendered
 }
 
+import { NEW_ARTICLES } from './BlogPostNewArticles'
+Object.assign(ARTICLE_CONTENT, NEW_ARTICLES)
+
 // ── Main Component ──────────────────────────────────────────────────────────
 export default function BlogPost() {
   const { slug } = useParams()

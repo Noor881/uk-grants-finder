@@ -8,7 +8,8 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
         { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
-        { "key": "X-DNS-Prefetch-Control", "value": "on" }
+        { "key": "X-DNS-Prefetch-Control", "value": "on" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://ulysjqrbwmgvfrvekdsw.supabase.co https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https:; connect-src 'self' https://ulysjqrbwmgvfrvekdsw.supabase.co https://api.indexnow.org https://www.google-analytics.com; frame-ancestors 'none'" }
       ]
     },
     {
@@ -49,6 +50,12 @@
     {
       "source": "/((?!api|assets|favicon|robots\\.txt|sitemap\\.xml|llms\\.txt|og-image|83956a647312427ab45fbc96bd9512d8|ukgrants-indexnow).*)",
       "destination": "/index.html"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/indexnow-submit",
+      "schedule": "0 0 * * *"
     }
   ]
 }
