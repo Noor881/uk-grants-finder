@@ -837,22 +837,43 @@ export default function BlogPost() {
               </section>
             ))}
 
-            {/* Conclusion — template required */}
+            {/* Conclusion — supports string format (old) and {summary, nextSteps} object format (new) */}
             <section style={{ marginBottom: 40 }}>
               <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 18, paddingBottom: 10, borderBottom: `3px solid ${guide.color}25` }}>
                 Summary & Next Steps
               </h2>
               <div style={{ padding: '20px 24px', background: `${guide.color}06`, borderLeft: `4px solid ${guide.color}`, borderRadius: '0 10px 10px 0' }}>
-                {content.conclusion.split('\n\n').map((para, i) => (
-                  <p key={i} style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: i < content.conclusion.split('\n\n').length - 1 ? 12 : 0 }}
-                    dangerouslySetInnerHTML={{
-                      __html: para
-                        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) =>
-                          `<a href="${href}" ${href.startsWith('/') ? '' : 'target="_blank" rel="noopener noreferrer"'} style="color:${guide.color};font-weight:600;">${text}</a>`
-                        )
-                    }} />
-                ))}
+                {typeof content.conclusion === 'string'
+                  ? content.conclusion.split('\n\n').map((para, i) => (
+                      <p key={i} style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: 12 }}
+                        dangerouslySetInnerHTML={{
+                          __html: para
+                            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) =>
+                              `<a href="${href}" ${href.startsWith('/') ? '' : 'target="_blank" rel="noopener noreferrer"'} style="color:${guide.color};font-weight:600;">${text}</a>`
+                            )
+                        }} />
+                    ))
+                  : (
+                    <>
+                      <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: 16 }}
+                        dangerouslySetInnerHTML={{ __html: (content.conclusion.summary || '').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') }} />
+                      {content.conclusion.nextSteps?.length > 0 && (
+                        <ul style={{ margin: '8px 0 0 0', paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                          {content.conclusion.nextSteps.map((step, i) => (
+                            <li key={i} style={{ color: 'var(--text-secondary)', fontSize: '0.93rem', lineHeight: 1.7 }}
+                              dangerouslySetInnerHTML={{ __html: step
+                                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) =>
+                                  `<a href="${href}" ${href.startsWith('/') ? '' : 'target="_blank" rel="noopener noreferrer"'} style="color:${guide.color};font-weight:600;text-decoration:underline;">${text}</a>`
+                                )
+                              }} />
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  )
+                }
               </div>
             </section>
 
@@ -877,24 +898,26 @@ export default function BlogPost() {
               </div>
             </section>
 
-            {/* External sources — template: 2-3 authority links */}
-            <section style={{ marginBottom: 40, padding: '24px', background: 'var(--bg-layer-2)', borderRadius: 12, border: '1px solid var(--border)' }}>
-              <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1rem', fontWeight: 700, marginBottom: 16, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 8 }}>
-                📚 Sources & Further Reading
-              </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {content.sources.map((src, i) => (
-                  <a key={i} href={src.url} target="_blank" rel="noopener noreferrer"
-                    style={{ display: 'flex', alignItems: 'center', gap: 8, color: guide.color, fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none' }}>
-                    <ExternalLink size={14} />
-                    {src.label}
-                  </a>
-                ))}
-              </div>
-              <p style={{ marginTop: 16, fontSize: '0.78rem', color: 'var(--text-muted)', margin: '16px 0 0 0' }}>
-                Verified by the UK Funding Hub editorial team. Always confirm details on official official GOV.UK sources before applying.
-              </p>
-            </section>
+            {/* External sources — only rendered for articles that include sources array */}
+            {content.sources?.length > 0 && (
+              <section style={{ marginBottom: 40, padding: '24px', background: 'var(--bg-layer-2)', borderRadius: 12, border: '1px solid var(--border)' }}>
+                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1rem', fontWeight: 700, marginBottom: 16, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                  📚 Sources & Further Reading
+                </h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {content.sources.map((src, i) => (
+                    <a key={i} href={src.url} target="_blank" rel="noopener noreferrer"
+                      style={{ display: 'flex', alignItems: 'center', gap: 8, color: guide.color, fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none' }}>
+                      <ExternalLink size={14} />
+                      {src.label}
+                    </a>
+                  ))}
+                </div>
+                <p style={{ marginTop: 16, fontSize: '0.78rem', color: 'var(--text-muted)', margin: '16px 0 0 0' }}>
+                  Verified by the UK Funding Hub editorial team. Always confirm details on official GOV.UK sources before applying.
+                </p>
+              </section>
+            )}
           </article>
 
           {/* Related articles — internal links */}
