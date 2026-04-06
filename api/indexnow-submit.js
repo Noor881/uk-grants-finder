@@ -15,11 +15,11 @@ const SUPABASE_URL  = process.env.VITE_SUPABASE_URL
 const SUPABASE_KEY  = process.env.VITE_SUPABASE_ANON_KEY
 
 const TABLES = [
-  { table: 'uk_grants',   path: 'grant',    slugCol: 'slug' },
-  { table: 'uk_benefits', path: 'benefit',  slugCol: 'slug' },
-  { table: 'uk_loans',    path: 'loan',     slugCol: 'slug' },
-  { table: 'uk_housing',  path: 'housing',  slugCol: 'slug' },
-  { table: 'uk_training', path: 'training', slugCol: 'slug' },
+  { table: 'uk_grants',   path: 'grants',   slugCol: 'slug', hasStatus: true  },
+  { table: 'uk_benefits', path: 'benefit',  slugCol: 'slug', hasStatus: false },
+  { table: 'uk_loans',    path: 'loan',     slugCol: 'slug', hasStatus: false },
+  { table: 'uk_housing',  path: 'housing',  slugCol: 'slug', hasStatus: false },
+  { table: 'uk_training', path: 'training', slugCol: 'slug', hasStatus: false },
 ]
 
 // Static URLs always included in every submission
@@ -74,12 +74,17 @@ const STATIC_URLS = [
   `${SITE}/guides/sheffield-yorkshire-grants-2026`,
 ]
 
-async function fetchSlugs(table, path, slugCol) {
-  const url = `${SUPABASE_URL}/rest/v1/${table}?select=${slugCol}&status=eq.active&limit=2000`
+async function fetchSlugs(table, path, slugCol, hasStatus) {
+  // Only apply status filter on tables that have the column (uk_grants does, others don't)
+  const statusFilter = hasStatus ? '&status=eq.active' : ''
+  const url = `${SUPABASE_URL}/rest/v1/${table}?select=${slugCol}${statusFilter}&limit=2000`
   const res = await fetch(url, {
     headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
   })
-  if (!res.ok) return []
+  if (!res.ok) {
+    console.warn(`[indexnow] fetchSlugs ${table} returned ${res.status}`)
+    return []
+  }
   const rows = await res.json()
   return (Array.isArray(rows) ? rows : [])
     .map(r => r[slugCol])
@@ -124,8 +129,8 @@ export default async function handler(req, res) {
   try {
     // Collect all URLs from Supabase
     const dynamicUrls = []
-    for (const { table, path, slugCol } of TABLES) {
-      const urls = await fetchSlugs(table, path, slugCol)
+    for (const { table, path, slugCol, hasStatus } of TABLES) {
+      const urls = await fetchSlugs(table, path, slugCol, hasStatus)
       dynamicUrls.push(...urls)
     }
 

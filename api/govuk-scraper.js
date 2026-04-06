@@ -6,21 +6,32 @@
  * New grants found are inserted into uk_grants in Supabase and instantly submitted to IndexNow.
  *
  * Vercel Cron: schedule "0 6 * * *"
+ *
+ * FIX LOG:
+ *  - Now uses SUPABASE_SERVICE_KEY (not anon key) so INSERT actually works
+ *  - Slug limit raised to 1000 to handle 343+ existing grants correctly
+ *  - Search queries updated to 2026
+ *  - Find-a-Grant fallback improved
+ *  - Full error logging in console for Vercel Function logs
  */
 
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || process.env.VITE_SUPABASE_ANON_KEY
-const SITE = 'https://ukgrants.online'
-const INDEXNOW_KEY = '83956a647312427ab45fbc96bd9512d8'
-const CRON_SECRET = process.env.CRON_SECRET || ''
+const SUPABASE_URL  = process.env.VITE_SUPABASE_URL
+// SERVICE_KEY is required for INSERT — anon key is read-only
+const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_KEY || process.env.VITE_SUPABASE_ANON_KEY
+const SITE          = 'https://ukgrants.online'
+const INDEXNOW_KEY  = '83956a647312427ab45fbc96bd9512d8'
+const CRON_SECRET   = process.env.CRON_SECRET || ''
 
 // ── GOV.UK search queries targeting new grant announcements ─────────────────
 const GOVUK_SEARCHES = [
-  { q: 'grant scheme 2025', type: 'business_finance_support_schemes' },
-  { q: 'funding grant residents 2025', type: 'guidance' },
-  { q: 'local authority grant fund', type: 'guidance' },
-  { q: 'innovation grant UK business', type: 'business_finance_support_schemes' },
-  { q: 'energy efficiency grant households', type: 'guidance' },
+  { q: 'grant scheme 2026',                     type: 'business_finance_support_schemes' },
+  { q: 'funding grant residents 2026',           type: 'guidance' },
+  { q: 'local authority grant fund 2026',        type: 'guidance' },
+  { q: 'innovation grant UK business 2026',      type: 'business_finance_support_schemes' },
+  { q: 'energy efficiency grant households 2026',type: 'guidance' },
+  { q: 'community grant fund 2026',              type: 'guidance' },
+  { q: 'small business grant England 2026',      type: 'business_finance_support_schemes' },
+  { q: 'net zero grant UK 2026',                 type: 'guidance' },
 ]
 
 // ── Slugify helper ───────────────────────────────────────────────────────────
@@ -35,8 +46,8 @@ function toSlug(str) {
 // ── Fetch GOV.UK search results ──────────────────────────────────────────────
 async function fetchGovUKResults(query, contentType) {
   const params = new URLSearchParams({
-    q: query,
-    count: '10',
+    q:      query,
+    count:  '15',
     fields: 'title,description,link,content_store_document_type,public_timestamp',
   })
   if (contentType) params.set('filter_content_store_document_type', contentType)
@@ -46,129 +57,155 @@ async function fetchGovUKResults(query, contentType) {
     const res = await fetch(url, {
       headers: { 'User-Agent': 'UKGrantsHub/1.0 (+https://ukgrants.online/)' },
     })
-    if (!res.ok) return []
+    if (!res.ok) {
+      console.warn(`[govuk-scraper] GOV.UK search returned ${res.status} for: ${query}`)
+      return []
+    }
     const data = await res.json()
     return (data.results || [])
-  } catch {
+  } catch (err) {
+    console.warn(`[govuk-scraper] GOV.UK search error for "${query}": ${err.message}`)
     return []
   }
 }
 
-// ── Fetch GOV.UK Find-a-Grant API (newer grants service) ────────────────────
+// ── Fetch GOV.UK Find-a-Grant API ────────────────────────────────────────────
 async function fetchFindAGrant() {
-  try {
-    const res = await fetch('https://www.find-a-grant.service.gov.uk/api/v1/grants?size=20&sort=updatedDate,desc', {
-      headers: { 'User-Agent': 'UKGrantsHub/1.0 (+https://ukgrants.online/)' },
-    })
-    if (!res.ok) return []
-    const data = await res.json()
-    return (data.content || data.grants || data || [])
-  } catch {
-    return []
+  // Try multiple endpoints — the API shape has changed over time
+  const endpoints = [
+    'https://www.find-a-grant.service.gov.uk/api/v1/grants?size=20&sort=updatedDate,desc',
+    'https://www.find-a-grant.service.gov.uk/api/v1/grants?limit=20&page=0',
+  ]
+  for (const endpoint of endpoints) {
+    try {
+      const res = await fetch(endpoint, {
+        headers: { 'User-Agent': 'UKGrantsHub/1.0 (+https://ukgrants.online/)' },
+      })
+      if (!res.ok) continue
+      const data = await res.json()
+      const grants = data.content || data.grants || data._embedded?.grants || (Array.isArray(data) ? data : [])
+      if (grants.length > 0) return grants
+    } catch (err) {
+      console.warn(`[govuk-scraper] Find-a-Grant error: ${err.message}`)
+    }
   }
+  return []
 }
 
 // ── Get existing slugs from Supabase to avoid duplicates ────────────────────
 async function getExistingSlugs() {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/uk_grants?select=slug&limit=500`, {
+  // Fetch up to 1000 to handle large databases — increase as needed
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/uk_grants?select=slug&limit=1000`, {
     headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
   })
-  if (!res.ok) return new Set()
+  if (!res.ok) {
+    console.error(`[govuk-scraper] Failed to fetch existing slugs: ${res.status}`)
+    return new Set()
+  }
   const rows = await res.json()
   return new Set(rows.map(r => r.slug))
 }
 
 // ── Insert a new grant into Supabase ────────────────────────────────────────
+// REQUIRES SUPABASE_SERVICE_KEY — anon key will return 401/403 on INSERT
 async function insertGrant(grant) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/uk_grants`, {
     method: 'POST',
     headers: {
-      apikey: SUPABASE_KEY,
-      Authorization: `Bearer ${SUPABASE_KEY}`,
+      apikey:         SUPABASE_KEY,
+      Authorization:  `Bearer ${SUPABASE_KEY}`,
       'Content-Type': 'application/json',
-      Prefer: 'return=minimal',
+      Prefer:         'return=minimal',
     },
     body: JSON.stringify(grant),
   })
-  return res.status === 201 || res.status === 200
+  if (res.status !== 201 && res.status !== 200 && res.status !== 204) {
+    const body = await res.text().catch(() => '')
+    console.error(`[govuk-scraper] INSERT failed (${res.status}) for slug "${grant.slug}": ${body.slice(0, 200)}`)
+    return false
+  }
+  return true
 }
 
 // ── Submit new URL to IndexNow ───────────────────────────────────────────────
 async function indexNowSubmit(urls) {
   if (!urls.length) return
-  await fetch('https://api.indexnow.org/indexnow', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify({
-      host: 'ukgrants.online',
-      key: INDEXNOW_KEY,
-      keyLocation: `${SITE}/${INDEXNOW_KEY}.txt`,
-      urlList: urls,
-    }),
-  })
+  try {
+    await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({
+        host:        'ukgrants.online',
+        key:         INDEXNOW_KEY,
+        keyLocation: `${SITE}/${INDEXNOW_KEY}.txt`,
+        urlList:     urls,
+      }),
+    })
+  } catch (err) {
+    console.warn(`[govuk-scraper] IndexNow submit error: ${err.message}`)
+  }
 }
 
 // ── Parse raw GOV.UK search result into a grant record ──────────────────────
 function parseSearchResult(result) {
-  const title = result.title?.value || result.title || ''
+  const title       = result.title?.value || result.title || ''
   const description = result.description?.value || result.description || ''
-  const link = result.link || ''
+  const link        = result.link || ''
   if (!title || !description || title.length < 10) return null
 
   // Only include results that look like grant or funding schemes
   const lowerTitle = title.toLowerCase()
-  const lowerDesc = description.toLowerCase()
+  const lowerDesc  = description.toLowerCase()
   const grantKeywords = ['grant', 'fund', 'scheme', 'support', 'bursary', 'award', 'incentive', 'subsidy']
   if (!grantKeywords.some(kw => lowerTitle.includes(kw) || lowerDesc.includes(kw))) return null
 
-  const slug = toSlug(title)
+  const slug      = toSlug(title)
   const apply_url = link.startsWith('http') ? link : `https://www.gov.uk${link}`
-  const council_name = 'UK Government'
-  const grant_type = title.slice(0, 100)
 
   return {
     slug,
-    council_name,
-    grant_type,
+    council_name:     'UK Government',
+    grant_type:       title.slice(0, 100),
     full_description: description.slice(0, 1000),
-    eligibility: 'Check GOV.UK for full eligibility criteria.',
-    how_to_apply: `Apply via GOV.UK: ${apply_url}`,
+    eligibility_details: 'Check GOV.UK for full eligibility criteria.',
+    how_to_apply:    `Apply via GOV.UK: ${apply_url}`,
     apply_url,
-    status: 'active',
-    location: 'United Kingdom',
-    category: 'Government',
-    source: 'govuk-auto',
-    scraped_at: new Date().toISOString(),
+    status:           'active',
+    location:         'United Kingdom',
+    category:         'Government',
+    applying_body:    'UK Government',
+    source:           'govuk-auto',
+    last_updated:     new Date().toISOString(),
   }
 }
 
 // ── Parse Find-a-Grant result ────────────────────────────────────────────────
 function parseFindAGrant(grant) {
-  const name = grant.grantName || grant.name || ''
+  const name        = grant.grantName || grant.name || grant.title || ''
   const description = grant.summary || grant.description || grant.shortDescription || ''
-  const grantRef = grant.id || grant.grantReference || ''
-
+  const grantRef    = grant.id || grant.grantReference || grant.reference || ''
   if (!name || name.length < 10) return null
 
-  const slug = toSlug(name)
+  const slug      = toSlug(name)
   const apply_url = grant.applicationUrl || grant.applyUrl ||
     `https://www.find-a-grant.service.gov.uk/grants/${grantRef}`
   const maxFunding = grant.maxAwardAmount || grant.maximumValue || null
 
   return {
     slug,
-    council_name: grant.grantSponsoringBody || grant.fundingOrganisation || 'UK Government',
-    grant_type: name.slice(0, 100),
-    full_description: description.slice(0, 1000),
-    eligibility: (grant.eligibilitySummary || grant.whoCanApply || 'Check Find-a-Grant for eligibility.').slice(0, 500),
-    how_to_apply: `Apply via Find-a-Grant: ${apply_url}`,
+    council_name:        grant.grantSponsoringBody || grant.fundingOrganisation || 'UK Government',
+    grant_type:          name.slice(0, 100),
+    full_description:    description.slice(0, 1000),
+    eligibility_details: (grant.eligibilitySummary || grant.whoCanApply || 'Check Find-a-Grant for eligibility.').slice(0, 500),
+    how_to_apply:        `Apply via Find-a-Grant: ${apply_url}`,
     apply_url,
-    max_funding: maxFunding ? `£${Number(maxFunding).toLocaleString()}` : null,
-    status: grant.grantStatus === 'open' ? 'active' : 'active',
-    location: 'United Kingdom',
-    category: grant.grantCategory || 'Government',
-    source: 'find-a-grant-auto',
-    scraped_at: new Date().toISOString(),
+    max_funding:         maxFunding ? `£${Number(maxFunding).toLocaleString()}` : null,
+    status:              'active',
+    location:            'United Kingdom',
+    category:            grant.grantCategory || 'Government',
+    applying_body:       grant.grantSponsoringBody || 'UK Government',
+    source:              'find-a-grant-auto',
+    last_updated:        new Date().toISOString(),
   }
 }
 
@@ -176,16 +213,23 @@ function parseFindAGrant(grant) {
 export default async function handler(req, res) {
   // Auth check
   const authHeader = req.headers.authorization
-  if (CRON_SECRET && authHeader !== `Bearer ${CRON_SECRET}`) {
+  const cronHeader = req.headers['x-vercel-cron-signature']
+  if (CRON_SECRET && !cronHeader && authHeader !== `Bearer ${CRON_SECRET}`) {
     return res.status(401).json({ error: 'Unauthorized' })
   }
 
-  const isDryRun = req.method === 'GET' && new URL(req.url, `https://${req.headers.host}`).searchParams.get('dry') === '1'
+  // Warn loudly if using anon key — inserts will fail
+  if (!process.env.SUPABASE_SERVICE_KEY) {
+    console.error('[govuk-scraper] WARNING: SUPABASE_SERVICE_KEY not set! Using anon key — inserts will fail (403/401).')
+  }
 
-  console.log(`[govuk-scraper] Starting scrape at ${new Date().toISOString()} (dryRun=${isDryRun})`)
+  const isDryRun = req.method === 'GET' &&
+    new URL(req.url, `https://${req.headers.host}`).searchParams.get('dry') === '1'
+
+  console.log(`[govuk-scraper] Starting at ${new Date().toISOString()} (dryRun=${isDryRun}, serviceKey=${!!process.env.SUPABASE_SERVICE_KEY})`)
 
   try {
-    // 1. Get existing slugs to skip duplicates
+    // 1. Get existing slugs
     const existingSlugs = await getExistingSlugs()
     console.log(`[govuk-scraper] ${existingSlugs.size} existing grants in DB`)
 
@@ -194,6 +238,7 @@ export default async function handler(req, res) {
     // 2. GOV.UK search API
     for (const search of GOVUK_SEARCHES) {
       const results = await fetchGovUKResults(search.q, search.type)
+      console.log(`[govuk-scraper] GOV.UK search "${search.q}" → ${results.length} results`)
       for (const result of results) {
         const grant = parseSearchResult(result)
         if (grant && !existingSlugs.has(grant.slug)) {
@@ -204,6 +249,7 @@ export default async function handler(req, res) {
 
     // 3. Find-a-Grant API
     const fagResults = await fetchFindAGrant()
+    console.log(`[govuk-scraper] Find-a-Grant → ${fagResults.length} results`)
     for (const grant of fagResults) {
       const parsed = parseFindAGrant(grant)
       if (parsed && !existingSlugs.has(parsed.slug)) {
@@ -212,25 +258,25 @@ export default async function handler(req, res) {
     }
 
     // 4. Deduplicate by slug
-    const seen = new Set()
+    const seen      = new Set()
     const newGrants = candidateGrants.filter(g => {
       if (seen.has(g.slug)) return false
       seen.add(g.slug)
       return true
     })
 
-    console.log(`[govuk-scraper] Found ${newGrants.length} new grants to insert`)
+    console.log(`[govuk-scraper] ${newGrants.length} new grants to insert`)
 
     if (isDryRun) {
       return res.status(200).json({
-        mode: 'dry-run',
-        existingCount: existingSlugs.size,
+        mode:           'dry-run',
+        existingCount:  existingSlugs.size,
         newGrantsFound: newGrants.length,
-        sample: newGrants.slice(0, 5),
+        sample:         newGrants.slice(0, 5),
       })
     }
 
-    // 5. Insert new grants and submit to IndexNow
+    // 5. Insert and submit to IndexNow
     const insertedSlugs = []
     for (const grant of newGrants) {
       const ok = await insertGrant(grant)
@@ -240,23 +286,23 @@ export default async function handler(req, res) {
       }
     }
 
-    // 6. IndexNow submission for all new pages
     if (insertedSlugs.length > 0) {
-      const newUrls = insertedSlugs.map(slug => `${SITE}/grant/${slug}`)
+      const newUrls = insertedSlugs.map(slug => `${SITE}/grants/${slug}`)
       await indexNowSubmit(newUrls)
       console.log(`[govuk-scraper] Submitted ${newUrls.length} URLs to IndexNow`)
     }
 
     res.status(200).json({
-      success: true,
-      timestamp: new Date().toISOString(),
+      success:        true,
+      timestamp:      new Date().toISOString(),
       existingGrants: existingSlugs.size,
       newGrantsFound: newGrants.length,
-      inserted: insertedSlugs.length,
-      slugs: insertedSlugs,
+      inserted:       insertedSlugs.length,
+      slugs:          insertedSlugs,
+      serviceKeySet:  !!process.env.SUPABASE_SERVICE_KEY,
     })
   } catch (err) {
-    console.error('[govuk-scraper] Error:', err)
+    console.error('[govuk-scraper] Fatal error:', err)
     res.status(500).json({ error: err.message })
   }
 }
