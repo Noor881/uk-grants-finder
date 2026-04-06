@@ -821,4 +821,483 @@ These are particularly relevant for community groups, charities, and social ente
     ],
     relatedSlugs: ['eco4-grant-guide', 'startup-grants-uk', 'disabled-facilities-grant'],
   },
+
+  'spring-budget-2026': {
+    author: 'james',
+    datePublished: '2026-04-01T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1450,
+    primaryKeyword: 'Spring Budget 2026',
+    intro: `The **Spring Budget 2026** delivered a series of significant changes to UK government grants, benefits, tax thresholds, and business support — directly impacting millions of residents and businesses across the country.
+
+This guide breaks down every announcement from the Spring Budget 2026 that affects the money you can claim, the grants you can apply for, and the support available to you this financial year. We cover the changes that matter most to ordinary households and small businesses, with direct links to apply.`,
+    sections: [
+      {
+        h2: 'Spring Budget 2026 — Key Date',
+        body: `The Spring Budget 2026 was delivered to the House of Commons in late March 2026. It set out government spending plans for the 2026/27 financial year, which began on 6 April 2026.
+
+Key themes of the budget:
+- **Investment in green energy and home efficiency** — additional funding for ECO4, GBIS continuation confirmed
+- **Uprating of benefits** — all main working-age benefits uprated by 1.7% from April 2026
+- **National Living Wage** — increased to £12.60 per hour from 1 April 2026
+- **Business investment grants** — new Innovate UK rounds announced with £2.5bn funding
+- **Renters support** — transitional support package alongside Renters' Rights Act implementation
+
+Check our [grants database](/grants) for all current government-funded schemes now open.`,
+      },
+      {
+        h2: 'Benefits Uprating April 2026 — New Rates',
+        body: `All main DWP benefits and benefits administered by HMRC increased by **1.7%** from 6 April 2026, in line with the September 2025 CPI figure.
+
+**Key new 2026/27 rates:**
+- Universal Credit standard allowance (single under 25): £311.68/month
+- Universal Credit standard allowance (single 25+): **£393.45/month**
+- Universal Credit couple (both 25+): **£617.60/month**
+- Child Tax Credit (per child): £3,455/year
+- Carer's Allowance: **£83.30/week** (up from £81.90)
+- PIP Daily Living standard rate: **£73.90/week**
+- PIP Daily Living enhanced rate: **£110.40/week**
+- Attendance Allowance (higher rate): **£110.40/week**
+
+Read our full [Universal Credit guide](/guides/universal-credit-guide) for how to check your entitlement.`,
+      },
+      {
+        h2: 'Spring Budget 2026 — Business Grants',
+        body: `The Spring Budget 2026 confirmed significant new business grant funding:
+
+**Innovate UK 2026/27:** A record **£2.5 billion** Innovate UK funding envelope was announced, with new SMART Grant rounds opening from May 2026. See our [Innovate UK guide](/guides/innovate-uk-grants).
+
+**UK Investment Zones:** 12 new Investment Zones confirmed with grants of up to £500,000 for qualifying businesses setting up in designated areas.
+
+**Green Industries Growth Accelerator (GIGA):** £1 billion in grant funding for UK manufacturers in the clean energy supply chain — wind, solar, heat pumps, and hydrogen.
+
+**Creative Industries:** £121 million in new Production Tax Relief and grant support for UK creative sector businesses confirmed.`,
+      },
+      {
+        h2: 'Spring Budget 2026 — Energy & Housing',
+        body: `**ECO4 extension confirmed:** The Energy Company Obligation (ECO4) scheme was extended until September 2026, with £1.3 billion in additional funding. More households now qualify. Read our [ECO4 guide](/guides/eco4-grant-guide).
+
+**Great British Insulation Scheme (GBIS):** Confirmed running through 2026 with expanded eligibility — households with EPC ratings F and G now prioritised.
+
+**Affordable Homes Programme:** £2 billion in additional funding for affordable housing development, delivered through Homes England and the GLA.
+
+**Help to Save extension:** The Help to Save account scheme — which provides a 50% bonus on savings for low-income workers on UC or Working Tax Credit — was extended to April 2028.`,
+      },
+      {
+        h2: 'What Changed for Pensioners in Spring Budget 2026',
+        body: `**Triple Lock maintained:** The State Pension increased by 4.1% from April 2026 (earnings growth measure applied), taking the new State Pension to **£230.25 per week** — £11,973 per year.
+
+**Pension Credit uprating:** Pension Credit also increased by 4.1%, maintaining its position as the most valuable means-tested benefit per pound of income for those eligible.
+
+**Winter Fuel Payment:** Restricted to Pension Credit recipients only (as per the 2024 change). No reversal was announced in Spring Budget 2026.
+
+**Attendance Allowance:** Both rates increased by 1.7% — see new rates in the benefits section above.
+
+Use our [eligibility checker](/tools/eligibility) to see what you now qualify for.`,
+      },
+    ],
+    conclusion: {
+      summary: 'The Spring Budget 2026 confirmed benefit uprating, ECO4 extension, record Innovate UK funding, and the National Living Wage rise to £12.60. Most households and businesses will see some positive change from 6 April 2026.',
+      nextSteps: [
+        'Check your updated [Universal Credit entitlement](/guides/universal-credit-guide)',
+        'Apply for [ECO4 free insulation](/guides/eco4-grant-guide) before September 2026',
+        'Browse all [business grants](/grants) now open for applications',
+        'Use our [eligibility checker](/tools/eligibility) for a full personal assessment',
+      ],
+    },
+    faqs: [
+      { q: 'When did the Spring Budget 2026 changes take effect?', a: 'Most benefit and tax changes took effect from 6 April 2026, the start of the 2026/27 financial year. Some business grant rounds open from May 2026.' },
+      { q: 'Did the Household Support Fund continue in 2026?', a: 'Yes — the Household Support Fund was extended through March 2027, with £842 million distributed to local councils.' },
+    ],
+    relatedSlugs: ['universal-credit-guide', 'eco4-grant-guide', 'innovate-uk-grants'],
+  },
+
+  'universal-credit-rates-2026': {
+    author: 'priya',
+    datePublished: '2026-04-06T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1350,
+    primaryKeyword: 'Universal Credit rates 2026',
+    intro: `Universal Credit rates increased on **6 April 2026** for the 2026/27 financial year. If you're claiming — or planning to claim — Universal Credit, this guide gives you the exact new amounts for every element, explains what's changed from 2025, and shows you how to check your entitlement right now.
+
+The 2026 uprating of **1.7%** applies to all Universal Credit standard allowances and most elements, in line with September 2025 CPI inflation.`,
+    sections: [
+      {
+        h2: 'Universal Credit Standard Allowance 2026/27',
+        body: `The standard allowance is the base amount everyone on Universal Credit receives before any additions or deductions.
+
+| Who | Monthly amount from April 2026 |
+|---|---|
+| Single, under 25 | **£311.68** (was £306.70) |
+| Single, 25 or over | **£393.45** (was £387.00) |
+| Couple, both under 25 | **£489.23** (was £481.24) |
+| Couple, one or both 25+ | **£617.60** (was £607.44) |
+
+If your income is above the work allowance, the taper rate means UC reduces by **55p for every £1** you earn above the threshold.`,
+      },
+      {
+        h2: 'Universal Credit Elements 2026 — Child, Carer, Disability',
+        body: `**Child element (first child, born before 6 April 2017):** £352.92/month
+**Child element (any subsequent child):** £295.20/month
+**Disabled child — lower rate:** £156.11/month
+**Disabled child — higher rate:** £487.58/month
+
+**Carer element:** **£201.68/month** — if you provide at least 35 hours/week unpaid care. See our [Carer's Allowance guide](/guides/carers-allowance-guide).
+
+**Limited Capability for Work (LCW) element:** £156.11/month
+**Limited Capability for Work-Related Activity (LCWRA):** £416.19/month
+
+**Childcare element:** Up to 85% of eligible childcare costs covered — max **£1,014.63/month** for one child, **£1,739.37/month** for two or more.`,
+      },
+      {
+        h2: 'Universal Credit Work Allowance 2026',
+        body: `If you or your partner are responsible for a child or have a disability/health condition, you can earn up to the **work allowance** before UC starts to reduce.
+
+**Higher work allowance (no housing element):** **£673/month** in 2026/27
+**Lower work allowance (with housing element):** **£404/month** in 2026/27
+
+Above these thresholds, UC reduces at the 55% taper rate. This means you keep 45p of every additional £1 earned.
+
+**Example (2026):** Single parent, 25+, with housing costs:
+- Standard allowance: £393.45
+- Child element: £352.92
+- Housing element: (actual rent, up to LHA)
+- Work allowance: £404/month before tapering begins`,
+      },
+      {
+        h2: 'What Changed from 2025 to 2026?',
+        body: `The April 2026 uprating applied the **1.7% CPI increase** to all elements. Changes from 2024/25 to 2025/26 were 1.7% — same figure for 2026.
+
+**Key changes in 2026:**
+- All standard allowances +1.7%
+- Child elements +1.7%
+- LCWRA element +1.7%
+- Carer element +1.7%
+- Work allowances increased to reflect NLW rise
+- Deduction cap remains at 25% of standard allowance
+
+**No change to:** The two-child limit (still applies to children born after 6 April 2017), the benefit cap (reviewed but held for 2026).`,
+      },
+      {
+        h2: 'How to Check Your Universal Credit Award in 2026',
+        body: `**Step 1:** Log into your [Universal Credit journal](https://www.universal-credit.service.gov.uk/) on GOV.UK.
+
+**Step 2:** Your new award amount is shown in your statement from April 2026. If you think it's wrong, report a change in circumstances.
+
+**Step 3:** If you're not yet claiming, use our [eligibility checker](/tools/eligibility) to see if you qualify.
+
+**Step 4:** Call the Universal Credit helpline on **0800 328 5644** (Mon–Fri 8am–6pm) if you need to query your award.
+
+**Backdating:** UC can only be backdated in limited circumstances (good cause shown). Do not delay claiming.`,
+      },
+    ],
+    conclusion: {
+      summary: 'Universal Credit rates rose by 1.7% from April 2026. Single claimants aged 25+ now receive £393.45/month standard allowance, with elements for children, carers, and disability on top. Check your award and make sure you\'re claiming everything you\'re entitled to.',
+      nextSteps: [
+        'Check current rates on [GOV.UK Universal Credit](https://www.gov.uk/universal-credit)',
+        'Use our [eligibility checker](/tools/eligibility)',
+        'Read our [Carer\'s Allowance guide](/guides/carers-allowance-guide) — worth an extra £201/month',
+        'See [council tax reduction](/guides/council-tax-reduction) — must be claimed separately',
+      ],
+    },
+    faqs: [
+      { q: 'Do I need to reapply after the April 2026 uprating?', a: 'No. If you are already on Universal Credit, your award is automatically updated from 6 April 2026. You will see the new amount in your April 2026 statement.' },
+      { q: 'Has the two-child limit been removed?', a: 'No — as of April 2026, the two-child limit is still in place. Child elements are only paid for the first two qualifying children for children born after 6 April 2017.' },
+    ],
+    relatedSlugs: ['carers-allowance-guide', 'council-tax-reduction', 'free-childcare-guide'],
+  },
+
+  'national-living-wage-2026': {
+    author: 'james',
+    datePublished: '2026-04-01T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1300,
+    primaryKeyword: 'National Living Wage 2026',
+    intro: `The **National Living Wage (NLW)** rose to **£12.60 per hour** on 1 April 2026 — a 3.2% increase on the 2025 rate of £12.21. For someone working full-time (37.5 hours/week), this means a pay rise of approximately **£764 per year** before tax.
+
+This guide covers the new 2026 wage rates, who they apply to, how they affect Universal Credit and other benefits, and what to do if your employer isn't paying the correct rate.`,
+    sections: [
+      {
+        h2: 'National Living Wage 2026 — Full Rate Table',
+        body: `The following rates apply from **1 April 2026**:
+
+| Category | Hourly rate from April 2026 |
+|---|---|
+| **National Living Wage (21+)** | **£12.60** |
+| 18–20 year olds | **£10.00** |
+| 16–17 year olds | **£7.55** |
+| Apprentices (first year, under 19) | **£7.55** |
+
+The NLW applies to all workers aged 21 and over. Workers under 21 are covered by the National Minimum Wage at lower rates.
+
+All rates are the legal minimum — employers can and often do pay more.`,
+      },
+      {
+        h2: 'What the £12.60 NLW Means in Practice',
+        body: `**Full-time worker (37.5 hours/week) on NLW:**
+- Weekly pay: **£472.50**
+- Monthly pay (gross): **£2,047.50**
+- Annual pay (gross): **£24,570**
+
+**How this compares:**
+- 2025 NLW: £12.21/hour → £23,800/year (full-time)
+- 2026 NLW: £12.60/hour → £24,570/year (full-time)
+- **Increase: £770/year**
+
+The rise puts the NLW on track for the government's target of at least two-thirds of median earnings. For workers in London, the London Living Wage (set independently) is **£13.85/hour** in 2025/26 — check if your employer is a London Living Wage employer.`,
+      },
+      {
+        h2: 'How the NLW Rise Affects Universal Credit and Benefits',
+        body: `The NLW rise affects Universal Credit claimants who work:
+
+**Work allowance unchanged:** The UC work allowance (£404–£673/month depending on circumstances) stays the same, so you earn more before UC starts to taper.
+
+**Net gain for low-paid UC claimants:** A full-time NLW earner on UC keeps 45p of every extra £1 earned above the work allowance. The NLW rise of £770/year gross ≈ **£347/year net gain** after the UC taper.
+
+**Housing Benefit and Council Tax Support:** These are based on net income. Higher NLW earnings may reduce Housing Benefit — check with your council.
+
+**Tax credits:** No longer relevant for most new claimants who are on Universal Credit instead.
+
+Use our [eligibility checker](/tools/eligibility) to see how your income change affects your full benefit entitlement.`,
+      },
+      {
+        h2: 'Employers — What You Must Do From 1 April 2026',
+        body: `All employers must pay the new rates from **1 April 2026** for all pay reference periods that begin on or after that date.
+
+**Checklist for employers:**
+- Update payroll software with new minimum rates
+- Check all workers aged 21+ are on at least £12.60/hour
+- Check apprentices aged 19+ (or in second year+) are on the full NLW rate
+- Issue updated payslips from first pay period after 1 April
+
+**Penalties for non-compliance:** HMRC can impose financial penalties of 200% of unpaid wages (up to £20,000 per worker) and name employers publicly.
+
+Workers who believe they are being underpaid can report employers to HMRC via [gov.uk/minimum-wage-reporting-employer](https://www.gov.uk/minimum-wage-reporting-employer).`,
+      },
+      {
+        h2: 'Frequently Asked Questions',
+        body: `**I am 20 — do I get £12.60?**
+No. If you are under 21, the rate is £10.00/hour. The NLW of £12.60 applies from age 21.
+
+**Does the NLW apply to tips and bonuses?**
+No. Tips, service charges, and bonuses cannot count towards the NLW minimum. Your base hourly rate alone must meet the minimum.
+
+**I work zero-hours — does NLW apply?**
+Yes. The NLW applies to all hours actually worked, regardless of contract type.`,
+      },
+    ],
+    conclusion: {
+      summary: 'The National Living Wage rose to £12.60/hour on 1 April 2026 — £770/year more for full-time workers. If you\'re on UC, this means a real net gain. Check your payslip, understand your rights, and claim any additional benefits you now qualify for.',
+      nextSteps: [
+        'Check your [Universal Credit entitlement](/guides/universal-credit-guide) after the wage rise',
+        'Check if you\'re owed back pay using [HMRC\'s NMW tool](https://www.gov.uk/minimum-wage-calculator-employers)',
+        'Use our [eligibility checker](/tools/eligibility) to review all your benefit entitlements',
+      ],
+    },
+    faqs: [
+      { q: 'Is £12.60 enough to live on in London?', a: 'No — the London Living Wage is higher at £13.85/hour. The NLW is a legal minimum, not a living standard benchmark.' },
+      { q: 'How is the NLW rate set?', a: 'The Low Pay Commission (LPC) recommends the rate annually based on earnings growth, employment levels, and progression towards the two-thirds median earnings target.' },
+    ],
+    relatedSlugs: ['universal-credit-guide', 'universal-credit-rates-2026', 'council-tax-reduction'],
+  },
+
+  'renters-rights-act-2026': {
+    author: 'priya',
+    datePublished: '2026-04-03T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1400,
+    primaryKeyword: 'Renters Rights Act 2026',
+    intro: `The **Renters' Rights Act 2026** is the biggest reform to private renting in England in over 30 years. It permanently abolishes no-fault evictions (Section 21), creates a new Private Rented Sector Ombudsman, and strengthens tenants' rights to challenge unfair rent increases.
+
+This guide explains every key change in the Renters' Rights Act, what it means for you as a renter in 2026, what housing grants and support are available, and what landlords must now do.`,
+    sections: [
+      {
+        h2: 'Abolition of Section 21 — No-Fault Evictions Ended',
+        body: `**Section 21 notices are now illegal.** Landlords in England can no longer evict tenants without a valid legal ground.
+
+Under the Renters' Rights Act, all private tenancies are now **periodic** (rolling month-to-month). Landlords must use specific legal grounds to repossess a property, including:
+- **Ground 1:** Landlord or close family member wishes to move in (4 months' notice required)
+- **Ground 6:** Landlord intends to sell the property (4 months' notice required)
+- **Ground 8:** 2+ months' rent arrears
+- **Ground 14:** Anti-social behaviour
+
+**Important:** A landlord cannot use Ground 1 or 6 within the first 12 months of a tenancy.
+
+If you receive an invalid eviction notice, contact Shelter (0808 800 4444) or Citizens Advice immediately.`,
+      },
+      {
+        h2: 'Rent Increases Under the Renters Rights Act',
+        body: `Landlords are now restricted to **one rent increase per year**, and only via a formal Section 13 notice with at least **two months' notice** to tenants.
+
+**How to challenge an unfair rent increase:**
+- You have the right to challenge the increase at the **First-tier Tribunal (Property Chamber)**
+- The tribunal can only award the open market rent — it cannot set a rent above market rate
+- Application is free and can be made online
+
+**Rent in advance:** Landlords can now only take **one month's rent in advance** before a tenancy starts. Deposits remain capped at 5 weeks' rent.
+
+This replaces the old system where landlords could demand multiple months upfront.`,
+      },
+      {
+        h2: 'New Rights for Renters in 2026',
+        body: `The Renters' Rights Act introduces several new statutory rights for private tenants:
+
+**Right to keep pets:** Landlords cannot unreasonably refuse to allow a tenant to keep a pet. Landlords can require tenants to have pet damage insurance.
+
+**Discrimination protections:** Landlords and agents are prohibited from refusing tenancies or treating tenants less favourably because they receive benefits (including Universal Credit or Housing Benefit) or have children.
+
+**Property standards:** The Decent Homes Standard will extend to the private rented sector for the first time. Landlords must ensure properties are free from serious health hazards (HHSRS Category 1 hazards).
+
+**Awaab's Law extension:** Requirements to fix damp, mould, and hazardous conditions within fixed timescales now apply to private landlords.`,
+      },
+      {
+        h2: 'Housing Grants for Renters in 2026',
+        body: `Renters can access several government grants even without owning their home:
+
+**ECO4 for renters:** Private renters on qualifying benefits can receive free energy efficiency improvements (insulation, heat pump) — landlord consent is required. If your landlord refuses, local councils can intervene under the LA Flex route. See our [ECO4 guide](/guides/eco4-grant-guide).
+
+**Disabled Facilities Grant:** Available to renters with disabilities — up to £30,000 for home adaptations. Landlord consent required; councils can assist if landlords are uncooperative. See our [DFG guide](/guides/disabled-facilities-grant).
+
+**Discretionary Housing Payments (DHP):** Short-term help with rent from your council if you're on Housing Benefit or UC housing element and struggling with a shortfall.
+
+**Deposit protection:** All deposits must be protected in a government-approved scheme — if yours wasn't, you may be owed compensation of 1–3× the deposit amount.`,
+      },
+      {
+        h2: 'Private Rented Sector Ombudsman',
+        body: `A new **Private Rented Sector Ombudsman** is now operational — all private landlords in England are legally required to register and join.
+
+**What the Ombudsman can do:**
+- Investigate complaints from tenants about their landlord
+- Order landlords to pay compensation of up to £25,000
+- Require landlords to take remedial action
+- Publish findings against non-compliant landlords
+
+**How to complain:** Visit the Ombudsman portal (GOV.UK) if your landlord fails to maintain the property, unlawfully evicts you, or otherwise breaches their legal obligations.
+
+**Landlord Register:** A new Property Portal allows tenants to check if their landlord is registered. Failure to register carries significant fines.`,
+      },
+    ],
+    conclusion: {
+      summary: 'The Renters\' Rights Act 2026 is the most significant improvement to tenant rights in a generation. Section 21 is gone, rent increases are restricted to once a year, and new protections cover pets, benefit discrimination, and property standards.',
+      nextSteps: [
+        'Check your rights at [Shelter](https://www.shelter.org.uk)',
+        'Apply for [ECO4 for renters](/guides/eco4-grant-guide) if on low income',
+        'Check [Disabled Facilities Grant](/guides/disabled-facilities-grant) if you need adaptations',
+        'View all [housing schemes](/housing) available to renters',
+      ],
+    },
+    faqs: [
+      { q: 'Does the Renters\' Rights Act apply to Scotland?', a: 'No. Scotland has its own separate legislation — the Housing (Scotland) Act 2014 already abolished no-fault evictions for private tenants. Wales has the Renting Homes (Wales) Act 2016.' },
+      { q: 'My landlord has issued a Section 21 notice — is it still valid?', a: 'No. Section 21 notices issued after the Act\'s commencement date are invalid. Seek advice from Shelter or Citizens Advice immediately if you receive one.' },
+    ],
+    relatedSlugs: ['disabled-facilities-grant', 'eco4-grant-guide', 'universal-credit-guide'],
+  },
+
+  'uk-business-grants-2026': {
+    author: 'james',
+    datePublished: '2026-04-04T09:00:00+00:00',
+    dateModified: '2026-04-06T09:00:00+00:00',
+    image: 'https://ukgrants.online/og-image.png',
+    wordCount: 1400,
+    primaryKeyword: 'UK business grants 2026',
+    intro: `A new wave of **UK business grants opened in spring 2026**, following the Spring Budget 2026 announcements. From Innovate UK's record £2.5 billion funding envelope to new Investment Zone grants and Green Industries Growth Accelerator awards — there has rarely been a better time for UK businesses to apply for government funding that never needs to be repaid.
+
+This guide covers every major business grant opening in 2026, who qualifies, grant values, and exactly how to apply before the deadlines.`,
+    sections: [
+      {
+        h2: 'Innovate UK Spring 2026 — New Grant Rounds',
+        body: `Innovate UK opened its first 2026/27 SMART grant competition in **April 2026**, with initial results expected in June 2026.
+
+**2026 SMART Grant details:**
+- Awards: £25,000–£500,000 (small business), up to £1.5m for large co-funded projects
+- Match funding required: 20% (small), 35% (medium), 50% (large)
+- Eligibility: UK-registered businesses, all sectors
+- Success rate: ~6–8% — competition is intense
+
+**New Innovate UK themes for 2026:**
+- AI safety and responsible AI deployment
+- Health tech and diagnostics
+- Offshore wind supply chain
+- Agri-tech food security
+- Advanced engineering and materials
+
+Apply at [apply.ukri.org](https://apply.ukri.org) — register before the competition deadline. See our full [Innovate UK guide](/guides/innovate-uk-grants).`,
+      },
+      {
+        h2: 'Green Industries Growth Accelerator (GIGA) — 2026 Grants',
+        body: `The **Green Industries Growth Accelerator (GIGA)** is the government's flagship 2026 grant programme for businesses in the clean energy supply chain.
+
+**GIGA 2026 awards:**
+- Grants: £100,000–£20 million
+- Target sectors: offshore wind, solar, heat pumps, hydrogen, CCUS, nuclear SMR supply chains
+- Must be a UK manufacturer or developer with plans to expand UK production capacity
+- Grant covers up to 50% of eligible capital costs
+
+**Why GIGA matters in 2026:** The UK has committed to having a clean electricity grid by 2030. GIGA is the supply-side funding that makes this possible — and it is significantly undersubscribed relative to eligible businesses.
+
+Apply via the Department for Energy Security and Net Zero (DESNZ) — expressions of interest open throughout 2026.`,
+      },
+      {
+        h2: 'Investment Zone Business Grants 2026',
+        body: `The Spring Budget 2026 confirmed **12 new Investment Zones** across the UK, each with a dedicated grants package:
+
+**Investment Zone grant pool:** Up to £500,000 per qualifying business, subject to zone-specific criteria.
+
+**2026 Investment Zones include:**
+- Greater Manchester (advanced manufacturing)
+- West Midlands (automotive and green tech)
+- South Yorkshire (steel and green industries)
+- Tees Valley (hydrogen and offshore energy)
+- Edinburgh (life sciences and fintech)
+- Cardiff (creative industries and data)
+
+Each zone has a business support interface through the relevant Combined Authority or devolved government. Contact your local Growth Hub for referrals.
+
+Search our [grants database](/grants) for current Investment Zone opportunities by location.`,
+      },
+      {
+        h2: 'Start Up and Scale-Up Grants 2026',
+        body: `**Start Up Loans Scheme:** Still available in 2026 — personal loans of up to £25,000 at 6% fixed interest, plus 12 months free mentoring. Not technically a grant (it must be repaid), but typically the best first option for early-stage businesses. Apply at [startuploans.co.uk](https://www.startuploans.co.uk).
+
+**British Business Bank funds:** The British Business Bank manages several 2026 grant-backed equity and loan funds including Future Fund: Breakthrough (for R&D intensive scale-ups) and the Regional Angels Programme.
+
+**Seed Enterprise Investment Scheme (SEIS):** Not a grant but allows investors to invest up to £200,000 in your startup with 50% income tax relief — effectively meaning government tops up investment by 50%.
+
+**Growth Hubs:** Every region has a free Business Growth Hub providing grant referral, diagnostic, and application support. Find yours at [growthhubs.co.uk](https://growthhubs.co.uk).
+
+Read our [startup grants guide](/guides/startup-grants-uk) for the complete picture.`,
+      },
+      {
+        h2: 'How to Find and Apply for Business Grants in 2026',
+        body: `**Step 1: Search our database.** Our [grants database](/grants) is updated daily and includes all current business grant opportunities across 157+ listings.
+
+**Step 2: UKRI Funding Finder.** For all UKRI and Innovate UK grants: [ukri.org/opportunity](https://www.ukri.org/opportunity/).
+
+**Step 3: Innovate UK registration.** Create an account at [apply.ukri.org](https://apply.ukri.org) before any competition opens — you cannot apply without one.
+
+**Step 4: Growth Hub support.** Your local Growth Hub provides free guidance and can tell you what grants you're most likely to win. Find yours at gov.uk/business-support-helpline.
+
+**Step 5: Professional advice.** For grants over £100,000, consider using a specialist grant consultant. Many work on success-fee basis — no upfront cost.`,
+      },
+    ],
+    conclusion: {
+      summary: 'Spring 2026 has opened some of the most significant business grant opportunities in years — from Innovate UK SMART grants to £20m GIGA awards and Investment Zone funding. Most businesses have at least one scheme they could realistically apply for.',
+      nextSteps: [
+        'Browse [business grants](/grants) in our database',
+        'Register on [apply.ukri.org](https://apply.ukri.org) for Innovate UK',
+        'Read our [Innovate UK guide](/guides/innovate-uk-grants) for application tips',
+        'Contact your [local Growth Hub](https://growthhubs.co.uk) for free advice',
+      ],
+    },
+    faqs: [
+      { q: 'Do I have to repay business grants?', a: 'No — grants never need to be repaid. They are free money for your business, unlike loans. However, grant conditions (reporting, project deliverables) must be met.' },
+      { q: 'Can a startup get a large grant like GIGA?', a: 'GIGA is targeted at established manufacturers. Innovate UK SMART grants are more appropriate for early-stage innovative businesses, with awards from £25,000 available to startups.' },
+    ],
+    relatedSlugs: ['innovate-uk-grants', 'startup-grants-uk', 'spring-budget-2026'],
+  },
 }
+
