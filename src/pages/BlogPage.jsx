@@ -296,11 +296,35 @@ export const GUIDES = [
 
 
 export default function BlogPage() {
+  const now = new Date()
+
+  // Sort newest-first
+  const sortedGuides = [...GUIDES].sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  // Featured = published 2+ days ago AND year is 2026
+  const isFeatured = (g) => {
+    const pub = new Date(g.date)
+    const ageDays = (now - pub) / (1000 * 60 * 60 * 24)
+    return g.date.startsWith('2026') && ageDays >= 2
+  }
+
+  // isNew = published within the last 2 days
+  const isNew = (g) => {
+    const pub = new Date(g.date)
+    const ageDays = (now - pub) / (1000 * 60 * 60 * 24)
+    return ageDays < 2
+  }
+
+  // 2026 articles pinned to top, rest below
+  const articles2026 = sortedGuides.filter(g => g.date.startsWith('2026'))
+  const olderArticles = sortedGuides.filter(g => !g.date.startsWith('2026'))
+  const displayOrder = [...articles2026, ...olderArticles]
+
   return (
     <>
       <PageMeta
-        title="UK Funding Guides — Expert Grant & Benefit Advice"
-        description="Step-by-step guides on UK government grants, benefits and funding schemes. Learn how to apply for ECO4, Universal Credit, startup grants, and more."
+        title="UK Funding Guides 2026 — Expert Grant & Benefit Advice"
+        description="Expert guides on UK government grants, benefits and funding schemes — updated for 2026. Spring Budget, UC rates, NLW, Renters Rights Act, ECO4 and city-specific funding guides."
         canonical="https://ukgrants.online/guides"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
@@ -310,68 +334,111 @@ export default function BlogPage() {
         <section style={{ padding: '64px 24px 48px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(0,102,255,0.08)', border: '1px solid rgba(0,102,255,0.2)', borderRadius: 20, padding: '6px 16px', marginBottom: 20 }}>
             <BookOpen size={14} style={{ color: 'var(--accent-primary)' }} />
-            <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--accent-primary)' }}>FREE GUIDES</span>
+            <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--accent-primary)' }}>FREE GUIDES — UPDATED 2026</span>
           </div>
           <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 800, marginBottom: 16, lineHeight: 1.2 }}>
             UK Funding Guides
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: 560, margin: '0 auto' }}>
-            Expert, up-to-date guides on UK government grants, benefits and funding schemes — written in plain English.
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: 600, margin: '0 auto' }}>
+            Expert, up-to-date guides on UK government grants, benefits and funding schemes — fully updated for 2026 with the latest rates, laws, and city funding.
           </p>
         </section>
 
         {/* Articles grid */}
         <section style={{ maxWidth: 1100, margin: '0 auto', padding: '48px 24px 80px' }}>
+
+          {/* 2026 section label */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+            <span style={{
+              fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em',
+              color: '#c62828', background: 'rgba(198,40,40,0.08)',
+              border: '1px solid rgba(198,40,40,0.25)', borderRadius: 20,
+              padding: '4px 12px', textTransform: 'uppercase'
+            }}>⚡ Latest 2026 Updates</span>
+            <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>{articles2026.length} new guides this month</span>
+          </div>
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
-            {GUIDES.map(g => (
+            {displayOrder.map(g => (
               <article key={g.slug} style={{
                 background: '#fff',
                 borderRadius: 20,
-                border: '1px solid var(--border)',
-                boxShadow: 'var(--shadow)',
+                border: isFeatured(g) ? `2px solid ${g.color}50` : '1px solid var(--border)',
+                boxShadow: isFeatured(g) ? `0 4px 24px ${g.color}18` : 'var(--shadow)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 transition: 'transform 0.2s, box-shadow 0.2s',
+                position: 'relative',
               }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.12)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow)' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = `0 16px 48px ${g.color}22` }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = isFeatured(g) ? `0 4px 24px ${g.color}18` : 'var(--shadow)' }}
               >
                 {/* Card top bar */}
-                <div style={{ height: 6, background: `linear-gradient(90deg, ${g.color}, ${g.color}88)` }} />
+                <div style={{ height: isFeatured(g) ? 8 : 6, background: `linear-gradient(90deg, ${g.color}, ${g.color}88)` }} />
 
                 <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  {/* Category + emoji */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: g.color, background: `${g.color}12`, padding: '4px 12px', borderRadius: 20, border: `1px solid ${g.color}25` }}>
-                      {g.category}
-                    </span>
+                  {/* Category + emoji + badges */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, color: g.color, background: `${g.color}12`, padding: '4px 10px', borderRadius: 20, border: `1px solid ${g.color}25` }}>
+                        {g.category}
+                      </span>
+                      {isFeatured(g) && (
+                        <span style={{
+                          fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.06em',
+                          color: '#fff', background: `linear-gradient(135deg, ${g.color}, ${g.color}cc)`,
+                          padding: '3px 8px', borderRadius: 20, textTransform: 'uppercase'
+                        }}>⭐ Featured</span>
+                      )}
+                      {isNew(g) && (
+                        <span style={{
+                          fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.06em',
+                          color: '#fff', background: 'linear-gradient(135deg, #2e7d32, #43a047)',
+                          padding: '3px 8px', borderRadius: 20, textTransform: 'uppercase'
+                        }}>🆕 New</span>
+                      )}
+                    </div>
                     <span style={{ fontSize: '1.8rem' }}>{g.emoji}</span>
                   </div>
 
                   <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.1rem', fontWeight: 700, marginBottom: 12, lineHeight: 1.4, color: 'var(--text-primary)' }}>
                     {g.title}
                   </h2>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: 20, flex: 1 }}>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: 20, flex: 1 }}>
                     {g.excerpt}
                   </p>
 
                   {/* Meta */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border)', paddingTop: 14 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: `1px solid ${isFeatured(g) ? g.color + '20' : 'var(--border)'}`, paddingTop: 14 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontSize: '0.78rem' }}>
                       <Clock size={13} />
                       {g.readTime}
                       <span style={{ margin: '0 4px' }}>·</span>
                       {new Date(g.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </div>
-                    <Link to={`/guides/${g.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 4, color: g.color, fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>
-                      Read <ArrowRight size={14} />
+                    <Link to={`/guides/${g.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 4, color: g.color, fontSize: '0.82rem', fontWeight: 700, textDecoration: 'none' }}>
+                      Read guide <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
               </article>
             ))}
           </div>
+
+          {/* Older articles divider */}
+          {olderArticles.length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '40px 0 28px' }}>
+              <span style={{
+                fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em',
+                color: 'var(--text-muted)', background: 'var(--bg-layer-2)',
+                border: '1px solid var(--border)', borderRadius: 20,
+                padding: '4px 12px', textTransform: 'uppercase'
+              }}>📚 Earlier Guides</span>
+              <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+            </div>
+          )}
 
           {/* CTA */}
           <div style={{ marginTop: 56, padding: '40px', background: 'linear-gradient(135deg, rgba(0,102,255,0.06), rgba(0,102,255,0.02))', borderRadius: 20, border: '1px solid rgba(0,102,255,0.15)', textAlign: 'center' }}>

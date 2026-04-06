@@ -257,8 +257,41 @@ export default function GrantDetail() {
 
             {/* About */}
             <Section icon={BookOpen} title="About This Grant" accent="var(--accent-primary)">
-              <p>{grant.full_description || grant.unique_content || 'No description available.'}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {(grant.full_description || grant.unique_content || 'No description available.')
+                  .split('\n\n')
+                  .filter(Boolean)
+                  .map((para, i) => (
+                    <p key={i} style={{
+                      fontSize: '1rem',
+                      lineHeight: 1.85,
+                      color: 'var(--text-secondary)',
+                      margin: 0,
+                      paddingLeft: i === 0 ? 0 : 0,
+                    }}>{para}</p>
+                  ))
+                }
+              </div>
+              {/* Quick summary box */}
+              {grant.eligibility && (
+                <div style={{
+                  marginTop: 20,
+                  padding: '16px 20px',
+                  background: 'linear-gradient(135deg, rgba(0,102,255,0.04), rgba(0,102,255,0.01))',
+                  borderLeft: '4px solid var(--accent-primary)',
+                  borderRadius: '0 10px 10px 0',
+                  fontSize: '0.93rem',
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.7,
+                }}>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: 6, fontSize: '0.88rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Quick Eligibility Summary
+                  </strong>
+                  {grant.eligibility}
+                </div>
+              )}
             </Section>
+
 
             {/* E-E-A-T: Expert Advice Block */}
             <div style={{ background: 'var(--bg-layer-2)', borderLeft: '4px solid var(--accent-purple)', padding: '20px', borderRadius: '0 8px 8px 0', marginBottom: '32px' }}>
