@@ -42,8 +42,8 @@ export default function BenefitDetail() {
   )
 
   const canonicalUrl = `https://ukgrants.online/benefit/${slug}`
-  const pageTitle = `${item.title} — UK Benefits Guide 2025`
-  const pageDesc = `${item.title}: who can claim, eligibility criteria, and how to apply in 2025. ${item.description?.slice(0, 90) || ''}`.slice(0, 160)
+  const pageTitle = `${item.title} — UK Benefits Guide 2026`
+  const pageDesc = `${item.title}: who can claim, eligibility criteria, and how to apply in 2026. ${item.description?.slice(0, 90) || ''}`.slice(0, 160)
   const verifiedDate = formatVerified(item.updated_at || item.created_at)
   const isoDate = item.updated_at || item.created_at || new Date().toISOString()
 
@@ -156,18 +156,54 @@ export default function BenefitDetail() {
         <div style={{ background: '#fff', borderRadius: 20, border: '1px solid var(--border)', boxShadow: 'var(--shadow)', padding: '28px', marginBottom: 20 }}>
           {item.eligibility && (
             <div style={{ marginBottom: 28 }}>
-              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-primary)', paddingBottom: 10, borderBottom: '2px solid rgba(0,102,255,0.1)' }}>
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-primary)', paddingBottom: 10, borderBottom: '2px solid rgba(0,102,255,0.1)' }}>
                 <CheckCircle size={18} color="var(--accent-primary)" /> Who Can Claim
               </h2>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem' }}>{item.eligibility}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {item.eligibility.split('\n').filter(Boolean).map((line, i) => (
+                  <p key={i} style={{ margin: 0, fontSize: '0.97rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>{line}</p>
+                ))}
+              </div>
+            </div>
+          )}
+          {item.who_can_apply && item.who_can_apply !== item.eligibility && (
+            <div style={{ marginBottom: 28 }}>
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-primary)', paddingBottom: 10, borderBottom: '2px solid rgba(0,102,255,0.1)' }}>
+                <CheckCircle size={18} color="var(--accent-primary)" /> Who Can Apply
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {item.who_can_apply.split('\n').filter(Boolean).map((line, i) => (
+                  <p key={i} style={{ margin: 0, fontSize: '0.97rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>{line}</p>
+                ))}
+              </div>
             </div>
           )}
           {item.how_to_apply && (
             <div>
-              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-primary)', paddingBottom: 10, borderBottom: '2px solid rgba(0,102,255,0.1)' }}>
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-primary)', paddingBottom: 10, borderBottom: '2px solid rgba(0,102,255,0.1)' }}>
                 <BookOpen size={18} color="var(--accent-primary)" /> How to Apply
               </h2>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem' }}>{item.how_to_apply}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {item.how_to_apply.split('\n').filter(Boolean).map((line, i) => {
+                  const isStep = /^\d+\./.test(line.trim())
+                  return (
+                    <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                      {isStep && (
+                        <span style={{
+                          minWidth: 26, height: 26, borderRadius: '50%',
+                          background: '#7c3aed', color: '#fff',
+                          fontSize: '0.75rem', fontWeight: 700,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          marginTop: 2, flexShrink: 0
+                        }}>{line.trim().match(/^(\d+)/)[1]}</span>
+                      )}
+                      <p style={{ margin: 0, fontSize: '0.96rem', lineHeight: 1.75, color: 'var(--text-secondary)', flex: 1 }}>
+                        {isStep ? line.trim().replace(/^\d+\.\s*/, '') : line}
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           )}
         </div>

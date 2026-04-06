@@ -325,27 +325,60 @@ export default function GrantDetail() {
 
             {/* Who can apply */}
             <Section icon={Users} title="Who Can Apply" accent={cat.color}>
-              <p>{grant.who_can_apply || grant.eligibility_details || grant.eligibility || 'Check the applying body for eligibility criteria.'}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {(grant.who_can_apply || grant.eligibility_details || grant.eligibility || 'Check the applying body for eligibility criteria.')
+                  .split('\n').filter(Boolean).map((line, i) => (
+                    <p key={i} style={{ margin: 0, fontSize: '0.97rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>{line}</p>
+                  ))}
+              </div>
             </Section>
 
             {/* Eligibility */}
             {grant.eligibility_details && grant.eligibility_details !== grant.who_can_apply && (
               <Section icon={CheckCircle} title="Eligibility Criteria" accent="var(--accent-green)">
-                <p>{grant.eligibility_details}</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {grant.eligibility_details.split('\n').filter(Boolean).map((line, i) => (
+                    <p key={i} style={{ margin: 0, fontSize: '0.97rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>{line}</p>
+                  ))}
+                </div>
               </Section>
             )}
 
             {/* How to apply */}
             {grant.how_to_apply && (
               <Section icon={Tag} title="How to Apply" accent="var(--accent-purple)">
-                <p>{grant.how_to_apply}</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  {grant.how_to_apply.split('\n').filter(Boolean).map((line, i) => {
+                    const isStep = /^\d+\./.test(line.trim())
+                    return (
+                      <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                        {isStep && (
+                          <span style={{
+                            minWidth: 26, height: 26, borderRadius: '50%',
+                            background: 'var(--accent-purple)', color: '#fff',
+                            fontSize: '0.75rem', fontWeight: 700,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            marginTop: 2, flexShrink: 0
+                          }}>{line.trim().match(/^(\d+)/)[1]}</span>
+                        )}
+                        <p style={{ margin: 0, fontSize: '0.96rem', lineHeight: 1.75, color: 'var(--text-secondary)', flex: 1 }}>
+                          {isStep ? line.trim().replace(/^\d+\.\s*/, '') : line}
+                        </p>
+                      </div>
+                    )
+                  })}
+                </div>
               </Section>
             )}
 
             {/* Additional info */}
             {grant.additional_info && (
-              <Section icon={Wifi} title="Additional Information" accent="var(--accent-secondary)">
-                <p>{grant.additional_info}</p>
+              <Section icon={Wifi} title="2026 Updates & Tips" accent="var(--accent-secondary)">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {grant.additional_info.split('\n').filter(Boolean).map((line, i) => (
+                    <p key={i} style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>{line}</p>
+                  ))}
+                </div>
               </Section>
             )}
 
@@ -387,14 +420,43 @@ export default function GrantDetail() {
 
             {/* Key details */}
             <div className="sidebar-card">
-              <h3 className="sidebar-card-title">Key Details</h3>
-              <MetaRow label="Applying Body" value={grant.applying_body || grant.council_name} />
+              <h3 className="sidebar-card-title">Grant Details</h3>
+
+              {/* Status row — always shown */}
+              <div style={{ marginBottom: 16 }}>
+                <span className={`status-badge ${grant.status?.toLowerCase() === 'active' ? 'status-active' : 'status-pending'}`} style={{ fontSize: '0.8rem' }}>
+                  <span className="live-dot" style={{ width: 6, height: 6 }} />
+                  {grant.status || 'Open'}
+                </span>
+                <p style={{ margin: '8px 0 0', fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                  {grant.status?.toLowerCase() === 'active'
+                    ? 'This grant is currently accepting applications.'
+                    : grant.status?.toLowerCase() === 'closed'
+                    ? 'This round is closed. Check back for future rounds or see related grants below.'
+                    : 'Application status — contact the applying body to confirm current availability.'}
+                </p>
+              </div>
+
+              <MetaRow label="Provider" value={grant.applying_body || grant.council_name} />
               <MetaRow label="Location" value={grant.location} />
-              <MetaRow label="Opening Date" value={grant.opening_date} />
-              <MetaRow label="Closing Date" value={grant.closing_date} />
               <MetaRow label="Grant Size" value={grant.grant_size} />
               <MetaRow label="Funding Type" value={grant.funding_type} />
-              <MetaRow label="Status" value={grant.status} />
+              <MetaRow label="Max Award" value={grant.max_funding} />
+
+              {/* Dates — shown with fallback if missing */}
+              {(grant.opening_date || grant.closing_date) ? (
+                <>
+                  <MetaRow label="Opens" value={grant.opening_date} />
+                  <MetaRow label="Closes" value={grant.closing_date} />
+                </>
+              ) : (
+                <div style={{ marginTop: 12, padding: '12px 14px', background: 'rgba(0,102,255,0.04)', borderRadius: 8, border: '1px solid rgba(0,102,255,0.1)' }}>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 4 }}>Availability</div>
+                  <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                    This scheme accepts rolling applications. Dates may change — visit the provider's website or call their helpline for the latest window.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Related grants */}
