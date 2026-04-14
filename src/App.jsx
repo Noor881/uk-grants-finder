@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar.jsx'
 import CookieBanner from './components/CookieBanner.jsx'
 import LandingPage from './pages/LandingPage.jsx'
@@ -45,6 +46,7 @@ export default function App() {
         <Route path="/guides/:slug"         element={<BlogPost />} />
       </Routes>
       <CookieBanner />
+      <Analytics />
     </>
   )
 }
